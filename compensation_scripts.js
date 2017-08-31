@@ -13,9 +13,9 @@ function addEvents(){
 
 //czyszczenie tablicy z odpowiedziami i pokazanie tylko kroku pierwszego
 function start(){
-        answers.splice(0, answers.length);
-        $('.class').not('#step1').hide();
-        $('#step1').show();
+    answers.splice(0, answers.length);
+    $('.class').not('#step1').hide();
+    $('#step1').show();
 }
 
 //powrót do poprzedniego pytania
@@ -73,4 +73,9 @@ function nextquestion(s){ //s := kod aktywnego kroku (nie pytanie)
     $('#next'+s).prop('disabled', true);    //dezaktywacja bie¿¹cego przycisku "dalej"
     $('#step'+s).hide();    //ukrycie bie¿¹cego pola z pytaniem
     $('#'+step+id).show();  //pokazanie nowego pytania lub koniec formularza
+}
+
+function fill(){
+    $('#finish').hide();
+    $('#form').show();
 }

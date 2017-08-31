@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form  id="f">
+    <form method="post" id="f">
         <fieldset class="class" id="step1">
             <legend>Co się wydarzyło z lotem?</legend>
                 <p>
@@ -85,12 +85,36 @@
 
         <fieldset class="class"  id="end">
             nie dostałeś odszkodowania ;(
-            <button type="reset" onClick="start()" />Jeszcze raz</button>
+            <button type="reset" onClick="start()" >Jeszcze raz</button>
         </fieldset>
 
         <fieldset class="class"  id="finish">
             wygrałeś!!!!!!
-            <button type="reset" onClick="start()" />Jeszcze raz</button>
+            <button type="reset" onClick="start()" >Jeszcze raz</button>
+            <button type="button" onclick="fill()" >Wypełnij formularz</button>
+        </fieldset>
+    </form>
+    
+    <form method="post" class="class" id="personal_data" >
+        <fieldset id="form">
+            <legend>Dane pasażera</legend>
+            <p>
+                Imię<br>
+                <input type="text" name="fname" required/>
+                <br>Nazwisko<br>
+                <input type="text" name="lname" required/>
+                <br>Miejscowość<br>
+                <input type="text" name="city" required/>
+                <br>Kod pocztowy<br>
+                <input type="text" name="code" required/>
+                <br>Ulica<br>
+                <input type="text" name="street" required/>
+                <br>Nr domu<br>
+                <input type="text" name="number1" required/>
+                <br>Nr mieszkania<br>
+                <input type="text" name="number2" required/>
+            </p>
+            <button type="submit">wyślij</button>
         </fieldset>
     </form>
 </body>
