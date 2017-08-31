@@ -85,6 +85,7 @@ var validateForm = (function(){
     var options = {};
     var classError = 'error';
     
+    //funckja dodaje odpowiedni¹ klasê w zale¿noœci czy dane wejœciowe s¹ w poprawnej formie
     function showFieldValidation(input, inputIsValid) {
         if (!inputIsValid) {
             if (!input.parentNode.className || input.parentNode.className.indexOf(options.classError)==-1) {
@@ -96,6 +97,7 @@ var validateForm = (function(){
         }
     };
     
+    //funkcja sprawdza czy dane wejœciowe (input) s¹ zgodne ze wzorcem (reg)
     function check (input, reg){
         var inputIsValid = true;
         if (!reg.test(input.value)) {
@@ -105,7 +107,6 @@ var validateForm = (function(){
                 inputIsValid = false;
             }
         }
-
         if (inputIsValid) {
             showFieldValidation(input, true);
             return true;
@@ -114,22 +115,22 @@ var validateForm = (function(){
             return false;
         }
     }
-    
+    //sprawdzanie kodu pocztowego
     function testInputCode(input) {
         var reg = new RegExp('^[0-9]{2}-[0-9]{3}$', 'gi');
         return check(input, reg);
     };
-    
+    //sprawdzanie imienia, nazwiska, miasta, ulicy
     function testInputText(input) {
         var reg = new RegExp('^[a-zA-z-]*$', 'gi');
         return check(input, reg);
     };
-    
+    //sprawdzanie e-maila
     function testInputEmail(input) {
         var reg = new RegExp('^[0-9a-zA-Z]+@[0-9a-zA-Z.-]+\.[a-zA-Z]{2,3}$', 'gi');
         return check(input, reg);
     };
-    
+    //sprawdzanie numeru domu/mieszkania
     function testInputNumber(input) {
         var reg = new RegExp('^[1-9]+[0-9]*[a-zA-Z]{0,1}$', 'gi');
         return check(input, reg);
@@ -138,18 +139,17 @@ var validateForm = (function(){
     function prepareElements() {
         var elements = options.form.querySelectorAll('input[required], textarea[required], select[required]');
     
-        //przyjemniejsza forma for
         [].forEach.call(elements, function(element) {
-            //usuwamy atrybut required - inaczej przy wysy³aniu wyskakiwa³y by domyœlne b³êdy przegl¹darki
+            //usuwamy atrybut required aby przy wysy³aniu wyskakiwa³y by domyœlne b³êdy
             element.removeAttribute('required');
-            //dodajemy klasê - po niej bêdziemy póŸniej sprawdzaæ pola
+            //klasa, po której póŸniej bêdziemy sprawdzaæ pola
             element.className += ' required';
 
             //sprawdzamy typ pola
             if (element.nodeName.toUpperCase() == 'INPUT') {
                 var type = element.type.toUpperCase();
                 var name = element.name.toLowerCase();
-                //dla ka¿dego pola dodajemy obs³ugê funkcji sprawdzaj¹cej
+                //do ró¿nych typów pól (kolejno: zwyk³y tekst, email, kod pocztowy, numer domu/mieszkania dodajemy funkcje sprawdzaj¹ce poprawnoœæ
                 if (name == 'fname' || name == 'lname' || name == 'city' || name == 'street') {
                     element.addEventListener('keyup', function() {testInputText(element);});
                     element.addEventListener('blur', function() {testInputText(element);});
@@ -169,9 +169,9 @@ var validateForm = (function(){
             }
         });
     };
-    //metoda publiczna
+    
     function init(_options) {
-        //do naszego modu³u bêdziemy przekazywaæ opcje
+        //do modu³u bêdziemy przekazywaæ opcje
         //przekazane ustawimy w zmiennej options naszego modu³u, lub ustawimy domyœlne
         options = {
             form : _options.form || null,
@@ -188,7 +188,7 @@ var validateForm = (function(){
     }
 })();
 
-
+//dodanie funkcji walidacji formularza do pól zapytañ o dane osobowe po nazwie klasy
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector('.form');
     validateForm.init({form : form});
