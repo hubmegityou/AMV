@@ -79,3 +79,117 @@ function fill(){
     $('#finish').hide();
     $('#form').show();
 }
+
+//weryfikacja formularza drugiego (dane klienta)
+var validateForm = (function(){
+    var options = {};
+    var classError = 'error';
+    
+    function showFieldValidation(input, inputIsValid) {
+        if (!inputIsValid) {
+            if (!input.parentNode.className || input.parentNode.className.indexOf(options.classError)==-1) {
+                input.parentNode.className += ' ' + options.classError
+            }
+        } else {
+            var regError = new RegExp('(\\s|^)'+options.classError+'(\\s|$)');
+            input.parentNode.className = input.parentNode.className.replace(regError, '');
+        }
+    };
+    
+    function check (input, reg){
+        var inputIsValid = true;
+        if (!reg.test(input.value)) {
+            inputIsValid = false;
+        }else{
+            if (input.value==''){            
+                inputIsValid = false;
+            }
+        }
+
+        if (inputIsValid) {
+            showFieldValidation(input, true);
+            return true;
+        } else {
+            showFieldValidation(input, false);
+            return false;
+        }
+    }
+    
+    function testInputCode(input) {
+        var reg = new RegExp('^[0-9]{2}-[0-9]{3}$', 'gi');
+        return check(input, reg);
+    };
+    
+    function testInputText(input) {
+        var reg = new RegExp('^[a-zA-z-]*$', 'gi');
+        return check(input, reg);
+    };
+    
+    function testInputEmail(input) {
+        var reg = new RegExp('^[0-9a-zA-Z]+@[0-9a-zA-Z.-]+\.[a-zA-Z]{2,3}$', 'gi');
+        return check(input, reg);
+    };
+    
+    function testInputNumber(input) {
+        var reg = new RegExp('^[1-9]+[0-9]*[a-zA-Z]{0,1}$', 'gi');
+        return check(input, reg);
+    };
+    
+    function prepareElements() {
+        var elements = options.form.querySelectorAll('input[required], textarea[required], select[required]');
+    
+        //przyjemniejsza forma for
+        [].forEach.call(elements, function(element) {
+            //usuwamy atrybut required - inaczej przy wysy≥aniu wyskakiwa≥y by domyúlne b≥Ídy przeglπdarki
+            element.removeAttribute('required');
+            //dodajemy klasÍ - po niej bÍdziemy pÛüniej sprawdzaÊ pola
+            element.className += ' required';
+
+            //sprawdzamy typ pola
+            if (element.nodeName.toUpperCase() == 'INPUT') {
+                var type = element.type.toUpperCase();
+                var name = element.name.toLowerCase();
+                //dla kaødego pola dodajemy obs≥ugÍ funkcji sprawdzajπcej
+                if (name == 'fname' || name == 'lname' || name == 'city' || name == 'street') {
+                    element.addEventListener('keyup', function() {testInputText(element);});
+                    element.addEventListener('blur', function() {testInputText(element);});
+                }
+                if (name == 'email') {
+                    element.addEventListener('keyup', function() {testInputEmail(element);});
+                    element.addEventListener('blur', function() {testInputEmail(element);});
+                } 
+                if (name == 'code') {
+                    element.addEventListener('keyup', function() {testInputCode(element);});
+                    element.addEventListener('blur', function() {testInputCode(element);});
+                }            
+                if (name == 'number1' || name == 'number2') {
+                    element.addEventListener('keyup', function() {testInputNumber(element);});
+                    element.addEventListener('blur', function() {testInputNumber(element);});                
+                }
+            }
+        });
+    };
+    //metoda publiczna
+    function init(_options) {
+        //do naszego modu≥u bÍdziemy przekazywaÊ opcje
+        //przekazane ustawimy w zmiennej options naszego modu≥u, lub ustawimy domyúlne
+        options = {
+            form : _options.form || null,
+            classError : _options.classError || 'error'
+        };
+        if (options.form == null || options.form == undefined || options.form.length==0) {
+            console.warn('validateForm: èle przekazany formularz');
+            return false;
+        }
+        prepareElements();
+    };
+    return {
+        init : init
+    }
+})();
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.querySelector('.form');
+    validateForm.init({form : form});
+});

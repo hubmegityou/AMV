@@ -4,6 +4,16 @@
     <style>
         .class{}
         .btn{}
+        
+        .form .error {
+    color:#DB083E;
+}
+.form .error input[type="text"],
+.form .error input[type="email"],
+.form .error select {
+    background-image: none;
+    padding-right:4px;
+}
     </style>
   <meta charset="utf-8"/>
   <title>formularz</title>
@@ -12,7 +22,7 @@
 </head>
 
 <body>
-    <form method="post" id="f">
+    <form id="f">
         <fieldset class="class" id="step1">
             <legend>Co się wydarzyło z lotem?</legend>
                 <p>
@@ -95,25 +105,27 @@
         </fieldset>
     </form>
     
-    <form method="post" class="class" id="personal_data" >
+    <form class="form" id="personal_data" >
         <fieldset id="form">
             <legend>Dane pasażera</legend>
-            <p>
+                <div>
                 Imię<br>
-                <input type="text" name="fname" required/>
+                <input type="text" name="fname" required /></div><div>
                 <br>Nazwisko<br>
-                <input type="text" name="lname" required/>
+                <input type="text" name="lname" required /></div><div>
                 <br>Miejscowość<br>
-                <input type="text" name="city" required/>
+                <input type="text" name="city" required /></div><div>
                 <br>Kod pocztowy<br>
-                <input type="text" name="code" required/>
+                <input type="text" name="code" required /></div><div>
                 <br>Ulica<br>
-                <input type="text" name="street" required/>
+                <input type="text" name="street" required /></div><div>
                 <br>Nr domu<br>
-                <input type="text" name="number1" required/>
+                <input type="text" name="number1" required /></div><div>
                 <br>Nr mieszkania<br>
-                <input type="text" name="number2" required/>
-            </p>
+                <input type="text" name="number2" required /></div><div>
+                <br>Email<br>
+                <input type="email" name="email" required />                
+                </div>
             <button type="submit">wyślij</button>
         </fieldset>
     </form>
