@@ -3,10 +3,10 @@ var id=2;
      
      
   // wyświetlanie podpowiedzi przy wpisywaniu danych lotu    
-function autocomplete_input ( url, input){
+function autocomplete_input (input){
     
     $(document).ready(function(){  
-    $.post(url, { /**/ }, showResult, "text");  
+    $.post("getData.php", {input:input}, showResult, "text");  
 });
 
 function showResult(res){
@@ -51,8 +51,8 @@ function addInput(){
 
 // ponowne wywołanie funkcji odpowiadającej za wyświetlanie podpowiedzi
 function reloadAutocomplete(){
-    autocomplete_input("getAPIAirports.php", "flight");
-    autocomplete_input("getAPIAirlines.php", "airlines");
+    autocomplete_input("flight");
+    autocomplete_input( "airlines");
 }
 
 // lot z przesiadką-> umozliwienie dodawania przesiadek

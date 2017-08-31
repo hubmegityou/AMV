@@ -1,5 +1,7 @@
 <?php
+
 require 'APIData.php';
+require'GreatCircle.php';
 
 // pobranie danych wpisanych przez uzytkownika-> miejsce wylotu 
 
@@ -45,24 +47,12 @@ $airlinesRegion= $APIData->FindRegion($airlinesData, $curlAirspacesResult);
 //weryfikacja czy lot nadaje siÄ™ do objÄ™cia zgÅ‚oszeniem roszczenia
 
 if ($departureRegion!='EUR' && $arrivalRegion!='EUR'){
-    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia -  lecisz spoza europy poza europe";
-} 
-elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
-    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia - przewoznik spoza europy";
-}
-else{
-    //sprawdzenie czy lot by³ w obrêbie UE
-    $UE = $departureRegion=='EUR' && $arrivalRegion=='EUR' ? true : false;
+    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia-  lecisz z poza europy poza europe";
+} elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
+    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia- przewoznik spoza europy";
+    
+}else{
     //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
-    require 'GreatCircle.php';
-    $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);
-    //sprawdzanie do której kategorii zaliczamy pokonany dystans (potrzebne do odczytywania wysokoœci odszkodowania z tabeli)
-    if ($distance <= 1500)
-            $type = 0;
-        elseif (($distance > 1500 && $UE) || ($distance <= 3500 && !$UE))
-            $type = 1;
-        else
-            $type = 2;
-    header("Location: compensation_form.html?distance=$type");
+   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);    
+      
 }
-?>
