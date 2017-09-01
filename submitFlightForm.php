@@ -22,7 +22,6 @@ $airlinesCountry= $airlines[1];
 
 //pobranie danych lotnisk, regionów oraz linii lotniczych z API
 $APIData= new APIData();
-//pobranie danych lotnisk, regionów oraz linii lotniczych z API
 $curlAirportResult= $APIData->curl($APIData->AirportsUrl);
 $curlAirspacesResult= $APIData->curl($APIData->AirspacesUrl);
 $curlAirlinesResult= $APIData->curl($APIData->AirlinesUrl);
