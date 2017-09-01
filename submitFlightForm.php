@@ -47,29 +47,6 @@ $airlinesRegion= $APIData->FindRegion($airlinesData, $curlAirspacesResult);
 //weryfikacja czy lot nadaje się do objęcia zgłoszeniem roszczenia
 
 if ($departureRegion!='EUR' && $arrivalRegion!='EUR'){
-<<<<<<< HEAD
-    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia -  lecisz spoza europy poza europe";
-} 
-elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
-    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia - przewoznik spoza europy";
-}
-else{
-    //sprawdzenie czy lot by� w obr�bie UE
-    $UE = ($departureRegion=='EUR' && $arrivalRegion=='EUR') ? true : false;
-    //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
-    require 'GreatCircle.php';
-    $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);
-    //sprawdzanie do kt�rej kategorii zaliczamy pokonany dystans (potrzebne do odczytywania wysoko�ci odszkodowania z tabeli)
-    if ($distance <= 1500)
-            $type = 0;
-        elseif (($distance > 1500 && $UE) || ($distance <= 3500 && !$UE))
-            $type = 1;
-        else
-            $type = 2;
-    header("Location: compensation_form.html");
-}
-?>
-=======
     echo "lot nie nadaje sie do objecia zgloszeniem roszczenia-  lecisz z poza europy poza europe";
 } elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
     echo "lot nie nadaje sie do objecia zgloszeniem roszczenia- przewoznik spoza europy";
@@ -80,4 +57,3 @@ else{
    
       
 }
->>>>>>> 858b9dc4a13e0c502e2ab03f95e0c6103ffcf1ac
