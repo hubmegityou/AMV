@@ -20,11 +20,7 @@ $airlines= explode(',  ',$_POST['airlines']);
 $airlinesName=$airlines[0];
 $airlinesCountry= $airlines[1];
 
-<<<<<<< HEAD
-=======
 //pobranie danych lotnisk, regionów oraz linii lotniczych z API
-
->>>>>>> 426b9d497015eb78eb0f1d84e53f110a1a3fba41
 $APIData= new APIData();
 //pobranie danych lotnisk, regionów oraz linii lotniczych z API
 $curlAirportResult= $APIData->curl($APIData->AirportsUrl);
@@ -60,7 +56,5 @@ if ($departureRegion!='EUR' && $arrivalRegion!='EUR'){
     
 }else{
     //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
-   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);   
-   
-      
+   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);      
 }
