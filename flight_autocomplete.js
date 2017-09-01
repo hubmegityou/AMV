@@ -3,10 +3,10 @@ var id=2;
      
      
   // wyświetlanie podpowiedzi przy wpisywaniu danych lotu    
-function autocomplete_input ( url, input){
+function autocomplete_input (input){
     
     $(document).ready(function(){  
-    $.post(url, { /**/ }, showResult, "text");  
+    $.post("getData.php", {input:input}, showResult, "text");  
 });
 
 function showResult(res){
@@ -23,9 +23,7 @@ function addInput(){
     
     var new_label=$("<label>");
     var new_dep = $("<input>");
-    var new_label_airlines=$("<label>");
-    var new_dep_airlines = $("<input>");
-    
+
     
     new_label.attr("for", "change");
     new_label.html(" lotnisko: ");
@@ -35,13 +33,6 @@ function addInput(){
     $("#ui-widget").append(new_label);
     $("#ui-widget").append(new_dep);
     
-    new_label_airlines.attr("for", "airlines");
-    new_label_airlines.html(" nazwa przewoźnika: ");
-    new_dep_airlines.attr("type", "text");
-    new_dep_airlines.attr("name", "airlines"+id);
-    new_dep_airlines.attr("id", "airlines");
-    $("#ui-widget").append(new_label_airlines);
-    $("#ui-widget").append(new_dep_airlines);
     
     id=id+1;
     
@@ -51,8 +42,8 @@ function addInput(){
 
 // ponowne wywołanie funkcji odpowiadającej za wyświetlanie podpowiedzi
 function reloadAutocomplete(){
-    autocomplete_input("getAPIAirports.php", "flight");
-    autocomplete_input("getAPIAirlines.php", "airlines");
+    autocomplete_input("flight");
+    autocomplete_input( "airlines");
 }
 
 // lot z przesiadką-> umozliwienie dodawania przesiadek
@@ -60,7 +51,6 @@ function reloadAutocomplete(){
 function change(){
     $('#change').hide();
     addInput();
-    $('#addinputbutton').show(); 
     $('#nextbutton').show();
 }
 

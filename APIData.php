@@ -33,15 +33,20 @@ function curl($url){
 // funkcja zwraca rekord z danymi lotniska bądź lini lotniczych wybranych przez uzytkownika 
 function FindData($country, $name, $city, $curlResult){
 
-    foreach ($curlResult as $key => $object){ 
-        if ( array_search($country, $object) ){
-            if ( array_search($city, $object) ){  
-                if ( array_search($name, $object) ){
-                  return $curlResult[$key];
-                }
+    foreach ($curlResult as $key => $object)
+{ 
+    if ( array_search($country, $object) )
+    {
+        if ( array_search($city, $object) )
+        {  
+            if ( array_search($name, $object) )
+            {
+              return $curlResult[$key];
+              
             }
         }
     }
+}
 }
 
 //funkcja zwraca region wybranego lotniska odlotu, przylotu oraz przewoznika
@@ -52,24 +57,17 @@ function FindRegion($data,$curlAirspacesResult){
 }
 
 
-// funkcja nadaje format danym wyświetlanym w podpowiedzi wpisywanych lotnisk
-function dataForAutocomplete ($curlAirportResult){
+
+function dataForAutocomplete ($curlAirportResult, $input){
 
     foreach ($curlAirportResult as $key =>$value){
-    $result[]= $value['airportName'].',  '. $value['cityName'].',  '. $value['countryName']; 
+        if ($input=='flight'){
+             $result[]= $value['airportName'].',  '. $value['cityName'].',  '. $value['countryName'];
+        }else{
+             $result[]= $value['operatorName'].',  '. $value['countryName'];
+        }
     }   
-    echo json_encode($result); 
-}
-
-
-//funkcja nadaje format danym wyświetlanym w podpowiedzi wpisywanych przewoznikow
-
-function dataForAirlinesAutocomplete ($curlAirlinesResult){
-
-    foreach ($curlAirlinesResult as $key =>$value){
-    $result[]= $value['operatorName'].',  '. $value['countryName']; 
-    }   
-    echo json_encode($result); 
+   echo json_encode($result); 
 }
 
 }

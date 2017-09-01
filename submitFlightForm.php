@@ -1,5 +1,7 @@
 <?php
+
 require 'APIData.php';
+require'GreatCircle.php';
 
 // pobranie danych wpisanych przez uzytkownika-> miejsce wylotu 
 
@@ -45,6 +47,7 @@ $airlinesRegion= $APIData->FindRegion($airlinesData, $curlAirspacesResult);
 //weryfikacja czy lot nadaje się do objęcia zgłoszeniem roszczenia
 
 if ($departureRegion!='EUR' && $arrivalRegion!='EUR'){
+<<<<<<< HEAD
     echo "lot nie nadaje sie do objecia zgloszeniem roszczenia -  lecisz spoza europy poza europe";
 } 
 elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
@@ -66,3 +69,15 @@ else{
     header("Location: compensation_form.html");
 }
 ?>
+=======
+    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia-  lecisz z poza europy poza europe";
+} elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
+    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia- przewoznik spoza europy";
+    
+}else{
+    //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
+   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);   
+   
+      
+}
+>>>>>>> 858b9dc4a13e0c502e2ab03f95e0c6103ffcf1ac

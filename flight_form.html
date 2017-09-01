@@ -1,32 +1,125 @@
-<!DOCTYPE HTML>
-<html>
+
+<!DOCTYPE html>
+<html lang="pl">
+
     <head>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="flight_autocomplete.js"></script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+       
+
     </head>
+
     <body>
-       <!-- formularz z danymi lotu-->
-        <form action="submitFlightForm.php"  method="post">
-        <div id='ui-widget'>
-        <label for="departure">miejsce wylotu: </label>
-        <input type="text" name="departure" id='flight' autocomplete="off">
-        <label for="arrival">miejsce przylotu:  </label>
-        <input type="text" name="arrival" id='flight' >
-        <label for="airlines">nazwa przewoznika:  </label>
-        <input type="text" name="airlines" id='airlines' autocomplete="off">
-        <div id="change">
-        <label for="change"> Przesiadka?</label>
-        <button type="button" onClick="change()">TAK</button>
-        <button type="submit">NIE</button>
+
+		<!-- Top menu -->
+		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1> hehe</h1>
+                            <div class="description">
+                            	<p>
+	                            	tutaj pójdzie jakis tekst
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		
+                        		
+                            </div>
+                            <div class="form-bottom contact-form">
+                               
+                                
+                                
+			                    <form action="submitFlightForm.php" method="post">
+                                                 <div id='ui-widget'>
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="departure">miejsce wylotu:</label>
+			                        	<input type="text" name="departure" placeholder="miejsce wylotu..." class="contact-subject form-control" id="flight">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="arrival">miejsce przylotu:</label>
+			                        	<input type="text" name="arrival" placeholder="miejsce przylotu..." class="contact-subject form-control" id="flight">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="airlines">nazwa przewoźnika</label>
+			                        	<input name="airlines" placeholder="nazwa przewoźnika..." class="contact-subject form-control" id="airlines">
+			                        </div>
+                                                 <div id="change">
+                                                         <label for="change"> Przesiadka?</label>
+                                                         <button class ='btn' type="button" onClick="change()">TAK</button>
+                                                         <button  class ='btn' type="submit">NIE</button>
+                                                 </div>
+                                                 </div>
+                                                
+                                                
+			                        <button type="submit" id="nextbutton" class='btn' style="display:none">dalej </button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-       </div>
-         
-        <button type="button" id="addinputbutton" onClick="addInput()" style="display:none">dodaj przesiadke </button>
-        <button type="submit" id="nextbutton"  style="display:none">dalej </button>
-     </form> 
+
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
         
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
     </body>
+
 </html>

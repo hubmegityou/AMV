@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://www.netbeans.org/ns/project/1">
+<<<<<<< HEAD
     <type>org.netbeans.modules.web.clientproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/clientside-project/1">
             <name>AMV</name>
+=======
+    <type>org.netbeans.modules.php.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/php-project/1">
+            <name>avm</name>
+>>>>>>> 858b9dc4a13e0c502e2ab03f95e0c6103ffcf1ac
         </data>
     </configuration>
 </project>
