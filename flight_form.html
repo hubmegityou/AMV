@@ -1,8 +1,15 @@
 
+
+
 <!DOCTYPE html>
 <html lang="pl">
 
     <head>
+        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+       <script src="flight_autocomplete.js"></script>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,15 +87,15 @@
                                                  <div id='ui-widget'>
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="departure">miejsce wylotu:</label>
-			                        	<input type="text" name="departure" placeholder="miejsce wylotu..." class="contact-subject form-control" id="flight">
+			                        	<input type="text" name="departure" placeholder="miejsce wylotu..." class="contact-subject form-control" id="flight" autocomplete="off">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="arrival">miejsce przylotu:</label>
-			                        	<input type="text" name="arrival" placeholder="miejsce przylotu..." class="contact-subject form-control" id="flight">
+			                        	<input type="text" name="arrival" placeholder="miejsce przylotu..." class="contact-subject form-control" id="flight" autocomplete="off">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="airlines">nazwa przewoźnika</label>
-			                        	<input name="airlines" placeholder="nazwa przewoźnika..." class="contact-subject form-control" id="airlines">
+			                        	<input type= "text" name="airlines" placeholder="nazwa przewoźnika..." class="contact-subject form-control" id="airlines" autocomplete="off">
 			                        </div>
                                                  <div id="change">
                                                          <label for="change"> Przesiadka?</label>

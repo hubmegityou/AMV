@@ -20,6 +20,11 @@ $airlines= explode(',  ',$_POST['airlines']);
 $airlinesName=$airlines[0];
 $airlinesCountry= $airlines[1];
 
+<<<<<<< HEAD
+=======
+//pobranie danych lotnisk, regionów oraz linii lotniczych z API
+
+>>>>>>> 426b9d497015eb78eb0f1d84e53f110a1a3fba41
 $APIData= new APIData();
 //pobranie danych lotnisk, regionów oraz linii lotniczych z API
 $curlAirportResult= $APIData->curl($APIData->AirportsUrl);
@@ -49,25 +54,13 @@ $airlinesRegion= $APIData->FindRegion($airlinesData, $curlAirspacesResult);
 
 //weryfikacja czy lot nadaje się do objęcia zgłoszeniem roszczenia
 if ($departureRegion!='EUR' && $arrivalRegion!='EUR'){
-    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia -  lecisz spoza europy poza europe";
-} 
-elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
-    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia - przewoznik spoza europy";
-}
-else{
-    //sprawdzenie czy lot by� w obr�bie UE
-    $UE = ($departureRegion=='EUR' && $arrivalRegion=='EUR') ? true : false;
-    //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
-    require 'GreatCircle.php';
-    $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);
-    //sprawdzanie do kt�rej kategorii zaliczamy pokonany dystans (potrzebne do odczytywania wysoko�ci odszkodowania z tabeli)
-    if ($distance <= 1500)
-            $type = 0;
-        elseif (($distance > 1500 && $UE) || ($distance <= 3500 && !$UE))
-            $type = 1;
-        else
-            $type = 2;
+    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia-  lecisz z poza europy poza europe";
+} elseif( $departureRegion!='EUR' && $arrivalRegion=='EUR' && $airlinesRegion!='EUR'){
+    echo "lot nie nadaje sie do objecia zgloszeniem roszczenia- przewoznik spoza europy";
     
-    header("Location: compensation_form.html");
+}else{
+    //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
+   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);   
+   
+      
 }
-?>
