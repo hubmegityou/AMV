@@ -23,9 +23,7 @@ function addInput(){
     
     var new_label=$("<label>");
     var new_dep = $("<input>");
-    var new_label_airlines=$("<label>");
-    var new_dep_airlines = $("<input>");
-    
+
     
     new_label.attr("for", "change");
     new_label.html(" lotnisko: ");
@@ -35,13 +33,6 @@ function addInput(){
     $("#ui-widget").append(new_label);
     $("#ui-widget").append(new_dep);
     
-    new_label_airlines.attr("for", "airlines");
-    new_label_airlines.html(" nazwa przewoźnika: ");
-    new_dep_airlines.attr("type", "text");
-    new_dep_airlines.attr("name", "airlines"+id);
-    new_dep_airlines.attr("id", "airlines");
-    $("#ui-widget").append(new_label_airlines);
-    $("#ui-widget").append(new_dep_airlines);
     
     id=id+1;
     
@@ -60,7 +51,6 @@ function reloadAutocomplete(){
 function change(){
     $('#change').hide();
     addInput();
-    $('#addinputbutton').show(); 
     $('#nextbutton').show();
 }
 

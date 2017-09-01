@@ -53,6 +53,7 @@ if ($departureRegion!='EUR' && $arrivalRegion!='EUR'){
     
 }else{
     //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
-   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);    
+   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);   
+   
       
 }
