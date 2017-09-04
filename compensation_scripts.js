@@ -21,7 +21,7 @@ function start(){
 //powrót do poprzedniego pytania
 function prevquestion(s, p){    //s:= bie¿¹ce pytanie, p:= poprzednie pytanie
     answers.splice(answers.length-1, 1); //usuniêcie z tablicy ostatniej dodanej odpowiedzi
-    $('#next'+s).attr('disabled',true); //ukrycie przycisku "dalej" w bie¿¹cym pytaniu
+  //  $('#next'+s).attr('disabled',true); //ukrycie przycisku "dalej" w bie¿¹cym pytaniu
     $('#step'+s).hide();    //ukrycie bie¿¹cego pytania
     $('#step'+p).show();    //pokazanie poprzedniego pytania
 }
@@ -71,7 +71,7 @@ function nextquestion(s){ //s := kod aktywnego kroku (nie pytanie)
         }
     }
     $('#next'+s).prop('disabled', true);    //dezaktywacja bie¿¹cego przycisku "dalej"
-    $('#step'+s).hide();    //ukrycie bie¿¹cego pola z pytaniem
+   // $('#step'+s).hide();    //ukrycie bie¿¹cego pola z pytaniem
     $('#'+step+id).show();  //pokazanie nowego pytania lub koniec formularza
 }
 

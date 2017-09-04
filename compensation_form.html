@@ -26,71 +26,66 @@
         <fieldset class="class" id="step1">
             <legend>Co się wydarzyło z lotem?</legend>
                 <p>
-                <input type="radio" name="question1" value=1 />opóźniony<br>
-                <input type="radio" name="question1" value=2 />odwołany<br>
-                <input type="radio" name="question1" value=3 />odmówiono wstępu na pokład
+                <input type="radio" name="question1" onClick="nextquestion('1')" value=1 />opóźniony<br>
+                <input type="radio" name="question1" onClick="nextquestion('1')" value=2 />odwołany<br>
+                <input type="radio" name="question1" onClick="nextquestion('1')" value=3 />odmówiono wstępu na pokład
                 </p>
-                <button type="button" id="next1" onClick="nextquestion('1')" disabled>Dalej</button>
+               
         </fieldset>
 
         <fieldset class="class"  id="step2a">
             <legend>Czy zgłosiłeś się na ochotnika do rezygnacji ze swojej rezerwacji w zamian za jakieś korzyści uzgodnione między Tobą a linią lotniczą?</legend>
                 <p>
-                <input type="radio" name="question2" value=0 />tak<br>
-                <input type="radio" name="question2" value=4 />nie
+                <input type="radio" name="question2" onClick="nextquestion('2a')" value=0 />tak<br>
+                <input type="radio" name="question2" onClick="nextquestion('2a')" value=4 />nie
                 </p>
-                <button type="button" id="next2a" onClick="nextquestion('2a')" disabled>Dalej</button>
-                <button type="button" id="prev2a" onClick="prevquestion('2a', '1')" >Wstecz</button>
         </fieldset>
 
         <fieldset class="class"  id="step2b">
             <legend>Jaki powód podały linie lotnicze?</legend>
                 <p>
-                <input type="radio" name="question2" value=2 />problemy techniczne<br>
-                <input type="radio" name="question2" value=0 />złe warunki pogodowe<br>
-                <input type="radio" name="question2" value=2 />wpływ innych lotów<br>
-                <input type="radio" name="question2" value=2 />problemy portu lotniczego<br>
-                <input type="radio" name="question2" value=0 />strajk<br>
-                <input type="radio" name="question2" value=2 />nie podano powodu
+                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')" />problemy techniczne<br>
+                <input type="radio" name="question2" value=0 onClick="nextquestion('2b')" />złe warunki pogodowe<br>
+                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')" />wpływ innych lotów<br>
+                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')" />problemy portu lotniczego<br>
+                <input type="radio" name="question2" value=0 onClick="nextquestion('2b')" />strajk<br>
+                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')"/> nie podano powodu
                 </p>
-                <button type="button" id="next2b" onClick="nextquestion('2b')" disabled>Dalej</button>
-                <button type="button" id="prev2b" onClick="prevquestion('2b', '1')" >Wstecz</button>
+
         </fieldset>
 
         <fieldset class="class"  id="step3a">
             <legend>Jakie było opóźnienie w porcie docelowym?</legend>
                 <p>
-                <input type="radio" name="question3" value=1 />poniżej 2 godzin<br>
-                <input type="radio" name="question3" value=2 />powyżej 2 godzin<br>
-                <input type="radio" name="question3" value=3 />powyżej 3 godzin<br>
-                <input type="radio" name="question3" value=4 />powyżej 4 godzin<br>
-                <input type="radio" name="question3" value=5 />nie dotarł na miejsce
+                <input type="radio" name="question3" value=1 onClick="nextquestion('3a')" />poniżej 2 godzin<br>
+                <input type="radio" name="question3" value=2 onClick="nextquestion('3a')" />powyżej 2 godzin<br>
+                <input type="radio" name="question3" value=3 onClick="nextquestion('3a')" />powyżej 3 godzin<br>
+                <input type="radio" name="question3" value=4 onClick="nextquestion('3a')" />powyżej 4 godzin<br>
+                <input type="radio" name="question3" value=5 onClick="nextquestion('3a')" />nie dotarł na miejsce
                 </p>
-                <button type="button" id="next3a" onClick="nextquestion('3a')" disabled>Dalej</button>
-                <button type="button" id="prev3a" onClick="prevquestion('3a', '2b')" >Wstecz</button>
+        
+     
         </fieldset>
 
         <fieldset class="class"  id="step3b">
             <legend>Kiedy obsługujący przewoźnik lotniczy poinformował Cię o odwołaniu lotu?</legend>
                 <p>
-                <input type="radio" name="question3" value=0 />wcześniej niż 14 dni przed planowanym odlotem<br>
-                <input type="radio" name="question3" value=0 />od 7 do 14 dni przed planowanycm odlotem i zaoferował zmianę planu podróży umożliwiającą wylot najpóźniej 2h przed planowanym czasem odlotu oraz dotarcie do miejsca docelowego najwyżej 4h po planowanym czasie przylotu<br>
-                <input type="radio" name="question3" value=0 />mniej niż 7 dni przed planowanym czasem odlotu i zaoferował zmianę planu podróży umożliwiającą wylot najpóźniej 1h przed planowanym czasem odlotu oraz dotarcie do miejsca docelowego najwyżej 2h po planowanym czasie przylotu<br>
-                <input type="radio" name="question3" value=11 />Przewoźnik nie poinformował mnie o odwołaniu lotu<br>
-                <input type="radio" name="question3" value=12 />Przewożnik zaoferował zmianę planu podróży odmienną od powyżej opisanych
+                <input type="radio" name="question3" value=0 onClick="nextquestion('3b')"/>wcześniej niż 14 dni przed planowanym odlotem<br>
+                <input type="radio" name="question3" value=0 onClick="nextquestion('3b')"/>od 7 do 14 dni przed planowanycm odlotem i zaoferował zmianę planu podróży umożliwiającą wylot najpóźniej 2h przed planowanym czasem odlotu oraz dotarcie do miejsca docelowego najwyżej 4h po planowanym czasie przylotu<br>
+                <input type="radio" name="question3" value=0 onClick="nextquestion('3b')"/>mniej niż 7 dni przed planowanym czasem odlotu i zaoferował zmianę planu podróży umożliwiającą wylot najpóźniej 1h przed planowanym czasem odlotu oraz dotarcie do miejsca docelowego najwyżej 2h po planowanym czasie przylotu<br>
+                <input type="radio" name="question3" value=11 onClick="nextquestion('3b')"/>Przewoźnik nie poinformował mnie o odwołaniu lotu<br>
+                <input type="radio" name="question3" value=12 onClick="nextquestion('3b')"/>Przewożnik zaoferował zmianę planu podróży odmienną od powyżej opisanych
                 </p>
-                <button type="button" id="next3b" onClick="nextquestion('3b')" disabled>Dalej</button>
-                <button type="button" id="prev3b" onClick="prevquestion('3b', '2b')" >Wstecz</button>
+
         </fieldset>
 
         <fieldset class="class"  id="step4">
             <legend>Czy zgodził się Pan/-i na zaproponowaną zmianę planu podróży?</legend>
                 <p>
-                <input type="radio" name="question4" value=1 />tak<br>
-                <input type="radio" name="question4" value=2 />nie
-                </p>
-                <button type="button" id="next4" onClick="nextquestion('4')" disabled>Dalej</button>
-                <button type="button" id="prev4" onClick="prevquestion('4', '3b')" >Wstecz</button>
+                <input type="radio" name="question4" value=1 onClick="nextquestion('4')"/>tak<br>
+                <input type="radio" name="question4" value=2 onClick="nextquestion('4')"/>nie
+
+      
         </fieldset>
 
         <fieldset class="class"  id="end">

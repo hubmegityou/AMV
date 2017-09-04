@@ -1,5 +1,5 @@
 
-     
+ id=1;    
   // wyświetlanie podpowiedzi przy wpisywaniu danych lotu    
 function autocomplete_input (input){
     
@@ -19,24 +19,20 @@ function showResult(res){
 
 function addInput(){
     
-    var new_label=$("<label>");
+
     var new_dep = $("<input>");
 
-    new_label.attr("class", "sr-only");
-    new_label.attr("for", "change");
-    new_label.html(" lotnisko: ");
-    
     new_dep.attr("type", "text");
     new_dep.attr("name", "change2");
-    new_dep.attr("class", "contact-subject form-control");
     new_dep.attr("autocomplete", "off");
-    new_dep.attr("placeholder", "miejsce przesiadki... ");
-    new_dep.attr("id", "flight");
-    $("#ui-widget").append(new_label);
-    $("#ui-widget").append(new_dep);
+    new_dep.attr("id", "flight"+id);
+    $("#fieldset").append("<br>miejsce przesiadki: <br>");
+    $("#fieldset").append(new_dep);
+    $("#fieldset").append("<br>");
     
+    id=id+1;
     
-   reloadAutocomplete()
+    reloadAutocomplete()
     
 }
 
@@ -51,6 +47,7 @@ function reloadAutocomplete(){
 function change(){
     $('#change').hide();
     addInput();
+    $('#addinputbutton').show();
     $('#nextbutton').show();
 }
 

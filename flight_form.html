@@ -9,23 +9,35 @@
     <body>
        <!-- formularz z danymi lotu-->
         <form action="submitFlightForm.php"  method="post">
-        <div id='ui-widget'>
-        <label for="departure">miejsce wylotu: </label>
-        <input type="text" name="departure" id='flight'>
-        <label for="arrival">miejsce przylotu:  </label>
-        <input type="text" name="arrival" id='flight'>
-        <label for="airlines">nazwa przewoznika:  </label>
-        <input type="text" name="airlines" id='airlines'>
-        <div id="change">
-        <label for="change"> Przesiadka?</label>
-        <button type="button" onClick="change()">TAK</button>
-        <button type="submit">NIE</button>
+     
+        <fieldset id="fieldset">
+            <legend>Dane lotu </legend>
+            <br> miejsce wylotu:<br> 
+                <input type="text" name="departure" id='flight'><br>
+            <br>miejsce przylotu:<br>
+                <input type="text" name="arrival" id='flight'><br>
+            <br>nazwa przewoznika: <br>
+                <input type="text" name="airlines" id='airlines'><br>
+        </fieldset>
+            <div id="change"><br>
+        <fieldset>   
+            <legend> Przesiadka?</legend>
+            <br> <button type="button" onClick="change()">TAK</button>
+            <button type="submit">NIE</button>
+        </fieldset>
         </div>
-       </div>
-         
-        <button type="button" id="addinputbutton" onClick="addInput()" style="display:none">dodaj przesiadke </button>
+            
+            
+            
+            
+            
+            
+            
+        <button type="button" id="addinputbutton" onClick="addInput()" style="display:none">dodaj kolejna przesiadke </button>
         <button type="submit" id="nextbutton"  style="display:none">dalej </button>
      </form> 
         
     </body>
 </html>
+
+
