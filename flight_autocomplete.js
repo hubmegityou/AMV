@@ -1,60 +1,25 @@
 $(document).ready(function(){   
- 
- 
- // wyświetlanie podpowiedzi przy wpisywaniu danych lotu    
-function autocomplete_input (input){
+
+
+    //$("#flightForm").on("keyup", "input", autocomplete);
+    var autocompleteTable = {
+        source: "getData.php"
+    };
     
-        $.post("getData.php", {input:input}, showResult, "text");  
-    
-    function showResult(res){
-        var obj = JSON.parse(res);
-        $("input[id="+input+"]").autocomplete({
-            source: obj
-        });
-}}
+    $("[name=departure]").autocomplete(autocompleteTable);
+    $("[name=waypoint]").autocomplete(autocompleteTable);
+    $("[name=destination]").autocomplete(autocompleteTable);
 
 
-//funckja dodająca kolejne pola z przesiadkami
+    $("#waypoints").on("focusout", "input", addWaypoint);
 
-function addInput(){
-    
-    
-    reloadAutocomplete()
-    
-}
+    function addWaypoint(){
+        if( !$(this).hasClass("last") && $(this).val() == ''){ $(".last").remove(); return;}
+        if( !$(this).hasClass("last")) return; 
+        if( $(this).val() == '' ) return;
+        $(this).removeClass("last");
+        $(this).clone().val('').addClass("last").appendTo("#waypoints");       
+    }
 
-// ponowne wywołanie funkcji odpowiadającej za wyświetlanie podpowiedzi
-function reloadAutocomplete(){
-    autocomplete_input("flight");
-    autocomplete_input( "airlines");
-}
-
-// lot z przesiadką-> umozliwienie dodawania przesiadek
-
-$("#waypoints").on("keyup", "input", addWaypoint);
-
-function addWaypoint(){
-    if( !$(this).hasClass("last") ) return;
-    if( $(this).val() == '' ) return;
-    $(this).removeClass("last");
-    $(this).clone().val('').addClass("last").appendTo("#waypoints");       
-}
-
-function cloneInput(){
-
-}
-
-function change(){
-    $('#change').hide();
-    addInput();
-    $('#addinputbutton').show();
-    $('#nextbutton').show();
-}
-
-// lot bez przesiadki-> przejście do dalszej cześci formularza
-function nochange(){
-   window.location.replace("submitFlightForm.php") ;
-}
-//window.onload=reloadAutocomplete();
 
 });

@@ -2,8 +2,12 @@
 
 require 'APIData.php';
 
-
+header('Content-Type: application/json');
 $APIData= new APIData();
+$table = $APIData -> findAirport($_GET['term']);
+echo json_encode($table);
+/*
+
 if ($_POST['input']=="flight"){
 
     $curlResult= $APIData->curl($APIData->AirportsUrl);
@@ -15,3 +19,6 @@ if ($_POST['input']=="flight"){
     
 $data= $APIData-> dataForAutocomplete($curlResult, $_POST['input']);
 echo $data;
+*/
+
+?>

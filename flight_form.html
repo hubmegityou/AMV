@@ -8,20 +8,21 @@
     </head>
     <body>
        <!-- formularz z danymi lotu-->
-        <form action="submitFlightForm.php"  method="post">
+        <form id ="flightForm" action="submitFlightForm.php"  method="post">
         <fieldset id="fieldset">
             <legend>Dane lotu </legend>
             <br> miejsce wylotu:<br> 
-                <input type="text" name="departure" id='flight'><br>
+                <input type="text" name="departure" autocomplete="off"><br>
+                <ul id="list"> </ul>
             <br>waypoint:<br>
                 <div id="waypoints">
-                    <input type="text" name="waypoint" class="last">
+                    <input type="text" name="waypoint" class="last" autocomplete="off">
                 </div>
                 
                 <br>miejsce przylotu:<br>
-                <input type="text" name="arrival" id='flight'><br>
+                <input type="text" name="destination" autocomplete="off"><br>
             <br>nazwa przewoznika: <br>
-                <input type="text" name="airlines" id='airlines'><br>
+                <input type="text" name="airlines" id='airlines' autocomplete="off"><br>
         </fieldset>
             <div id="change"><br>
         
