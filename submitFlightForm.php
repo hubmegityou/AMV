@@ -10,7 +10,7 @@ $departureCity=$departure[1];
 $departureCountry=$departure[2];
 
 //pobranie danych wpisanych przez uzytkownika-> miejsce przylotu
-$arrival= explode(',  ', $_POST['arrival']);
+$arrival= explode(',  ', $_POST['destination']);
 $arrivalName=$arrival[0];
 $arrivalCity=$arrival[1];
 $arrivalCountry=$arrival[2];
