@@ -1,17 +1,16 @@
-
- id=1;    
-  // wyświetlanie podpowiedzi przy wpisywaniu danych lotu    
+$(document).ready(function(){   
+ 
+ 
+ // wyświetlanie podpowiedzi przy wpisywaniu danych lotu    
 function autocomplete_input (input){
     
-    $(document).ready(function(){  
-    $.post("getData.php", {input:input}, showResult, "text");  
-});
-
-function showResult(res){
-    var obj = JSON.parse(res);
-    $("input[id="+input+"]").autocomplete({
-    source: obj
-  });
+        $.post("getData.php", {input:input}, showResult, "text");  
+    
+    function showResult(res){
+        var obj = JSON.parse(res);
+        $("input[id="+input+"]").autocomplete({
+            source: obj
+        });
 }}
 
 
@@ -19,18 +18,6 @@ function showResult(res){
 
 function addInput(){
     
-
-    var new_dep = $("<input>");
-
-    new_dep.attr("type", "text");
-    new_dep.attr("name", "change2");
-    new_dep.attr("autocomplete", "off");
-    new_dep.attr("id", "flight"+id);
-    $("#fieldset").append("<br>miejsce przesiadki: <br>");
-    $("#fieldset").append(new_dep);
-    $("#fieldset").append("<br>");
-    
-    id=id+1;
     
     reloadAutocomplete()
     
@@ -44,6 +31,19 @@ function reloadAutocomplete(){
 
 // lot z przesiadką-> umozliwienie dodawania przesiadek
 
+$("#waypoints").on("keyup", "input", addWaypoint);
+
+function addWaypoint(){
+    if( !$(this).hasClass("last") ) return;
+    if( $(this).val() == '' ) return;
+    $(this).removeClass("last");
+    $(this).clone().val('').addClass("last").appendTo("#waypoints");       
+}
+
+function cloneInput(){
+
+}
+
 function change(){
     $('#change').hide();
     addInput();
@@ -55,8 +55,6 @@ function change(){
 function nochange(){
    window.location.replace("submitFlightForm.php") ;
 }
+//window.onload=reloadAutocomplete();
 
-
-
-
-window.onload=reloadAutocomplete();
+});
