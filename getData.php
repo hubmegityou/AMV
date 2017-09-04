@@ -4,7 +4,12 @@ require 'APIData.php';
 
 header('Content-Type: application/json');
 $APIData= new APIData();
-$table = $APIData -> findAirport($_GET['term']);
+
+if ($_GET['type']=="airport"){
+    $table = $APIData -> findAirport($_GET['term']);
+}else{
+    $table = $APIData -> findAirline($_GET['term']);
+}
 echo json_encode($table);
 /*
 

@@ -39,6 +39,16 @@ class APIData{
         }
         return $result;   
     }
+    function findAirline($text){
+        $table = $this -> curl($this -> AirlinesUrl);
+        $result = array();
+        foreach ($table as $object){ 
+            if (stripos($object['operatorCode'], $text)  !== false || stripos($object['operatorName'], $text) !== false ||  stripos($object['countryName'], $text) !== false || stripos($object['countryCode'], $text) !== false){
+                array_push($result, array("label" => $object['operatorName'], "value" => $object['operatorCode']) );
+            } 
+        }
+        return $result;   
+    }
 
     // funkcja zwraca rekord z danymi lotniska bądź lini lotniczych wybranych przez uzytkownika 
     function FindData($country, $name, $city, $curlResult){

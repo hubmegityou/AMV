@@ -2,14 +2,17 @@ $(document).ready(function(){
 
 
     //$("#flightForm").on("keyup", "input", autocomplete);
-    var autocompleteTable = {
-        source: "getData.php"
+    var airport = {
+        source: "getData.php?type=airport"
     };
+    var airlines = {
+        source: "getData.php?type=airline"
+    };    
+    $("[name=departure]").autocomplete(airport);
+    $("[name=waypoint]").autocomplete(airport);
+    $("[name=destination]").autocomplete(airport);
+    $("[name=airlines]").autocomplete(airlines);
     
-    $("[name=departure]").autocomplete(autocompleteTable);
-    $("[name=waypoint]").autocomplete(autocompleteTable);
-    $("[name=destination]").autocomplete(autocompleteTable);
-
 
     $("#waypoints").on("focusout", "input", addWaypoint);
 
