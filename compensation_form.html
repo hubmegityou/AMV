@@ -18,7 +18,8 @@
   <meta charset="utf-8"/>
   <title>formularz</title>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="compensation_scripts.js" type="text/javascript"></script>
+  <script src="compensation_scripts.js" ></script>
+  <script src="submit_scripts.js" ></script>
 </head>
 
 <body>
@@ -88,6 +89,7 @@
       
         </fieldset>
 
+        
         <fieldset class="class"  id="end">
             nie dostałeś odszkodowania ;(
             <button type="reset" onClick="start()" >Jeszcze raz</button>
@@ -96,33 +98,128 @@
         <fieldset class="class"  id="finish">
             wygrałeś!!!!!!
             <button type="reset" onClick="start()" >Jeszcze raz</button>
-            <button type="button" onclick="fill()" >Wypełnij formularz</button>
+            <button type="button" onclick="fill()" >Dalej</button>
         </fieldset>
     </form>
     
-    <form class="form" id="personal_data" >
+      <br><br><br>
+    
+    <form  id="flight_data">
+        <fieldset id="flight_data_form">
+            <legend> Dane lotu</legend>
+                <div>
+                <br>Numer lotu<br>
+                <input type="text" name="flight_num" required /></div><div>
+                <br>Data lotu<br>
+                <input type="date" name="date" required /></div>
+                 <button type="button">wyślij</button>
+        </fieldset>
+    </form>
+    
+    
+    <br><br><br>
+    
+    <form  id="personal_data" >
         <fieldset id="form">
             <legend>Dane pasażera</legend>
                 <div>
                 Imię<br>
-                <input type="text" name="fname" required /></div><div>
+                <input type="text" id="fname" required /></div><div>
                 <br>Nazwisko<br>
-                <input type="text" name="lname" required /></div><div>
-                <br>Miejscowość<br>
-                <input type="text" name="city" required /></div><div>
-                <br>Kod pocztowy<br>
-                <input type="text" name="code" required /></div><div>
+                <input type="text" id="lname" required /></div><div>
                 <br>Ulica<br>
-                <input type="text" name="street" required /></div><div>
-                <br>Nr domu<br>
-                <input type="text" name="number1" required /></div><div>
-                <br>Nr mieszkania<br>
-                <input type="text" name="number2" required /></div><div>
+                <input type="text" id="address" required /></div><div>
+                <br>Kod pocztowy<br>
+                <input type="text" id="code" required /></div><div>
+                <br>Miejscowość<br>
+                <input type="text" id="city" required /></div><div>
+                <br>Kraj<br>
+                 <input type="text" id="country" required /></div><div>
+                <br>Numer telefonu<br>
+                <input type="text" id="tnumber" required /></div><div>
                 <br>Email<br>
-                <input type="email" name="email" required />                
-                </div>
-            <button type="submit">wyślij</button>
+                <input type="email" id="email" required /></div>               
+            <button type="button" onclick="submitPersonalData()">wyślij</button>
         </fieldset>
     </form>
+    
+      <br><br><br>
+    
+    <form id="documents" >
+        <fieldset>
+            <legend> Rezerwacja/karta pokładowa</legend>
+                <div>
+                <br>Dodaj dokument<br>
+                <input  type="file" name="file1"  id="file1" accept="image/*"></div>
+        </fieldset> 
+        <fieldset>
+            <legend> Paszport</legend>
+                <div>
+                <br>Dodaj dokument<br>
+                <input  type="file" name="file2" id="file2" accept="image/*"></div>
+        </fieldset>    
+        <fieldset>
+            <legend> Dowód osobisty</legend>
+                <div>
+                <br>Dodaj dokument<br>
+                <input  type="file" name="file3"  id="file3" accept="image/*"></div>
+        </fieldset> 
+         <button type="button" >dalej</button> 
+    </form>
+     
+      <br><br><br>
+      
+    <form id="conditions" >
+        <fieldset>
+            <legend> Zawarcie umowy</legend>
+                <div>
+                    <input type="checkbox" id="checkAll" > Zaznacz wszystkie zgody</div><br><br><div>
+                    <input type="checkbox"  required> Oświadczam, że stawiłem się na odprawę w określonym
+                        przez linie lotnicze czasie. Jeżeli czas nie był wskazany przez linie, obowiązuje czas 45 minut przed wylotem.</div><br><div>
+                    <input type="checkbox"  required>Oświadczam, że stawiłem się na boarding w czasie wskazanym
+                        na karcie pokładowej.</div><br><div>       
+                    <input type="checkbox" required>Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.</div><br><div> 
+                    <input type="checkbox" required>Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane 
+                        sa prawdziwe.</div>
+        </fieldset>  
+            <button type="button" >dalej</button>
+    </form>   
+    
+      <br><br><br>
+    
+      
+    ///////elektronicny podpis!!/////////
+    
+      <br><br><br>
+      
+    <form id="compensation" >
+        <fieldset>
+            <legend> Wypłata odszkodowania</legend>
+                <div>
+                    <button type="submit" id="express" > EXPRESS (do 24h)<br> Wypłacimy 550€ <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
+                        przyjęcia poprawnego zgłoszenia.</button></div><br><br><div>
+                    <button type="submit" id="standard" > STANDARD <br> Wypłacimy 590€ <br><br>Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji
+                        roszczenia przez linię lotniczą <br> i otrzymaniu od niej odszkodowania.</button> </div>
+                    
+        </fieldset>  
+            <button type="button" >dalej</button>
+    </form> 
+    
+      
+       <br><br><br>
+      
+      <form id="compensation2" >
+        <fieldset>
+            <legend> Wybierz sposób wypłaty odszkodowania</legend>
+                <div>
+                    <input type="radio" id="paypal" > Płatność Paypal (bez opłat)</div><br><br><div>
+                    <input type="radio" id="account" > Płatność na konto (USD) </div>
+                    
+        </fieldset>  
+            <button type="button" >dalej</button>
+    </form>  
+      
+      
+            
 </body>
 </html>

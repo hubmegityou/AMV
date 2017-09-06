@@ -1,7 +1,9 @@
 window.onload = function(){
     start();
     addEvents();
+    check();
 };
+
 
 var answers = new Array; //tablica przechowuj¹ca odpowiedzi
 //funkcja dodaje do pól radio input w ka¿dym pytaniu aktywacjê przycisku "dalej" (u¿ywa next jako "najbli¿szy" przycisk zaraz pod odpowiedziami)
@@ -10,6 +12,7 @@ function addEvents(){
 	$(this).parent().next('button').removeAttr('disabled');
         });
 }
+
 
 //czyszczenie tablicy z odpowiedziami i pokazanie tylko kroku pierwszego
 function start(){
@@ -186,10 +189,22 @@ var validateForm = (function(){
     return {
         init : init
     }
-})();
+});
+
+
+
+// zaznaczanie i odznaczanie wszystkich checkboxów
+function check(){
+    $("#checkAll").change(function() {
+    $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+}
+
+
 
 //dodanie funkcji walidacji formularza do pól zapytañ o dane osobowe po nazwie klasy
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector('.form');
     validateForm.init({form : form});
+    
 });

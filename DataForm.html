@@ -8,36 +8,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        
-         
-        
-        
-<div class="container">  
-  <form id="contact" action="submitDataForm.php" method="post">
-    <h3>Chcę uzyskać odszkodowanie</h3>
-   
+            
+    
+  
+  <form id="contact" action="submit_dataForm.php" method="post">
     <fieldset>
-      <input placeholder="E-mail (pole obowiązkowe)" type="email" tabindex="2" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Numer telefonu" type="tel" tabindex="3" required>
-    </fieldset>
-     <fieldset>
-      <input placeholder="Imię i nazwisko" type="text" tabindex="1" required autofocus>
-    </fieldset>
-      <fieldset>
-     <input type="checkbox" id='terms' name='terms' required> Akceptuje regulamin
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Wyślij</button>
+        <legend>Chcę uzyskać odszkodowanie</legend>
+            <div>
+                <br> E-mail (pole obowiązkowe)<br>
+                <input  type="email" name="email" required></div><div>
+                <br> Numer telefonu<br>
+                <input type="tel" name="tel"></div><div>
+                <br> Imię<br>
+                <input type="text" name="first_name"></div><div>
+                <br> Nazwisko<br>
+                <input type="text" name="last_name" ></div><div>
+                    <input type="checkbox" id='terms' name='terms' required> Akceptuje regulamin</div>
+ 
+  
+      <button name="submit" type="submit">Wyślij</button>
     </fieldset>
     
-  </form>
-</div>
-        
-        
-        
-        
-        
+  </form>    
+             
     </body>
 </html>
