@@ -36,15 +36,20 @@
             $db_passengers_telnumber = "tel_number"; //numer telefonu
             $db_passengers_passport = "passport"; //paszport
             $db_passengers_idcard = "IDcard"; // dowód osobisty
-            $db_passengers_tripid = "trip_ID";
             
            
-            
+        $db_connect_tab= "connect" ;
+            $db_connect_id = "connect_ID";
+            $db_connect_passenger_id = "passenger_ID";
+            $db_connect_trip_id = "trip_ID";
             
         //informacje o grupie aplikacji
         $db_trip_tab = "trip";
             $db_trip_id = "trip_ID";
             $db_flight_info_id= "flight_info_ID";
+            $db_flight_info_delay = "delay";
+            $db_flight_info_distance = "distance";
+
             
             
         $db_flight_info_tab = "flight_info";
@@ -54,9 +59,7 @@
             $db_flight_info_nextflight = "next_flight_info_ID";
             
             
-            
-       
-            
+         
             
        //informacje o zg³oszeniu
         $db_application_tab = "application";
@@ -68,7 +71,6 @@
             $db_application_resignation = "resignation"; // czy klient zrezygnowa³ z lotu w zamian za korzyœci
             $db_application_permission = "permission "; // czy by³a zgoda na zmianê planu podró¿y  
             $db_application_compensation_amout = "compensation_amount";
-            $db_application_groupid = "application_group_ID";
             $db_application_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
             $db_application_compensationid = "compensation_ID";
             
@@ -80,8 +82,7 @@
             $db_flight_arrivalid = "arrival_ID"; // przylot
             $db_flight_number = "flight_number"; //numer lotu
             $db_flight_date = "flight_date"; // data lotu
-            $db_flight_airlineid = "airline_ID"; // linie lotnicze
-            $db_flight_distance = "distance"; //odleg³oœc miêdzy lotniskami 
+            $db_flight_airlineid = "airline_ID"; // linie lotnicze 
         
             
             
@@ -92,5 +93,4 @@
             $db_compensation_payment = "payment"; // sposób wyp³aty
             $db_compensation_currency = "currency"; // waluta
             $db_compensation_account = "account"; // numer konta/ PayPal
-            $db_compensation_applicationid = "application_ID";
 ?>  

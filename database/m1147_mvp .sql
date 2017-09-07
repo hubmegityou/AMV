@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Wrz 2017, 11:40
+-- Czas generowania: 07 Wrz 2017, 19:49
 -- Wersja serwera: 10.1.24-MariaDB
 -- Wersja PHP: 7.1.6
 
@@ -3480,6 +3480,14 @@ INSERT INTO `airports` (`airport_ID`, `country_name`, `country_code`, `airport_n
 
 CREATE TABLE `application` (
   `application_ID` int(11) NOT NULL,
+  `incident` int(11) NOT NULL,
+  `cause` int(11) NOT NULL,
+  `delay` int(11) NOT NULL,
+  `cancellation_information` int(11) NOT NULL,
+  `resignation` int(11) NOT NULL,
+  `permission` int(11) NOT NULL,
+  `compensation_amount` int(11) NOT NULL,
+  `boarding_pass/res` text NOT NULL,
   `compensation_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -3500,6 +3508,46 @@ CREATE TABLE `compensation` (
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `connect`
+--
+
+CREATE TABLE `connect` (
+  `connect_ID` int(11) NOT NULL,
+  `passenger_ID` int(11) NOT NULL,
+  `trip_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `flight`
+--
+
+CREATE TABLE `flight` (
+  `flight_ID` int(11) NOT NULL,
+  `departure_ID` int(11) NOT NULL,
+  `arrival_ID` int(11) NOT NULL,
+  `flight_number` text NOT NULL,
+  `flight_date` date NOT NULL,
+  `airline_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `flight_info`
+--
+
+CREATE TABLE `flight_info` (
+  `flight_info_ID` int(11) NOT NULL,
+  `application_ID` int(11) NOT NULL,
+  `flight_ID` int(11) NOT NULL,
+  `next_flight_info_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `passengers_details`
 --
 
@@ -3514,9 +3562,21 @@ CREATE TABLE `passengers_details` (
   `email` text CHARACTER SET latin1 NOT NULL,
   `tel_number` int(11) NOT NULL,
   `passport` text CHARACTER SET latin1 NOT NULL,
-  `IDcard` text CHARACTER SET latin1 NOT NULL,
-  `boarding_pass/res` text CHARACTER SET latin1 NOT NULL,
-  `application_ID` int(11) NOT NULL
+  `IDcard` text CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `trip`
+--
+
+CREATE TABLE `trip` (
+  `trip_ID` int(11) NOT NULL,
+  `flight_info_ID` int(11) NOT NULL,
+  `delay` int(11) NOT NULL,
+  `distance` float NOT NULL,
+  `boarding_pass/res` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3548,10 +3608,34 @@ ALTER TABLE `compensation`
   ADD PRIMARY KEY (`compensation_ID`);
 
 --
+-- Indexes for table `connect`
+--
+ALTER TABLE `connect`
+  ADD PRIMARY KEY (`connect_ID`);
+
+--
+-- Indexes for table `flight`
+--
+ALTER TABLE `flight`
+  ADD PRIMARY KEY (`flight_ID`);
+
+--
+-- Indexes for table `flight_info`
+--
+ALTER TABLE `flight_info`
+  ADD PRIMARY KEY (`flight_info_ID`);
+
+--
 -- Indexes for table `passengers_details`
 --
 ALTER TABLE `passengers_details`
   ADD PRIMARY KEY (`passenger_ID`);
+
+--
+-- Indexes for table `trip`
+--
+ALTER TABLE `trip`
+  ADD PRIMARY KEY (`trip_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -3578,10 +3662,30 @@ ALTER TABLE `application`
 ALTER TABLE `compensation`
   MODIFY `compensation_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT dla tabeli `connect`
+--
+ALTER TABLE `connect`
+  MODIFY `connect_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `flight`
+--
+ALTER TABLE `flight`
+  MODIFY `flight_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `flight_info`
+--
+ALTER TABLE `flight_info`
+  MODIFY `flight_info_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT dla tabeli `passengers_details`
 --
 ALTER TABLE `passengers_details`
-  MODIFY `passenger_ID` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `passenger_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `trip`
+--
+ALTER TABLE `trip`
+  MODIFY `trip_ID` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
