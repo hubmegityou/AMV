@@ -11,11 +11,11 @@
          
             
         //informacje o lotniskach    
-        $db_airports_tab = "airporst";
+        $db_airports_tab = "airports";
             $db_airports_id = "airport_ID";
             $db_airports_ICAO = "ICAO_code";
             $db_airports_IATA = "IATA_code";
-            $db_airports_name = "airport_name";
+            $db_airports_name = "airport_name"; 
             $db_airports_city = "city_name";
             $db_airports_country = "country_name";
             $db_airports_region = "region";
@@ -26,32 +26,66 @@
        //informacje o pasa¿erach    
         $db_passengers_tab = "passengers_details";
             $db_passengers_id= "passenger_ID";
-            $db_passengers_firstname = "first_name";
-            $db_passengers_lastname = "last_name";
-            $db_passengers_address = "address";
-            $db_passengers_zipcode = "zip_code";
-            $db_passengers_city = "city";
-            $db_passengers_country = "country";
-            $db_passengers_email = "email";
-            $db_passengers_telnumber = "tel_number";
-            $db_passengers_passport = "passport";
-            $db_passengers_idcard = "IDcard";
-            $db_passengers_boarding = "boarding_pass/res";
-            $db_passengers_applicationid = "application_ID";
+            $db_passengers_firstname = "first_name"; //imiê
+            $db_passengers_lastname = "last_name";  //nazwisko
+            $db_passengers_address = "address"; //adres
+            $db_passengers_zipcode = "zip_code"; //kod pocztowy
+            $db_passengers_city = "city";   //miasto
+            $db_passengers_country = "country";  //pañstwo
+            $db_passengers_email = "email";  //email
+            $db_passengers_telnumber = "tel_number"; //numer telefonu
+            $db_passengers_passport = "passport"; //paszport
+            $db_passengers_idcard = "IDcard"; // dowód osobisty
+            $db_passengers_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
+           
             
-            
-        //informacje o sposobie wyp³aty odszkodowania
-        $db_compensation_tab = "compensation";
-            $db_compensation_id = "compensation_ID";
-            $db_compensation_type = "type";
-            $db_compensation_payment = "payment";
-            $db_compensation_currency = "currency";
-            $db_compensation_account = "account";
         
+            
+        //informacje o grupie aplikacji
+        $db_application_group_tab = "application_group";
+            $db_application_group_id = "application_group_ID";
+            $db_application_group_delay = "delay";  // opóŸnienie w porcie docelowym
+            $db_application_passengerid = "passenger_ID";
+           
+           
+                
+                 
             
             
        //informacje o zg³oszeniu
         $db_application_tab = "application";
             $db_application_id = "application_ID";
-            $db_application_compensationid = "compensation_ID";
+            $_db_application_incident = "incident"; // co sie sta³o
+            $db_application_cause = "cause"; //powód
+            $db_application_delay = "delay"; // opóŸnienie
+            $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwo³aniu lotu
+            $db_application_resignation = "resignation"; // czy klient zrezygnowa³ z lotu w zamian za korzyœci
+            $db_application_permission = "permission "; // czy by³a zgoda na zmianê planu podró¿y  
+            $db_application_compensation_amout = "compensation_amount";
+            $db_application_groupid = "application_group_ID";
+            
+            
+            
+       
+        //informacje o zg³oszonych lotach
+        $db_flight_tab = "flight";
+            $db_flight_id = "flight_ID";
+            $db_flight_departure = "departure"; //odlot
+            $db_flight_arrival = "arrival"; // przylot
+            $db_flight_number = "flight_number"; //numer lotu
+            $db_flight_date = "flight_date"; // data lotu
+            $db_flight_airline = "airline"; // linie lotnicze
+            $db_flight_distance = "distance"; //odleg³oœc miêdzy lotniskami
+            $db_flight_applicationid = "application_ID"; 
+        
+            
+            
+        //informacje o sposobie wyp³aty odszkodowania
+        $db_compensation_tab = "compensation";
+            $db_compensation_id = "compensation_ID";
+            $db_compensation_type = "type";  // express czy standard
+            $db_compensation_payment = "payment"; // sposób wyp³aty
+            $db_compensation_currency = "currency"; // waluta
+            $db_compensation_account = "account"; // numer konta/ PayPal
+            $db_compensation_applicationid = "application_ID";
 ?>  
