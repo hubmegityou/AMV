@@ -36,26 +36,32 @@
             $db_passengers_telnumber = "tel_number"; //numer telefonu
             $db_passengers_passport = "passport"; //paszport
             $db_passengers_idcard = "IDcard"; // dowód osobisty
-            $db_passengers_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
+            $db_passengers_tripid = "trip_ID";
+            
            
             
-        
             
         //informacje o grupie aplikacji
-        $db_application_group_tab = "application_group";
-            $db_application_group_id = "application_group_ID";
-            $db_application_group_delay = "delay";  // opóŸnienie w porcie docelowym
-            $db_application_passengerid = "passenger_ID";
-           
-           
-                
-                 
+        $db_trip_tab = "trip";
+            $db_trip_id = "trip_ID";
+            $db_flight_info_id= "flight_info_ID";
+            
+            
+        $db_flight_info_tab = "flight_info";
+            $db_flight_info_id= "flight_info_ID";
+            $db_flight_info_applicationid = "application_ID";
+            $db_flight_info_flightid = "flight_ID";
+            $db_flight_info_nextflight = "next_flight_info_ID";
+            
+            
+            
+       
             
             
        //informacje o zg³oszeniu
         $db_application_tab = "application";
             $db_application_id = "application_ID";
-            $_db_application_incident = "incident"; // co sie sta³o
+            $db_application_incident = "incident"; // co sie sta³o
             $db_application_cause = "cause"; //powód
             $db_application_delay = "delay"; // opóŸnienie
             $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwo³aniu lotu
@@ -63,20 +69,19 @@
             $db_application_permission = "permission "; // czy by³a zgoda na zmianê planu podró¿y  
             $db_application_compensation_amout = "compensation_amount";
             $db_application_groupid = "application_group_ID";
-            
-            
+            $db_application_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
+            $db_application_compensationid = "compensation_ID";
             
        
         //informacje o zg³oszonych lotach
         $db_flight_tab = "flight";
             $db_flight_id = "flight_ID";
-            $db_flight_departure = "departure"; //odlot
-            $db_flight_arrival = "arrival"; // przylot
+            $db_flight_departureid = "departure_ID"; //odlot
+            $db_flight_arrivalid = "arrival_ID"; // przylot
             $db_flight_number = "flight_number"; //numer lotu
             $db_flight_date = "flight_date"; // data lotu
-            $db_flight_airline = "airline"; // linie lotnicze
-            $db_flight_distance = "distance"; //odleg³oœc miêdzy lotniskami
-            $db_flight_applicationid = "application_ID"; 
+            $db_flight_airlineid = "airline_ID"; // linie lotnicze
+            $db_flight_distance = "distance"; //odleg³oœc miêdzy lotniskami 
         
             
             
