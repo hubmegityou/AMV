@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 06 Wrz 2017, 20:37
+-- Czas generowania: 07 Wrz 2017, 11:40
 -- Wersja serwera: 10.1.24-MariaDB
 -- Wersja PHP: 7.1.6
 
@@ -3475,6 +3475,31 @@ INSERT INTO `airports` (`airport_ID`, `country_name`, `country_code`, `airport_n
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `application`
+--
+
+CREATE TABLE `application` (
+  `application_ID` int(11) NOT NULL,
+  `compensation_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `compensation`
+--
+
+CREATE TABLE `compensation` (
+  `compensation_ID` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `payment` text NOT NULL,
+  `currency` text NOT NULL,
+  `account` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `passengers_details`
 --
 
@@ -3490,7 +3515,8 @@ CREATE TABLE `passengers_details` (
   `tel_number` int(11) NOT NULL,
   `passport` text CHARACTER SET latin1 NOT NULL,
   `IDcard` text CHARACTER SET latin1 NOT NULL,
-  `boarding_pass/res` text CHARACTER SET latin1 NOT NULL
+  `boarding_pass/res` text CHARACTER SET latin1 NOT NULL,
+  `application_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3508,6 +3534,18 @@ ALTER TABLE `airlines`
 --
 ALTER TABLE `airports`
   ADD PRIMARY KEY (`airport_ID`);
+
+--
+-- Indexes for table `application`
+--
+ALTER TABLE `application`
+  ADD PRIMARY KEY (`application_ID`);
+
+--
+-- Indexes for table `compensation`
+--
+ALTER TABLE `compensation`
+  ADD PRIMARY KEY (`compensation_ID`);
 
 --
 -- Indexes for table `passengers_details`
@@ -3529,6 +3567,16 @@ ALTER TABLE `airlines`
 --
 ALTER TABLE `airports`
   MODIFY `airport_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2971;
+--
+-- AUTO_INCREMENT dla tabeli `application`
+--
+ALTER TABLE `application`
+  MODIFY `application_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `compensation`
+--
+ALTER TABLE `compensation`
+  MODIFY `compensation_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `passengers_details`
 --
