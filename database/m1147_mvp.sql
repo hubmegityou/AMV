@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Wrz 2017, 19:49
+-- Czas generowania: 07 Wrz 2017, 20:20
 -- Wersja serwera: 10.1.24-MariaDB
 -- Wersja PHP: 7.1.6
 
@@ -3514,7 +3514,8 @@ CREATE TABLE `compensation` (
 CREATE TABLE `connect` (
   `connect_ID` int(11) NOT NULL,
   `passenger_ID` int(11) NOT NULL,
-  `trip_ID` int(11) NOT NULL
+  `trip_ID` int(11) NOT NULL,
+  `boarding_pass/res` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3575,8 +3576,7 @@ CREATE TABLE `trip` (
   `trip_ID` int(11) NOT NULL,
   `flight_info_ID` int(11) NOT NULL,
   `delay` int(11) NOT NULL,
-  `distance` float NOT NULL,
-  `boarding_pass/res` text NOT NULL
+  `distance` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

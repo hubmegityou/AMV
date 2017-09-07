@@ -37,22 +37,24 @@
             $db_passengers_passport = "passport"; //paszport
             $db_passengers_idcard = "IDcard"; // dowód osobisty
             
+            
            
         $db_connect_tab= "connect" ;
             $db_connect_id = "connect_ID";
             $db_connect_passenger_id = "passenger_ID";
             $db_connect_trip_id = "trip_ID";
+            $db_connect_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
             
-        //informacje o grupie aplikacji
+        //informacje o grupie lotów
         $db_trip_tab = "trip";
             $db_trip_id = "trip_ID";
             $db_trip_flight_id= "flight_info_ID";
             $db_trip_delay = "delay";
             $db_trip_distance = "distance";
-            $db_trip_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
+            
 
             
-            
+         //grupy lotów   
         $db_flight_info_tab = "flight_info";
             $db_flight_info_id= "flight_info_ID";
             $db_flight_info_applicationid = "application_ID";
