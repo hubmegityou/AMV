@@ -46,9 +46,10 @@
         //informacje o grupie aplikacji
         $db_trip_tab = "trip";
             $db_trip_id = "trip_ID";
-            $db_flight_info_id= "flight_info_ID";
-            $db_flight_info_delay = "delay";
-            $db_flight_info_distance = "distance";
+            $db_trip_flight_id= "flight_info_ID";
+            $db_trip_delay = "delay";
+            $db_trip_distance = "distance";
+            $db_trip_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
 
             
             
@@ -71,7 +72,6 @@
             $db_application_resignation = "resignation"; // czy klient zrezygnowa³ z lotu w zamian za korzyœci
             $db_application_permission = "permission "; // czy by³a zgoda na zmianê planu podró¿y  
             $db_application_compensation_amout = "compensation_amount";
-            $db_application_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
             $db_application_compensationid = "compensation_ID";
             
        
