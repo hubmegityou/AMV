@@ -135,7 +135,13 @@ function click_b(x,y){
        $('#'+y).show();
 }
 
-
+function option(x, y, z){
+    
+    $('#option'+x).show();
+    $('#option'+y).hide();
+    $('#option'+z).hide();
+    
+}
 
 
 
