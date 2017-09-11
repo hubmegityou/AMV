@@ -23,6 +23,10 @@
 </head>
 
 <body>
+    
+    ////// krok 1 \\\\\\
+    
+   <!-- 
     <form id="f">
         <fieldset class="class" id="step1">
             <legend>Co się wydarzyło z lotem?</legend>
@@ -88,37 +92,125 @@
 
       
         </fieldset>
+-->
 
+<br><br>
+
+
+<fieldset>
+    <legend>Co się wydarzyło z lotem?</legend>
+    <input type="radio"> Opóźniony lot<br>
+    <input type="radio"> Odwołany lot<br>
+    <input type="radio"> Odmowa wejścia na pokład<br>  
+</fieldset>
         
+<!--dla opóźnionego-->
+
+<br> opóźniony<br>
+
+
+<fieldset>
+    <legend>Jaki był powód opóźnienia?</legend>
+         <input type="radio">problemy techniczne<br>
+         <input type="radio">złe warunki pogodowe<br>
+         <input type="radio">wpływ innych lotów<br>
+         <input type="radio">problemy portu lotniczego<br>
+         <input type="radio">strajk<br>
+         <input type="radio"> nie podano powodu<br>
+         <input type="radio"> nie wiem<br>
+</fieldset>
+
+
+<fieldset>
+    <legend>Jakie było opóźnienie?</legend>
+         <input type="radio">mniej niż 3h<br>
+         <input type="radio">ponad 3h<br>
+         <input type="radio">nie dotarłem na miejsc<br>
+</fieldset>
+
+<!--dla odwołanego-->
+<br>odwołany<br>
+
+<fieldset>
+    <legend>Kiedy linia lotnicza ponformowała o odwołaniu lotu?</legend>
+         <input type="radio">mniej niż 14 dni<br>
+         <input type="radio">więcej niż 14 dni<br>
+</fieldset>
+
+<fieldset>
+    <legend>Jaki był powód opóźnienia?</legend>
+         <input type="radio">problemy techniczne<br>
+         <input type="radio">złe warunki pogodowe<br>
+         <input type="radio">wpływ innych lotów<br>
+         <input type="radio">problemy portu lotniczego<br>
+         <input type="radio">strajk<br>
+         <input type="radio"> nie podano powodu<br>
+         <input type="radio"> nie wiem<br>
+</fieldset>
+
+<fieldset>
+    <legend>Jakie było opóźnienia?</legend>
+         <input type="radio">mniej niż 2h<br>
+         <input type="radio">2-3 godziny<br>
+         <input type="radio">3-4 godziny<br>
+         <input type="radio">powyżej 4 godzin<br>
+         <input type="radio">nie wiem<br> 
+</fieldset>
+
+<!--nie zdazył-->
+<br>nie zdażył<br>
+
+<fieldset>
+    <legend>Jakie było opóźnienia?</legend>
+         <input type="radio">mniej niż 2h<br>
+         <input type="radio">2-3 godziny<br>
+         <input type="radio">3-4 godziny<br>
+         <input type="radio">powyżej 4 godzin<br>
+         <input type="radio">nie wiem<br> 
+</fieldset>
+
+<fieldset>
+    <legend>czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?</legend>
+         <input type="radio">tak<br>
+         <input type="radio">nie<br> 
+</fieldset>
+
+
+
+
+
+
         <fieldset class="class"  id="end">
             nie dostałeś odszkodowania ;(
-            <button type="reset" onClick="start()" >Jeszcze raz</button>
+ 
         </fieldset>
 
         <fieldset class="class"  id="finish">
             wygrałeś!!!!!!
-            <button type="reset" onClick="start()" >Jeszcze raz</button>
-            <button type="button" onclick="fill()" >Dalej</button>
         </fieldset>
-    </form>
+   
     
       <br><br><br>
     
     <form  id="flight_data">
         <fieldset id="flight_data_form">
             <legend> Dane lotu</legend>
-                <div>
+            <div>
+            <br> Nazwa linii lotniczej<br>
+                <input type="text" name="airline" required /></div><div>
                 <br>Numer lotu<br>
                 <input type="text" name="flight_num" required /></div><div>
                 <br>Data lotu<br>
                 <input type="date" name="date" required /></div>
-                 <button type="button">wyślij</button>
         </fieldset>
     </form>
     
-    
-    <br><br><br>
-    
+           <br><br><br>
+      <button type='button'>Dalej </button>
+         <br><br>
+        ////// krok 2 \\\\\\
+        <br><br>
+
     <form  id="personal_data" >
         <fieldset id="form">
             <legend>Dane pasażera</legend>
@@ -135,16 +227,28 @@
                 <input type="text" id="city" required /></div><div>
                 <br>Kraj<br>
                  <input type="text" id="country" required /></div><div>
-                <br>Numer telefonu<br>
-                <input type="text" id="tnumber" required /></div><div>
-                <br>Email<br>
-                <input type="email" id="email" required /></div>               
-            <button type="button" onclick="submitPersonalData()">wyślij</button>
         </fieldset>
     </form>
+       <a href="" >dodaj pasażera</a>
+    <br><br>
+    <form id='contact'>
+        <fieldset>
+            <legend> Dane kontaktowe</legend>
+        <div>
+        <br>Numer telefonu<br>
+        <input type="text" id="tnumber" required /></div><div>
+        <br>Email<br>
+        <input type="email" id="email" required /></div>  
+        </fieldset>
+    </form>
+       <br><br><br>
+    <button type="button"> Dalej</button>
+      <button type="button"> Wstecz</button>
     
-      <br><br><br>
-    
+       <br><br>
+          ////// krok 3 \\\\\\
+          <br><br>
+
     <form id="documents" >
         <fieldset>
             <legend> Rezerwacja/karta pokładowa</legend>
@@ -164,25 +268,29 @@
                 <br>Dodaj dokument<br>
                 <input  type="file" name="file3"  id="file3" accept="image/*"></div>
         </fieldset> 
-         <button type="button" >dalej</button> 
     </form>
-     
-      <br><br><br>
       
+         <br><br><br>
+        <button type="button"> Dalej</button>
+      <button type="button"> Wstecz</button>
+     
+    <br><br>
+          ////// krok 4 \\\\\\
+          <br><br>
+
     <form id="conditions" >
         <fieldset>
             <legend> Zawarcie umowy</legend>
                 <div>
-                    <input type="checkbox" id="checkAll" > Zaznacz wszystkie zgody</div><br><br><div>
-                    <input type="checkbox"  required> Oświadczam, że stawiłem się na odprawę w określonym
+                    <input type="checkbox" id="checkAll" checked> Zaznacz wszystkie zgody</div><br><br><div>
+                    <input type="checkbox"  required checked> Oświadczam, że stawiłem się na odprawę w określonym
                         przez linie lotnicze czasie. Jeżeli czas nie był wskazany przez linie, obowiązuje czas 45 minut przed wylotem.</div><br><div>
-                    <input type="checkbox"  required>Oświadczam, że stawiłem się na boarding w czasie wskazanym
+                    <input type="checkbox"  required checked>Oświadczam, że stawiłem się na boarding w czasie wskazanym
                         na karcie pokładowej.</div><br><div>       
-                    <input type="checkbox" required>Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.</div><br><div> 
-                    <input type="checkbox" required>Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane 
+                    <input type="checkbox" required checked>Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.</div><br><div> 
+                    <input type="checkbox" required checked>Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane 
                         sa prawdziwe.</div>
         </fieldset>  
-            <button type="button" >dalej</button>
     </form>   
     
       <br><br><br>
@@ -192,34 +300,60 @@
     
       <br><br><br>
       
+       <button type="button"> Dalej</button>
+      <button type="button"> Wstecz</button>
+      
+       <br><br>
+      
+          ////// krok 5 \\\\\\
+
+      <br><br>
+      
     <form id="compensation" >
         <fieldset>
             <legend> Wypłata odszkodowania</legend>
                 <div>
-                    <button type="submit" id="express" > EXPRESS (do 24h)<br> Wypłacimy 550€ <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
+                    <button type="submit" id="express" > EXPRESS (do 24h) <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
                         przyjęcia poprawnego zgłoszenia.</button></div><br><br><div>
-                    <button type="submit" id="standard" > STANDARD <br> Wypłacimy 590€ <br><br>Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji
+                    <button type="submit" id="standard" > STANDARD <br><br>Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji
                         roszczenia przez linię lotniczą <br> i otrzymaniu od niej odszkodowania.</button> </div>
                     
         </fieldset>  
-            <button type="button" >dalej</button>
     </form> 
     
       
        <br><br><br>
       
-      <form id="compensation2" >
+      <form id="compensation2"  >
         <fieldset>
             <legend> Wybierz sposób wypłaty odszkodowania</legend>
                 <div>
-                    <input type="radio" id="paypal" > Płatność Paypal (bez opłat)</div><br><br><div>
-                    <input type="radio" id="account" > Płatność na konto (USD) </div>
-                    
-        </fieldset>  
-            <button type="button" >dalej</button>
+                    <input type="radio" id="paypal"  value="1" name="radio"> Płatność PayPal (bez opłat)</div><div>
+                    <input type="radio" id="account"  value="2" name="radio" > Płatność na konto <select id="select"> 
+                        <option>---</option>
+                        <option>EURO</option>
+                        <option>PLN</option>
+                        <option>USD</option>
+                        <option>CHF</option>
+                        <option>GBP</option>
+                        <option>INNA</option>
+                    </select></div>
+                
+                   
+        </fieldset> 
+                <div id="paypalOption" >
+                <br>Twoje konto PayPal (adres e-mail) <br>       
+                <input type="text"  id="account_num"></div>
+                
+                <div id="accountOption" >
+                <br>Numer konta bankowego <br>       
+                <input type="text" id="account_num2"></div>
     </form>  
       
+    
+           <br><br><br>
       
-            
+       <button type="button"> Dalej</button>
+      <button type="button"> Wstecz</button>
 </body>
 </html>
