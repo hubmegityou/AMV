@@ -1,4 +1,17 @@
 /***************************************************************************/
+
+
+window.onload = function(){
+    check();
+    click();
+};
+
+
+
+
+
+
+
 //weryfikacja formularza drugiego (dane klienta)
 var validateForm = (function(){
     var options = {};
@@ -106,6 +119,30 @@ var validateForm = (function(){
         init : init
     }
 });
+
+
+ id=1;
+
+
+function click(){
+    
+    var next = document.getElementById("next");
+    var prev = document.getElementById("prev");
+    
+    
+    next.onclick= function(){
+       $('#'+id).hide();
+       id=id+1;
+       $('#'+id).show();
+    };
+    
+    prev.onclick= function(){
+       $('#'+id).hide();
+       id=id-1;
+       $('#'+id).show();  
+    };
+}
+
 
 
 

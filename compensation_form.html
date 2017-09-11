@@ -27,74 +27,7 @@
     <div id='1'>
     ////// krok 1 \\\\\\
     
-   <!-- 
-    <form id="f">
-        <fieldset class="class" id="step1">
-            <legend>Co się wydarzyło z lotem?</legend>
-                <p>
-                <input type="radio" name="question1" onClick="nextquestion('1')" value=1 />opóźniony<br>
-                <input type="radio" name="question1" onClick="nextquestion('1')" value=2 />odwołany<br>
-                <input type="radio" name="question1" onClick="nextquestion('1')" value=3 />odmówiono wstępu na pokład
-                </p>
-               
-        </fieldset>
-
-        <fieldset class="class"  id="step2a">
-            <legend>Czy zgłosiłeś się na ochotnika do rezygnacji ze swojej rezerwacji w zamian za jakieś korzyści uzgodnione między Tobą a linią lotniczą?</legend>
-                <p>
-                <input type="radio" name="question2" onClick="nextquestion('2a')" value=0 />tak<br>
-                <input type="radio" name="question2" onClick="nextquestion('2a')" value=4 />nie
-                </p>
-        </fieldset>
-
-        <fieldset class="class"  id="step2b">
-            <legend>Jaki powód podały linie lotnicze?</legend>
-                <p>
-                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')" />problemy techniczne<br>
-                <input type="radio" name="question2" value=0 onClick="nextquestion('2b')" />złe warunki pogodowe<br>
-                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')" />wpływ innych lotów<br>
-                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')" />problemy portu lotniczego<br>
-                <input type="radio" name="question2" value=0 onClick="nextquestion('2b')" />strajk<br>
-                <input type="radio" name="question2" value=2 onClick="nextquestion('2b')"/> nie podano powodu
-                </p>
-
-        </fieldset>
-
-        <fieldset class="class"  id="step3a">
-            <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-                <p>
-                <input type="radio" name="question3" value=1 onClick="nextquestion('3a')" />poniżej 2 godzin<br>
-                <input type="radio" name="question3" value=2 onClick="nextquestion('3a')" />powyżej 2 godzin<br>
-                <input type="radio" name="question3" value=3 onClick="nextquestion('3a')" />powyżej 3 godzin<br>
-                <input type="radio" name="question3" value=4 onClick="nextquestion('3a')" />powyżej 4 godzin<br>
-                <input type="radio" name="question3" value=5 onClick="nextquestion('3a')" />nie dotarł na miejsce
-                </p>
-        
-     
-        </fieldset>
-
-        <fieldset class="class"  id="step3b">
-            <legend>Kiedy obsługujący przewoźnik lotniczy poinformował Cię o odwołaniu lotu?</legend>
-                <p>
-                <input type="radio" name="question3" value=0 onClick="nextquestion('3b')"/>wcześniej niż 14 dni przed planowanym odlotem<br>
-                <input type="radio" name="question3" value=0 onClick="nextquestion('3b')"/>od 7 do 14 dni przed planowanycm odlotem i zaoferował zmianę planu podróży umożliwiającą wylot najpóźniej 2h przed planowanym czasem odlotu oraz dotarcie do miejsca docelowego najwyżej 4h po planowanym czasie przylotu<br>
-                <input type="radio" name="question3" value=0 onClick="nextquestion('3b')"/>mniej niż 7 dni przed planowanym czasem odlotu i zaoferował zmianę planu podróży umożliwiającą wylot najpóźniej 1h przed planowanym czasem odlotu oraz dotarcie do miejsca docelowego najwyżej 2h po planowanym czasie przylotu<br>
-                <input type="radio" name="question3" value=11 onClick="nextquestion('3b')"/>Przewoźnik nie poinformował mnie o odwołaniu lotu<br>
-                <input type="radio" name="question3" value=12 onClick="nextquestion('3b')"/>Przewożnik zaoferował zmianę planu podróży odmienną od powyżej opisanych
-                </p>
-
-        </fieldset>
-
-        <fieldset class="class"  id="step4">
-            <legend>Czy zgodził się Pan/-i na zaproponowaną zmianę planu podróży?</legend>
-                <p>
-                <input type="radio" name="question4" value=1 onClick="nextquestion('4')"/>tak<br>
-                <input type="radio" name="question4" value=2 onClick="nextquestion('4')"/>nie
-
-      
-        </fieldset>
--->
-
+   
 <br><br>
 
 <form id="f">
@@ -178,9 +111,6 @@
 
 
 
-
-
-
         <fieldset class="class"  id="end">
             nie dostałeś odszkodowania ;(
  
@@ -207,11 +137,11 @@
     </form>
     
            <br><br><br>
-      <button type='button'>Dalej </button>
+      <button type='button' id="next" >Dalej </button>
      
          <br><br>
     </div>
-    <div id='2'>
+    <div id='2' hidden>
         ////// krok 2 \\\\\\
         <br><br>
 
@@ -246,12 +176,13 @@
         </fieldset>
     </form>
        <br><br><br>
-    <button type="button"> Dalej</button>
-      <button type="button"> Wstecz</button>
+      <button type="button"  id="prev" > Wstecz</button>
+    <button type="button"  id="next" > Dalej</button>
+     
     
        <br><br>
        </div>
-       <div id='3'>  
+       <div id='3' hidden>  
           ////// krok 3 \\\\\\
           <br><br>
 
@@ -277,12 +208,12 @@
     </form>
       
          <br><br><br>
-        <button type="button"> Dalej</button>
-      <button type="button"> Wstecz</button>
+        <button type="button"  id="prev" > Wstecz</button>
+    <button type="button"  id="next" > Dalej</button>
      
     <br><br>
        </div>
-            <div id='4'>
+            <div id='4' hidden>
           ////// krok 4 \\\\\\
           <br><br>
 
@@ -308,12 +239,12 @@
     
       <br><br><br>
       
-       <button type="button"> Dalej</button>
-      <button type="button"> Wstecz</button>
+        <button type="button"  id="prev" > Wstecz</button>
+    <button type="button"  id="next" > Dalej</button>
       
        <br><br>
             </div>
-            <div id='5'>
+            <div id='5' hidden>
           ////// krok 5 \\\\\\
 
       <br><br>
@@ -362,8 +293,8 @@
     
            <br><br><br>
       
-       <button type="button"> Dalej</button>
-      <button type="button"> Wstecz</button>
+       <button type="button"  id="prev" > Wstecz</button>
+    <button type="button"  id="next" > Dalej</button>
       </div>   
 </body>
 </html>
