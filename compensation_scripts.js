@@ -3,6 +3,7 @@
 
 window.onload = function(){
     check();
+    ('#')
 };
 
 
@@ -147,6 +148,5 @@ function check(){
 //dodanie funkcji walidacji formularza do p�l zapyta� o dane osobowe po nazwie klasy
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector('.form');
-    validateForm.init({form : form});
-    
-});
+    validateForm.init({form : form}); 
+    });
