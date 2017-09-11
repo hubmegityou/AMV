@@ -3,7 +3,6 @@
 
 window.onload = function(){
     check();
-    click();
 };
 
 
@@ -121,26 +120,16 @@ var validateForm = (function(){
 });
 
 
- id=1;
 
 
-function click(){
-    
-    var next = document.getElementById("next");
-    var prev = document.getElementById("prev");
-    
-    
-    next.onclick= function(){
-       $('#'+id).hide();
+
+var id = 1;
+
+function click_b(x,y){
+   
+       $('#'+x).hide();
        id=id+1;
-       $('#'+id).show();
-    };
-    
-    prev.onclick= function(){
-       $('#'+id).hide();
-       id=id-1;
-       $('#'+id).show();  
-    };
+       $('#'+y).show();
 }
 
 
