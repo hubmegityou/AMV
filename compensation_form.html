@@ -24,6 +24,7 @@
 
 <body>
     
+    <div id='1'>
     ////// krok 1 \\\\\\
     
    <!-- 
@@ -96,12 +97,12 @@
 
 <br><br>
 
-
+<form id="f">
 <fieldset>
     <legend>Co się wydarzyło z lotem?</legend>
-    <input type="radio"> Opóźniony lot<br>
-    <input type="radio"> Odwołany lot<br>
-    <input type="radio"> Odmowa wejścia na pokład<br>  
+    <input type="radio" name="question1"> Opóźniony lot<br>
+    <input type="radio" name="question1"> Odwołany lot<br>
+    <input type="radio" name="question1"> Odmowa wejścia na pokład<br>  
 </fieldset>
         
 <!--dla opóźnionego-->
@@ -111,21 +112,21 @@
 
 <fieldset>
     <legend>Jaki był powód opóźnienia?</legend>
-         <input type="radio">problemy techniczne<br>
-         <input type="radio">złe warunki pogodowe<br>
-         <input type="radio">wpływ innych lotów<br>
-         <input type="radio">problemy portu lotniczego<br>
-         <input type="radio">strajk<br>
-         <input type="radio"> nie podano powodu<br>
-         <input type="radio"> nie wiem<br>
+         <input type="radio" name="question2">problemy techniczne<br>
+         <input type="radio" name="question2">złe warunki pogodowe<br>
+         <input type="radio" name="question2">wpływ innych lotów<br>
+         <input type="radio" name="question2">problemy portu lotniczego<br>
+         <input type="radio" name="question2">strajk<br>
+         <input type="radio" name="question2"> nie podano powodu<br>
+         <input type="radio" name="question2"> nie wiem<br>
 </fieldset>
 
 
 <fieldset>
     <legend>Jakie było opóźnienie?</legend>
-         <input type="radio">mniej niż 3h<br>
-         <input type="radio">ponad 3h<br>
-         <input type="radio">nie dotarłem na miejsc<br>
+         <input type="radio" name="question3">mniej niż 3h<br>
+         <input type="radio" name="question3">ponad 3h<br>
+         <input type="radio" name="question3">nie dotarłem na miejsc<br>
 </fieldset>
 
 <!--dla odwołanego-->
@@ -133,46 +134,46 @@
 
 <fieldset>
     <legend>Kiedy linia lotnicza ponformowała o odwołaniu lotu?</legend>
-         <input type="radio">mniej niż 14 dni<br>
-         <input type="radio">więcej niż 14 dni<br>
+         <input type="radio" name="question4">mniej niż 14 dni<br>
+         <input type="radio" name="question4">więcej niż 14 dni<br>
 </fieldset>
 
 <fieldset>
     <legend>Jaki był powód opóźnienia?</legend>
-         <input type="radio">problemy techniczne<br>
-         <input type="radio">złe warunki pogodowe<br>
-         <input type="radio">wpływ innych lotów<br>
-         <input type="radio">problemy portu lotniczego<br>
-         <input type="radio">strajk<br>
-         <input type="radio"> nie podano powodu<br>
-         <input type="radio"> nie wiem<br>
+         <input type="radio" name="question5">problemy techniczne<br>
+         <input type="radio" name="question5">złe warunki pogodowe<br>
+         <input type="radio" name="question5">wpływ innych lotów<br>
+         <input type="radio" name="question5">problemy portu lotniczego<br>
+         <input type="radio" name="question5">strajk<br>
+         <input type="radio" name="question5"> nie podano powodu<br>
+         <input type="radio" name="question5"> nie wiem<br>
 </fieldset>
 
 <fieldset>
-    <legend>Jakie było opóźnienia?</legend>
-         <input type="radio">mniej niż 2h<br>
-         <input type="radio">2-3 godziny<br>
-         <input type="radio">3-4 godziny<br>
-         <input type="radio">powyżej 4 godzin<br>
-         <input type="radio">nie wiem<br> 
+    <legend>Jakie było opóźnienie?</legend>
+         <input type="radio" name="question6">mniej niż 2h<br>
+         <input type="radio" name="question6">2-3 godziny<br>
+         <input type="radio" name="question6">3-4 godziny<br>
+         <input type="radio" name="question6">powyżej 4 godzin<br>
+         <input type="radio" name="question6">nie wiem<br> 
 </fieldset>
 
 <!--nie zdazył-->
 <br>nie zdażył<br>
 
 <fieldset>
-    <legend>Jakie było opóźnienia?</legend>
-         <input type="radio">mniej niż 2h<br>
-         <input type="radio">2-3 godziny<br>
-         <input type="radio">3-4 godziny<br>
-         <input type="radio">powyżej 4 godzin<br>
-         <input type="radio">nie wiem<br> 
+    <legend>Jakie było opóźnienie?</legend>
+         <input type="radio" name="question7">mniej niż 2h<br>
+         <input type="radio" name="question7">2-3 godziny<br>
+         <input type="radio" name="question7">3-4 godziny<br>
+         <input type="radio" name="question7">powyżej 4 godzin<br>
+         <input type="radio" name="question7">nie wiem<br> 
 </fieldset>
 
 <fieldset>
     <legend>czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?</legend>
-         <input type="radio">tak<br>
-         <input type="radio">nie<br> 
+         <input type="radio" name="question8">tak<br>
+         <input type="radio" name="question8">nie<br> 
 </fieldset>
 
 
@@ -188,7 +189,7 @@
         <fieldset class="class"  id="finish">
             wygrałeś!!!!!!
         </fieldset>
-   
+</form> 
     
       <br><br><br>
     
@@ -207,7 +208,10 @@
     
            <br><br><br>
       <button type='button'>Dalej </button>
+     
          <br><br>
+    </div>
+    <div id='2'>
         ////// krok 2 \\\\\\
         <br><br>
 
@@ -246,6 +250,8 @@
       <button type="button"> Wstecz</button>
     
        <br><br>
+       </div>
+       <div id='3'>  
           ////// krok 3 \\\\\\
           <br><br>
 
@@ -275,6 +281,8 @@
       <button type="button"> Wstecz</button>
      
     <br><br>
+       </div>
+            <div id='4'>
           ////// krok 4 \\\\\\
           <br><br>
 
@@ -304,7 +312,8 @@
       <button type="button"> Wstecz</button>
       
        <br><br>
-      
+            </div>
+            <div id='5'>
           ////// krok 5 \\\\\\
 
       <br><br>
@@ -355,5 +364,6 @@
       
        <button type="button"> Dalej</button>
       <button type="button"> Wstecz</button>
+      </div>   
 </body>
 </html>
