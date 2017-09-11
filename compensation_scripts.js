@@ -1,94 +1,10 @@
-window.onload = function(){
-    start();
-    addEvents();
-    check();
-};
-
-
-var answers = new Array; //tablica przechowuj¹ca odpowiedzi
-//funkcja dodaje do pól radio input w ka¿dym pytaniu aktywacjê przycisku "dalej" (u¿ywa next jako "najbli¿szy" przycisk zaraz pod odpowiedziami)
-function addEvents(){ 
-    $('fieldset').on('click', 'input', function(e){
-	$(this).parent().next('button').removeAttr('disabled');
-        });
-}
-
-
-//czyszczenie tablicy z odpowiedziami i pokazanie tylko kroku pierwszego
-function start(){
-    answers.splice(0, answers.length);
-    $('.class').not('#step1').hide();
-    $('#step1').show();
-}
-
-//powrót do poprzedniego pytania
-function prevquestion(s, p){    //s:= bie¿¹ce pytanie, p:= poprzednie pytanie
-    answers.splice(answers.length-1, 1); //usuniêcie z tablicy ostatniej dodanej odpowiedzi
-  //  $('#next'+s).attr('disabled',true); //ukrycie przycisku "dalej" w bie¿¹cym pytaniu
-    $('#step'+s).hide();    //ukrycie bie¿¹cego pytania
-    $('#step'+p).show();    //pokazanie poprzedniego pytania
-}
-
-//przejœcie do kolejnego pytania
-function nextquestion(s){ //s := kod aktywnego kroku (nie pytanie)
-    var q = parseInt(s.substr(0,1)); //q := numer aktywnego pytania
-    var val = parseInt(document.querySelector('input[name="question'+q+'"]:checked').value); //wartosc odpowiedzi do aktywnego pytania
-    answers.push(val);    //dodanie wartoœci ostatniej odpowiedzi do tablicy
-    var id = 'end';
-    var step = '';
-    if (val){  //wartoœæ 0 w polu odpowiedzi -> nie dostajesz odszkodowania, koniec formularza
-        step = 'step';
-        switch(q){ //sprawdzenie, z którego pytania funkcja zosta³a uruchomiona
-            case 1:
-                if(val < 3){
-                    id = '2b'; //delayed/cancelled
-                }
-                else{
-                    id = '2a'; //overbooking
-                }
-                break;
-            case 2:
-                switch(answers[0]){
-                    case 1: //delayed
-                        id = '3a';
-                        break;
-                    case 2: //cancelled
-                        id = '3b';
-                        break;
-                    case 3: //overbooking
-                        step = '';
-                        id = 'finish';
-                        break;
-                }
-                break;
-            case 3:
-            case 4:
-                if (val == 12){ //12 := akceptacja oferty od przewoŸnika w zwi¹zku z odwo³aniem lotu
-                    id = 4;
-                }
-                else{ //je¿eli q==4 od razu przechodzimy w to miejsce, odpowiedzi z tego pytania nigdy nie maj¹ value==12
-                    step = '';
-                    id = 'finish';
-                }
-                break;
-        }
-    }
-    $('#next'+s).prop('disabled', true);    //dezaktywacja bie¿¹cego przycisku "dalej"
-   // $('#step'+s).hide();    //ukrycie bie¿¹cego pola z pytaniem
-    $('#'+step+id).show();  //pokazanie nowego pytania lub koniec formularza
-}
-
-function fill(){
-    $('#finish').hide();
-    $('#form').show();
-}
-
+/***************************************************************************/
 //weryfikacja formularza drugiego (dane klienta)
 var validateForm = (function(){
     var options = {};
     var classError = 'error';
     
-    //funckja dodaje odpowiedni¹ klasê w zale¿noœci czy dane wejœciowe s¹ w poprawnej formie
+    //funckja dodaje odpowiedniï¿½ klasï¿½ w zaleï¿½noï¿½ci czy dane wejï¿½ciowe sï¿½ w poprawnej formie
     function showFieldValidation(input, inputIsValid) {
         if (!inputIsValid) {
             if (!input.parentNode.className || input.parentNode.className.indexOf(options.classError)==-1) {
@@ -100,7 +16,7 @@ var validateForm = (function(){
         }
     };
     
-    //funkcja sprawdza czy dane wejœciowe (input) s¹ zgodne ze wzorcem (reg)
+    //funkcja sprawdza czy dane wejï¿½ciowe (input) sï¿½ zgodne ze wzorcem (reg)
     function check (input, reg){
         var inputIsValid = true;
         if (!reg.test(input.value)) {
@@ -143,16 +59,16 @@ var validateForm = (function(){
         var elements = options.form.querySelectorAll('input[required], textarea[required], select[required]');
     
         [].forEach.call(elements, function(element) {
-            //usuwamy atrybut required aby przy wysy³aniu wyskakiwa³y by domyœlne b³êdy
+            //usuwamy atrybut required aby przy wysyï¿½aniu wyskakiwaï¿½y by domyï¿½lne bï¿½ï¿½dy
             element.removeAttribute('required');
-            //klasa, po której póŸniej bêdziemy sprawdzaæ pola
+            //klasa, po ktï¿½rej pï¿½niej bï¿½dziemy sprawdzaï¿½ pola
             element.className += ' required';
 
             //sprawdzamy typ pola
             if (element.nodeName.toUpperCase() == 'INPUT') {
                 var type = element.type.toUpperCase();
                 var name = element.name.toLowerCase();
-                //do ró¿nych typów pól (kolejno: zwyk³y tekst, email, kod pocztowy, numer domu/mieszkania dodajemy funkcje sprawdzaj¹ce poprawnoœæ
+                //do rï¿½nych typï¿½w pï¿½l (kolejno: zwykï¿½y tekst, email, kod pocztowy, numer domu/mieszkania dodajemy funkcje sprawdzajï¿½ce poprawnoï¿½ï¿½
                 if (name == 'fname' || name == 'lname' || name == 'city' || name == 'street') {
                     element.addEventListener('keyup', function() {testInputText(element);});
                     element.addEventListener('blur', function() {testInputText(element);});
@@ -174,14 +90,14 @@ var validateForm = (function(){
     };
     
     function init(_options) {
-        //do modu³u bêdziemy przekazywaæ opcje
-        //przekazane ustawimy w zmiennej options naszego modu³u, lub ustawimy domyœlne
+        //do moduï¿½u bï¿½dziemy przekazywaï¿½ opcje
+        //przekazane ustawimy w zmiennej options naszego moduï¿½u, lub ustawimy domyï¿½lne
         options = {
             form : _options.form || null,
             classError : _options.classError || 'error'
         };
         if (options.form == null || options.form == undefined || options.form.length==0) {
-            console.warn('validateForm: le przekazany formularz');
+            console.warn('validateForm: ï¿½le przekazany formularz');
             return false;
         }
         prepareElements();
@@ -193,7 +109,7 @@ var validateForm = (function(){
 
 
 
-// zaznaczanie i odznaczanie wszystkich checkboxów
+// zaznaczanie i odznaczanie wszystkich checkboxï¿½w
 function check(){
     $("#checkAll").change(function() {
     $("input:checkbox").prop('checked', $(this).prop("checked"));
@@ -202,7 +118,7 @@ function check(){
 
 
 
-//dodanie funkcji walidacji formularza do pól zapytañ o dane osobowe po nazwie klasy
+//dodanie funkcji walidacji formularza do pï¿½l zapytaï¿½ o dane osobowe po nazwie klasy
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector('.form');
     validateForm.init({form : form});
