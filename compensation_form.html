@@ -25,8 +25,6 @@
 <body>
     
     <div id='1'>
-    ////// krok 1 \\\\\\
-    
    
 <br><br>
 
@@ -136,13 +134,20 @@
     </form>
     
            <br><br><br>
-      <button type='button' id="next" onclick="click_b(1,2)" >Dalej </button>
-     
+      <button type='button' id="next" onclick="click_b('1a',2)" >Dalej </button>
+       <br><br><br>
          <br><br>
     </div>
+    
+ <div id="a" hidden>   
+ <button onClick="op('#poka');">Szczegóły</button>
+<div id="poka" style="display: none;">
+tutaj cośtam będzie 
+</div>
+ </div>    
+    <br><br><br> 
+    
     <div id='2' hidden>
-        ////// krok 2 \\\\\\
-        <br><br>
 
     <form class="form" id="personal_data">
         <fieldset id="form">
@@ -182,9 +187,7 @@
        <br><br>
        </div>
        <div id='3' hidden>  
-          ////// krok 3 \\\\\\
-          <br><br>
-
+        
     <form id="documents" >
         <fieldset>
             <legend>Rezerwacja/karta pokładowa</legend>
@@ -213,8 +216,7 @@
     <br><br>
        </div>
             <div id='4' hidden>
-          ////// krok 4 \\\\\\
-          <br><br>
+        
 
     <form id="conditions" >
         <fieldset>
@@ -244,9 +246,7 @@
        <br><br>
             </div>
             <div id='5' hidden>
-          ////// krok 5 \\\\\\
-
-      <br><br>
+        
       
     <form id="compensation" >
         <fieldset>
@@ -267,8 +267,8 @@
         <fieldset>
             <legend> Wybierz sposób wypłaty odszkodowania</legend>
                 <div>
-                    <input type="radio" id="paypal"  value="1" name="radio"> Płatność PayPal (bez opłat)</div><div>
-                    <input type="radio" id="account"  value="2" name="radio" > Płatność na konto <select id="select"> 
+                     <input type="radio" id="paypal" onclick="payOption('1')" value="1" name="radio"> Płatność PayPal (bez opłat)</div><div>
+                    <input type="radio" id="account" onclick= "payOption('2')" value="2" name="radio" > Płatność na konto <select id="select"> 
                         <option>---</option>
                         <option>EURO</option>
                         <option>PLN</option>
@@ -280,11 +280,11 @@
                 
                    
         </fieldset> 
-                <div id="paypalOption" >
+                <div id="paypalOption" hidden >
                 <br>Twoje konto PayPal (adres e-mail) <br>       
                 <input type="text"  id="account_num"></div>
                 
-                <div id="accountOption" >
+                <div id="accountOption" hidden >
                 <br>Numer konta bankowego <br>       
                 <input type="text" id="account_num2"></div>
     </form>  

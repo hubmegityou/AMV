@@ -1,14 +1,16 @@
 /***************************************************************************/
+jQuery(document).ready(function($){
+  op = function(obj) {
+    $(obj).stop().slideToggle();
+    };
+});
+
 
 
 window.onload = function(){
     check();
     ('#')
 };
-
-
-
-
 
 
 
@@ -123,14 +125,28 @@ var validateForm = (function(){
 
 
 
-
-var id = 1;
-
 function click_b(x,y){
-   
+   if (x=='1a'){
+       $('#1').hide();
+       $('#a').show(); 
+       $('#2').show(); 
+   }else
        $('#'+x).hide();
-       id=id+1;
        $('#'+y).show();
+}
+
+
+
+
+
+function payOption(id){
+    if (id==1){
+        $("#paypalOption").show();
+        $("#accountOption").hide();
+    }else{
+        $("#paypalOption").hide();
+        $("#accountOption").show();
+    }
 }
 
 
