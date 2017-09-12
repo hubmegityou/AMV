@@ -5,14 +5,9 @@ jQuery(document).ready(function($){
     };
 });
 
-
-
 window.onload = function(){
     check();
-    ('#')
 };
-
-
 
 //weryfikacja formularza drugiego (dane klienta)
 var validateForm = (function(){
@@ -61,7 +56,7 @@ var validateForm = (function(){
     };
     //sprawdzanie e-maila
     function testInputEmail(input) {
-        var reg = new RegExp('^[0-9a-zA-Z]+@[0-9a-zA-Z.-]+\.[a-zA-Z]{2,3}$', 'gi');
+        var reg = new RegExp('^[0-9a-zA-Z]+@[0-9a-zA-Z-]+\.[a-zA-Z]{2,3}$', 'gi');
         return check(input, reg);
     };
     //sprawdzanie numeru domu/mieszkania
@@ -69,7 +64,16 @@ var validateForm = (function(){
         var reg = new RegExp('^[1-9]+[0-9]*[a-zA-Z]{0,1}$', 'gi');
         return check(input, reg);
     };
-    
+    //sprawdzanie adresu (ulica + numer domu/mieszkania)
+    function testInputAddress(input) {
+        var reg = new RegExp('^[a-zA-Z]+\s[1-9]+[0-9]*[a-zA-Z]{0,1}\/{0,1}[1-9]+[0-9]*$', 'gi');
+        return check(input, reg);
+    };
+    //sprawdzanie numeru telefonu (z numerem kierunkowym)
+    function testInputPhone(input) {
+        var reg = new RegExp('^/+{0,1}[0-9]{7,11}$');
+        return check(input, reg);
+    };
     function prepareElements() {
         var elements = options.form.querySelectorAll('input[required], textarea[required], select[required]');
     
@@ -84,21 +88,29 @@ var validateForm = (function(){
                 var type = element.type.toUpperCase();
                 var name = element.name.toLowerCase();
                 //do r�nych typ�w p�l (kolejno: zwyk�y tekst, email, kod pocztowy, numer domu/mieszkania dodajemy funkcje sprawdzaj�ce poprawno��
-                if (name == 'fname' || name == 'lname' || name == 'city' || name == 'street') {
+                if (name == 'fname' || name == 'lname' || name == 'city') {
                     element.addEventListener('keyup', function() {testInputText(element);});
                     element.addEventListener('blur', function() {testInputText(element);});
                 }
-                if (name == 'email') {
+                else if (name == 'email') {
                     element.addEventListener('keyup', function() {testInputEmail(element);});
                     element.addEventListener('blur', function() {testInputEmail(element);});
                 } 
-                if (name == 'code') {
+                else if (name == 'code') {
                     element.addEventListener('keyup', function() {testInputCode(element);});
                     element.addEventListener('blur', function() {testInputCode(element);});
                 }            
-                if (name == 'number1' || name == 'number2') {
+                else if (name == 'number1' || name == 'number2') {
                     element.addEventListener('keyup', function() {testInputNumber(element);});
                     element.addEventListener('blur', function() {testInputNumber(element);});                
+                }
+                else if (name == 'address'){
+                    element.addEventListener('keyup', function() {testInputAddress(element);});
+                    element.addEventListener('blur', function() {testInputAddress(element);});                
+                }
+                else if (name == 'tnumber'){
+                    element.addEventListener('keyup', function() {testInputPhone(element);});
+                    element.addEventListener('blur', function() {testInputPhone(element);});                
                 }
             }
         });
@@ -120,10 +132,7 @@ var validateForm = (function(){
     return {
         init : init
     }
-});
-
-
-
+})();
 
 function click_b(x,y){
    if (x=='1a'){
@@ -136,21 +145,14 @@ function click_b(x,y){
 }
 
 function option(x, y, z){
-    
     $('#option'+x).show();
     $('#option'+y).hide();
-    $('#option'+z).hide();
-    
+    $('#option'+z).hide();    
 }
 
-
-
-
-function add_passenger(){
-    
+function add_passenger(){    
     $("#personal_data").clone().appendTo("#2");
 }
-
 
 function payOption(id){
     if (id==1){
@@ -162,20 +164,26 @@ function payOption(id){
     }
 }
 
-
-
+// sprawdzanie czy wszystkie checkboxy zaznczone
+function checkagreement(){
+    var c = $("[name='agreement']");
+    var num = 0;
+    for (i = 0; i < c.length; ++i){
+        if (c[i].checked) num++;
+    };
+    $("#next0").attr("disabled", (num >= 4) ? false : true);
+};
 
 // zaznaczanie i odznaczanie wszystkich checkbox�w
 function check(){
     $("#checkAll").change(function() {
-    $("input:checkbox").prop('checked', $(this).prop("checked"));
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+        checkagreement();
     });
 }
-
-
 
 //dodanie funkcji walidacji formularza do p�l zapyta� o dane osobowe po nazwie klasy
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector('.form');
     validateForm.init({form : form}); 
-    });
+});

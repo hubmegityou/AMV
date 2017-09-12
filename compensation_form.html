@@ -149,29 +149,29 @@
                 <legend>Dane pasażera</legend>
                     <div>
                     Imię<br>
-                    <input type="text" id="fname" required /></div><div>
+                    <input type="text" id="fname" name="fname" required /></div><div>
                     <br>Nazwisko<br>
-                    <input type="text" id="lname" required /></div><div>
-                    <br>Ulica<br>
-                    <input type="text" id="address" required /></div><div>
+                    <input type="text" id="lname" name="lname" required /></div><div>
+                    <br>Adres<br>
+                    <input type="text" id="address" name="address" required /></div><div>
                     <br>Kod pocztowy<br>
-                    <input type="text" id="code" required /></div><div>
+                    <input type="text" id="code" name="code" required /></div><div>
                     <br>Miejscowość<br>
-                    <input type="text" id="city" required /></div><div>
+                    <input type="text" id="city" name="city" required /></div><div>
                     <br>Kraj<br>
-                    <input type="text" id="country" required /></div>
+                    <input type="text" id="country" name="country" required /></div>
             </fieldset>
         </form>
-           <a href="" >dodaj pasażera</a>
+           <a href="javascript:add_passenger()" >dodaj pasażera</a>
         <br><br>
         <form class="form" id="contact">
             <fieldset>
             <legend>Dane kontaktowe</legend>
                 <div>
                 <br>Numer telefonu<br>
-                <input type="text" id="tnumber" required /></div><div>
+                <input type="text" id="tnumber" name="tnumber" required /></div><div>
                 <br>Email<br>
-                <input type="email" id="email" required /></div>  
+                <input type="email" id="email" name="email" required /></div>  
             </fieldset>
         </form>
         <br><br><br>
@@ -214,12 +214,12 @@
                 <legend> Zawarcie umowy</legend>
                     <div>
                         <input type="checkbox" id="checkAll" checked> Zaznacz wszystkie zgody</div><br><br><div>
-                        <input type="checkbox" name="agreement" required checked> Oświadczam, że stawiłem się na odprawę w określonym
+                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked> Oświadczam, że stawiłem się na odprawę w określonym
                             przez linie lotnicze czasie. Jeżeli czas nie był wskazany przez linie, obowiązuje czas 45 minut przed wylotem.</div><br><div>
-                        <input type="checkbox" name="agreement" required checked>Oświadczam, że stawiłem się na boarding w czasie wskazanym
+                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Oświadczam, że stawiłem się na boarding w czasie wskazanym
                             na karcie pokładowej.</div><br><div>       
-                        <input type="checkbox" name="agreement" required checked>Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.</div><br><div> 
-                        <input type="checkbox" name="agreement" required checked>Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane 
+                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.</div><br><div> 
+                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane 
                             sa prawdziwe.</div>
             </fieldset>
         </form>   
@@ -228,8 +228,8 @@
         ///////elektronicny podpis!!/////////
         <br><br><br>
 
-        <button type="button"  id="prev"  onclick="click_b(4,3)"> Wstecz</button>
-        <button type="button"  id="next" onclick="click_b(4,5)"> Dalej</button>
+        <button type="button"  id="prev"  onclick="click_b(4,3)" disabled> Wstecz</button>
+        <button type="button"  id="next0" onclick="click_b(4,5)" disabled> Dalej</button>
 
            <br><br>
 </div>
