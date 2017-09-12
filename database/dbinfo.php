@@ -23,19 +23,20 @@
             $db_airports_longitude = "longitude";
          
             
-       //informacje o pasa¿erach    
+       //informacje o pasaï¿½erach    
         $db_passengers_tab = "passengers_details";
             $db_passengers_id= "passenger_ID";
-            $db_passengers_firstname = "first_name"; //imiê
+            $db_passengers_firstname = "first_name"; //imiï¿½
             $db_passengers_lastname = "last_name";  //nazwisko
             $db_passengers_address = "address"; //adres
             $db_passengers_zipcode = "zip_code"; //kod pocztowy
             $db_passengers_city = "city";   //miasto
-            $db_passengers_country = "country";  //pañstwo
+            $db_passengers_country = "country";  //paï¿½stwo
             $db_passengers_email = "email";  //email
             $db_passengers_telnumber = "tel_number"; //numer telefonu
             $db_passengers_passport = "passport"; //paszport
-            $db_passengers_idcard = "IDcard"; // dowód osobisty
+            $db_passengers_idcard1 = "IDcard1"; // dowï¿½d osobisty 1 strona
+            $db_passengers_idcard2 = "IDcard2"; // dowï¿½d osobisty 2 strona
             
             
            
@@ -43,9 +44,10 @@
             $db_connect_id = "connect_ID";
             $db_connect_passenger_id = "passenger_ID";
             $db_connect_trip_id = "trip_ID";
-            $db_connect_boarding = "boarding_pass/res"; // karta pok³adowa lub rezerwacja
+            $db_connect_boarding = "boarding_pass"; // karta pokï¿½adowa 
+            $db_connect_reservation = "reservation"; //rezerwacja
             
-        //informacje o grupie lotów
+        //informacje o grupie lotï¿½w
         $db_trip_tab = "trip";
             $db_trip_id = "trip_ID";
             $db_trip_flight_id= "flight_info_ID";
@@ -54,7 +56,7 @@
             
 
             
-         //grupy lotów   
+         //grupy lotï¿½w   
         $db_flight_info_tab = "flight_info";
             $db_flight_info_id= "flight_info_ID";
             $db_flight_info_applicationid = "application_ID";
@@ -64,20 +66,20 @@
             
          
             
-       //informacje o zg³oszeniu
+       //informacje o zgï¿½oszeniu
         $db_application_tab = "application";
             $db_application_id = "application_ID";
-            $db_application_incident = "incident"; // co sie sta³o
-            $db_application_cause = "cause"; //powód
-            $db_application_delay = "delay"; // opóŸnienie
-            $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwo³aniu lotu
-            $db_application_resignation = "resignation"; // czy klient zrezygnowa³ z lotu w zamian za korzyœci
-            $db_application_permission = "permission "; // czy by³a zgoda na zmianê planu podró¿y  
+            $db_application_incident = "incident"; // co sie staï¿½o
+            $db_application_cause = "cause"; //powï¿½d
+            $db_application_delay = "delay"; // opï¿½nienie
+            $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwoï¿½aniu lotu
+            $db_application_resignation = "resignation"; // czy klient zrezygnowaï¿½ z lotu w zamian za korzyï¿½ci
+            $db_application_permission = "permission "; // czy byï¿½a zgoda na zmianï¿½ planu podrï¿½y  
             $db_application_compensation_amout = "compensation_amount";
             $db_application_compensationid = "compensation_ID";
             
        
-        //informacje o zg³oszonych lotach
+        //informacje o zgï¿½oszonych lotach
         $db_flight_tab = "flight";
             $db_flight_id = "flight_ID";
             $db_flight_departureid = "departure_ID"; //odlot
@@ -88,11 +90,11 @@
         
             
             
-        //informacje o sposobie wyp³aty odszkodowania
+        //informacje o sposobie wypï¿½aty odszkodowania
         $db_compensation_tab = "compensation";
             $db_compensation_id = "compensation_ID";
             $db_compensation_type = "type";  // express czy standard
-            $db_compensation_payment = "payment"; // sposób wyp³aty
+            $db_compensation_payment = "payment"; // sposï¿½b wypï¿½aty
             $db_compensation_currency = "currency"; // waluta
             $db_compensation_account = "account"; // numer konta/ PayPal
 ?>  
