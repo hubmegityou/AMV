@@ -41,10 +41,10 @@
         <fieldset>
             <legend>Jaki był powód opóźnienia?</legend>
                 <input type="radio" name="question2">problemy techniczne<br>
-                <input type="radio" name="question2">złe warunki pogodowe<br>
+                <input type="radio" onclick="end(1)" name="question2">złe warunki pogodowe<br>
                 <input type="radio" name="question2">wpływ innych lotów<br>
                 <input type="radio" name="question2">problemy portu lotniczego<br>
-                <input type="radio" name="question2">strajk<br>
+                <input type="radio" onclick="end(2)" name="question2">strajk<br>
                 <input type="radio" name="question2">nie podano powodu<br>
                 <input type="radio" name="question2">nie wiem<br>
         </fieldset>
@@ -53,8 +53,8 @@
     <br><br>
 <fieldset>
     <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-         <input type="radio" name="question3">mniej niż 2h<br>
-         <input type="radio" name="question3">2-3 godziny<br>
+         <input type="radio" onclick="end(3)" name="question3">mniej niż 2h<br>
+         <input type="radio" onclick="end(3)" name="question3">2-3 godziny<br>
          <input type="radio" name="question3">3-4 godziny<br>
          <input type="radio" name="question3">powyżej 4 godzin<br>
          <input type="radio" name="question3">nie wiem<br> 
@@ -66,25 +66,26 @@
 <fieldset>
     <legend>Kiedy linia lotnicza ponformowała o odwołaniu lotu?</legend>
          <input type="radio" name="question4">mniej niż 14 dni<br>
-         <input type="radio" name="question4">więcej niż 14 dni<br>
+         <input type="radio" onclick="end(4)" name="question4">więcej niż 14 dni<br> 
 </fieldset>
+ 
  
  <br><br>
 <fieldset>
     <legend>Jaki był powód odwołania lotu?</legend>
          <input type="radio" name="question5">problemy techniczne<br>
-         <input type="radio" name="question5">złe warunki pogodowe<br>
+         <input type="radio" onclick="end(1)" name="question5">złe warunki pogodowe<br>
          <input type="radio" name="question5">wpływ innych lotów<br>
          <input type="radio" name="question5">problemy portu lotniczego<br>
-         <input type="radio" name="question5">strajk<br>
+         <input type="radio" onclick="end(2)" name="question5">strajk<br>
          <input type="radio" name="question5">nie podano powodu<br>
          <input type="radio" name="question5">nie wiem<br>
 </fieldset>
  <br><br>
 <fieldset>
     <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-         <input type="radio" name="question6">mniej niż 2h<br>
-         <input type="radio" name="question6">2-3 godziny<br>
+         <input type="radio" onclick="end(3)" name="question6">mniej niż 2h<br>
+         <input type="radio" onclick="end(3)" name="question6">2-3 godziny<br>
          <input type="radio" name="question6">3-4 godziny<br>
          <input type="radio" name="question6">powyżej 4 godzin<br>
          <input type="radio" name="question6">nie wiem<br> 
@@ -93,36 +94,16 @@
 <!--nie zdazył-->
 <div id="option3" hidden>
  <br><br>
-
- <fieldset>
-    <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-         <input type="radio" name="question7">mniej niż 2h<br>
-         <input type="radio" name="question7">2-3 godziny<br>
-         <input type="radio" name="question7">3-4 godziny<br>
-         <input type="radio" name="question7">powyżej 4 godzin<br>
-         <input type="radio" name="question7">nie wiem<br> 
-</fieldset>
- 
- <br><br>
-
- 
  
  <fieldset>
     <legend>czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?</legend>
-         <input type="radio" name="question8">tak<br>
-         <input type="radio" name="question8">nie<br> 
+         <input type="radio" onclick="end(5)" name="question7">tak<br>
+         <input type="radio" name="question7">nie<br> 
 </fieldset>
  
 
 
     </div>
-                <fieldset class="class"  id="end" hidden>
-                    nie dostałeś odszkodowania ;(
-                </fieldset>
-
-                <fieldset class="class"  id="finish" hidden>
-                    wygrałeś!!!!!!
-                </fieldset>
         
     </form>        
     <br><br><br>
@@ -130,8 +111,6 @@
         <fieldset id="flight_data_form">
             <legend> Dane lotu</legend>
             <div>
-            <br> Nazwa linii lotniczej<br>
-                <input type="text" name="airline" required /></div><div>
                 <br>Numer lotu<br>
                 <input type="text" name="flight_num" required /></div><div>
                 <br>Data lotu<br>
