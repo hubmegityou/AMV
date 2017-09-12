@@ -5,6 +5,17 @@ jQuery(document).ready(function($){
     };
 });
 
+function end(reason){
+    switch(reason){
+        case 1: alert("Twój lot był opóźniony z powodu złych warunków atmosferycznych, co wyłącza odpowiedzialność przewoźnika a tym samym możliwość uzyskania odszkodowania.");
+            break;
+        case 2: alert("Twój lot był opóźniony z powodu strajku, co wyłącza odpowiedzialność przewoźnika a tym samym możliwość uzyskania odszkodowania.");
+            break;
+        case 3: alert("Twój lot był opóźniony mniej niż 3 godziny, co wyłącza odpowiedzialność przewoźnika a tym samym możliwość uzyskania odszkodowania.");
+            break
+    }
+}
+
 window.onload = function(){
     check();
 };
