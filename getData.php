@@ -21,7 +21,7 @@ header('Content-Type: application/json');
 
 if ($_GET['type'] == "airport"){
     //$table = $APIData -> findAirport($_GET['term']);
-    $table = getAirports();
+    $table = getAirports($connection);
 }else{
     //$table = $APIData -> findAirline($_GET['term']);
 }
@@ -30,7 +30,7 @@ echo json_encode($table);
 
 
 
-function getAirports(){ 
+function getAirports($connection){ 
     $sql = "SELECT * FROM $db_airports_tab WHERE
                 $db_airports_id LIKE @term 
                 OR $db_airports_ICAO LIKE @term
