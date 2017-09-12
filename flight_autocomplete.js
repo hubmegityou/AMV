@@ -1,7 +1,7 @@
 $(document).ready(function(){   
     var AirportsList;
     var AirlinesList;
-    cacheData();
+    //cacheData();
     
     function cacheData(){
 
@@ -47,12 +47,16 @@ $(document).ready(function(){
     };
     function addHandlers(){
         $("[name=departure]").autocomplete({
-            source: function(request,response){search(request, response);}});
+            source: airport});
 
         $("[name=waypoint]").autocomplete({
-            source: function(request,response){search(request, response);}});
+            source: airport});
+        
         $("[name=destination]").autocomplete({
-            source: function(request,response){search(request, response);}});
+            source: airport});
+            
+            
+            //source: function(request,response){search(request, response);}});
         $("[name=airlines]").autocomplete(airlines);
     };
 
