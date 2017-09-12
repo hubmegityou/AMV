@@ -145,6 +145,13 @@ function option(x, y, z){
 
 
 
+
+function add_passenger(){
+    
+    $("#personal_data").clone().appendTo("#2");
+}
+
+
 function payOption(id){
     if (id==1){
         $("#paypalOption").show();
