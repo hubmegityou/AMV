@@ -12,7 +12,11 @@ function end(reason){
         case 2: alert("Twój lot był opóźniony z powodu strajku, co wyłącza odpowiedzialność przewoźnika a tym samym możliwość uzyskania odszkodowania.");
             break;
         case 3: alert("Twój lot był opóźniony mniej niż 3 godziny, co wyłącza odpowiedzialność przewoźnika a tym samym możliwość uzyskania odszkodowania.");
-            break
+            break;
+        case 4: alert("Zostałeś poinformowany o odwołaniu lotu wcześniej niż 14 dni przed wylotem, co wyłącza odpowiedzialność przewoźnika a tym samym możliwość uzyskania odszkodowania.");
+            break;
+        case 5: alert("Zgodziłeś się na alternatywną formę rekompensaty, co wyłącza odpowiedzialność przewoźnika a tym samym możliwość uzyskania odszkodowania.");
+            break;    
     }
 }
 
