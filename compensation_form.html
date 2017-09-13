@@ -84,8 +84,8 @@
  <br><br>
 <fieldset>
     <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-         <input type="radio" onclick="end(3)" name="question6">mniej niż 2h<br>
-         <input type="radio" onclick="end(3)" name="question6">2-3 godziny<br>
+         <input type="radio"  name="question6">mniej niż 2h<br>
+         <input type="radio"  name="question6">2-3 godziny<br>
          <input type="radio" name="question6">3-4 godziny<br>
          <input type="radio" name="question6">powyżej 4 godzin<br>
          <input type="radio" name="question6">nie wiem<br> 
@@ -149,6 +149,7 @@
                     <input type="text" id="city" name="city" required /></div><div>
                     <br>Kraj<br>
                     <input type="text" id="country" name="country" required /></div>
+                    <input type="hidden" id="hd" value='1'/>
             </fieldset>
         </form>
            <a href="javascript:add_passenger()" >dodaj pasażera</a>

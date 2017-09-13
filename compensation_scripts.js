@@ -165,9 +165,6 @@ function option(x, y, z){
     $('#option'+z).hide();    
 }
 
-function add_passenger(){    
-    $("#personal_data").clone().appendTo("#2");
-}
 
 function payOption(id){
     if (id==1){

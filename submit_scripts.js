@@ -1,23 +1,35 @@
-
-
-function submitPersonalData(){
-    var fname = $("#fname").val();
+function add_passenger(){    
+   
+   var fname = $("#fname").val();
     var lname = $("#lname").val();
     var address = $("#address").val();
     var code = $("#code").val();
     var city = $("#city").val();
     var country = $("#country").val();
-    var tnumber = $("#tnumber").val();
-    var email = $("#email").val();
-     
-      $.ajax( // wywo≥anie ajaxa
+    var val= $('#hd').val();
+    
+
+      $.ajax( // wywo≈Çanie ajaxa
       { 
          type: "POST", 
          url: "submit_personaldata.php",
-         data: { fname: fname, lname: lname, address:  address, code: code, city: city, country: country, tnumber: tnumber, email: email }, // Dane przesy≥ane $_POST
+         data: { val:val, fname: fname, lname: lname, address:  address, code: code, city: city, country: country }, // Dane przesy≈Çane $_POST
           cache: false,
          success: function(m) 
-         {  
-         }    
-        })
+         {    
+            val++; 
+            document.getElementById('hd').value=val;
+            $("#fname").val('');
+            $("#lname").val('');
+            $("#address").val('');
+            $("#code").val('');
+            $("#city").val('');
+            $("#country").val('');
+            
+        }        
+      })
+   
 }
+
+
+
