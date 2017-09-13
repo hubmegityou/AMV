@@ -26,10 +26,33 @@ function add_passenger(){
             $("#city").val('');
             $("#country").val('');
             
+                     
+           $('#pas').append(val+'. '+fname+' '+lname+"<br>"+ address +'<br>'+code+' '+city+', '+country+"<br><br>");
+            
+            
+            
         }        
       })
    
 }
 
 
+function add_contact(){
+    
+    var tnumber = $("#tnumber").val();
+    var email = $("#email").val();
+    
+
+      $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_contactdata.php",
+         data: { tnumber:tnumber, email:email}, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {             
+           $('#con').append("kontakt: <br>"+tnumber+"<br>"+ email);      
+        }        
+      }) 
+}
 

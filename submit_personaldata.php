@@ -9,7 +9,6 @@ $city = $_POST['city'];
 $country = $_POST['country'];
 $val=  $_POST['val'];
 
-echo $val; 
 require_once "database/dbinfo.php";
 require_once "database/connect.php";
     
@@ -35,18 +34,3 @@ if ($val=='1'){
     $sessionid= 'id'.$val;
     $_SESSION["$sessionid"] = $connection->insert_id;  
 }
-                     
-    
-            
-
-
-
-
-
-
-
-
-
-
-
-
