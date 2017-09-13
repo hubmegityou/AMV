@@ -2,6 +2,7 @@ $(document).ready(function(){
     var AirportsList;
     var AirlinesList;
     //cacheData();
+    addHandlers();
     
     function cacheData(){
 
@@ -47,7 +48,7 @@ $(document).ready(function(){
     };
     function addHandlers(){
         $("[name=departure]").autocomplete({
-            source: airport});
+            source: "getData.php?type=airport"});
 
         $("[name=waypoint]").autocomplete({
             source: airport});
@@ -70,7 +71,7 @@ $(document).ready(function(){
         if( $(this).val() == '' ) return;
         $(this).removeClass("last");
         $(this).clone().val('').addClass("last").appendTo("#waypoints").autocomplete({
-            source: function(request,response){search(request, response);}});       
+            source: airport});       
     }
 
 
