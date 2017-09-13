@@ -39,7 +39,6 @@
             $db_passengers_email = "email";  //email
             $db_passengers_telnumber = "tel_number"; //numer telefonu
             $db_passengers_passport = "passport"; //paszport
-            $db_passengers_idcard = "IDcard"; // dow�d osobisty
             $db_passengers_idcard1 = "IDcard1"; // dow�d osobisty 1 strona
             $db_passengers_idcard2 = "IDcard2"; // dow�d osobisty 2 strona
             
@@ -49,7 +48,6 @@
             $db_connect_id = "connect_ID";
             $db_connect_passenger_id = "passenger_ID";
             $db_connect_trip_id = "trip_ID";
-            $db_connect_boarding = "boarding_pass/res"; // karta pok�adowa lub rezerwacja
             $db_connect_boarding = "boarding_pass"; // karta pok�adowa 
             $db_connect_reservation = "reservation"; //rezerwacja
             
@@ -59,6 +57,7 @@
             $db_trip_flight_id= "flight_info_ID";
             $db_trip_delay = "delay";
             $db_trip_distance = "distance";
+            $db_trip_sum = "sum";
             
 
             
@@ -81,7 +80,6 @@
             $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwo�aniu lotu
             $db_application_resignation = "resignation"; // czy klient zrezygnowa� z lotu w zamian za korzy�ci
             $db_application_permission = "permission "; // czy by�a zgoda na zmian� planu podr�y  
-            $db_application_compensation_amout = "compensation_amount";
             $db_application_compensationid = "compensation_ID";
             
        
