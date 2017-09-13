@@ -56,3 +56,49 @@ function add_contact(){
       }) 
 }
 
+
+
+function add_compensation(num){
+    
+     $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_compensation.php",
+         data: { num: num }, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {     
+        }       
+      }) 
+}
+
+
+
+
+function add_compensation2(){
+    
+     var val = parseInt(document.querySelector('input[name="radio"]:checked').value);
+     var account;
+     var select;
+      
+    if(val==1){
+       account = $("#account_num").val(); 
+      select = "";
+    }else{
+       account = $("#account_num2").val();  
+       select = document.getElementById("select").value;
+    }
+    
+     $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_compensation2.php",
+         data: { val: val, account:account, select:select }, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {     
+        }       
+      })
+      
+     
+}
