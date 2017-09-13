@@ -40,6 +40,8 @@
             $db_passengers_telnumber = "tel_number"; //numer telefonu
             $db_passengers_passport = "passport"; //paszport
             $db_passengers_idcard = "IDcard"; // dow�d osobisty
+            $db_passengers_idcard1 = "IDcard1"; // dow�d osobisty 1 strona
+            $db_passengers_idcard2 = "IDcard2"; // dow�d osobisty 2 strona
             
             
            
@@ -48,6 +50,8 @@
             $db_connect_passenger_id = "passenger_ID";
             $db_connect_trip_id = "trip_ID";
             $db_connect_boarding = "boarding_pass/res"; // karta pok�adowa lub rezerwacja
+            $db_connect_boarding = "boarding_pass"; // karta pok�adowa 
+            $db_connect_reservation = "reservation"; //rezerwacja
             
         //informacje o grupie lot�w
         $db_trip_tab = "trip";

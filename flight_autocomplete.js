@@ -2,6 +2,7 @@ $(document).ready(function(){
     var AirportsList;
     var AirlinesList;
     //cacheData();
+    addHandlers();
     
     function cacheData(){
 
@@ -32,6 +33,7 @@ $(document).ready(function(){
     var airport = {
         source: "getData.php?type=airport"
     };
+    var link = "getData.php?type=airport";
     var airlines = {
         source: "getData.php?type=airline"
     };    
@@ -47,13 +49,13 @@ $(document).ready(function(){
     };
     function addHandlers(){
         $("[name=departure]").autocomplete({
-            source: airport});
+            source: "getData.php?type=airport"});
 
         $("[name=waypoint]").autocomplete({
-            source: airport});
+            source: "getData.php?type=airport"});
         
         $("[name=destination]").autocomplete({
-            source: airport});
+            source: "getData.php?type=airport"});
             
             
             //source: function(request,response){search(request, response);}});
@@ -70,7 +72,7 @@ $(document).ready(function(){
         if( $(this).val() == '' ) return;
         $(this).removeClass("last");
         $(this).clone().val('').addClass("last").appendTo("#waypoints").autocomplete({
-            source: function(request,response){search(request, response);}});       
+            source: "getData.php?type=airport"});       
     }
 
 

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $email = $_POST['email'];
 $tel = $_POST['tel'];
 $fname = $_POST['first_name'];
@@ -14,7 +16,36 @@ $sql = "INSERT INTO $db_passengers_tab($db_passengers_firstname, $db_passengers_
 VALUES ('$fname', '$lname', '$tel', '$email')";
 $connection->query($sql);
 
-session_start();
-$_SESSION['id'] = $connection->insert_id;
+$_SESSION['id'] = $connection->insert_id; ///id passenger
+$id=$_SESSION['id'];
+
+
+
+$sql = "INSERT INTO $db_trip_tab()
+VALUES ()";
+$connection->query($sql);
+
+$_SESSION['trip'] = $connection->insert_id; ///id trip
+$trip=$_SESSION['trip'];
+
+
+
+
+$sql = "INSERT INTO $db_connect_tab(   $db_connect_passenger_id, $db_connect_trip_id)
+VALUES ($id, $trip)";
+$connection->query($sql);
+
+$_SESSION['connect'] = $connection->insert_id; ///id connect
+
+
+
+$sql = "INSERT INTO $db_compensation_tab( )
+VALUES ()";
+$connection->query($sql);
+
+$_SESSION['compensation'] = $connection->insert_id; ///id connect
+
+
+
 
 header('Location: compensation_form.html');

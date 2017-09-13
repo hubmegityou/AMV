@@ -84,8 +84,8 @@
  <br><br>
 <fieldset>
     <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-         <input type="radio" onclick="end(3)" name="question6">mniej niż 2h<br>
-         <input type="radio" onclick="end(3)" name="question6">2-3 godziny<br>
+         <input type="radio"  name="question6">mniej niż 2h<br>
+         <input type="radio"  name="question6">2-3 godziny<br>
          <input type="radio" name="question6">3-4 godziny<br>
          <input type="radio" name="question6">powyżej 4 godzin<br>
          <input type="radio" name="question6">nie wiem<br> 
@@ -127,8 +127,12 @@
 <div id="a" hidden>   
         <button onClick="op('#poka');">Szczegóły</button>
         <div id="poka" style="display: none;">
-        tutaj cośtam będzie 
+            <div id='fl'> jakies dane lotu sratu tatu</div>
+            <div id='pas'></div>
+            <div id='con'></div>
+            <div id='sum'>odszkodowanie: miliony monet   </div>
         </div>
+        
 </div>    
     <br><br><br> 
     
@@ -149,10 +153,12 @@
                     <input type="text" id="city" name="city" required /></div><div>
                     <br>Kraj<br>
                     <input type="text" id="country" name="country" required /></div>
+                    <input type="hidden" id="hd" value='1'/>
             </fieldset>
         </form>
            <a href="javascript:add_passenger()" >dodaj pasażera</a>
         <br><br>
+        
         <form class="form" id="contact">
             <fieldset>
             <legend>Dane kontaktowe</legend>
@@ -165,14 +171,22 @@
         </form>
         <br><br><br>
         <button type="button"  id="prev"  onclick="click_b(2,1)"> Wstecz</button>
-        <button type="button"  id="next" onclick="click_b(2,3)" > Dalej</button>
+        <button type="button"  id="next" onclick="click_b(2,3); add_contact()" > Dalej</button>
         <br><br>
 </div>
 <div id='3' hidden>  
 
         <form id="documents" >
+            
+            
+             <fieldset>
+                <legend>Karta pokładowa</legend>
+                    <div>
+                    <br>Dodaj dokument<br>
+                    <input  type="file" name="file1"  id="file1" accept="image/*" ></div>
+            </fieldset> 
             <fieldset>
-                <legend>Rezerwacja/karta pokładowa</legend>
+                <legend>Rezerwacja</legend>
                     <div>
                     <br>Dodaj dokument<br>
                     <input  type="file" name="file1"  id="file1" accept="image/*" ></div>
@@ -186,8 +200,11 @@
             <fieldset>
                 <legend> Dowód osobisty</legend>
                     <div>
-                    <br>Dodaj dokument<br>
+                    <br>Dodaj przód dokumentu<br>
                     <input  type="file" name="file3"  id="file3" accept="image/*"></div>
+                    <div>
+                    <br>Dodaj tył dokumentu<br>
+                    <input  type="file" name="file4"  id="file4" accept="image/*"></div>
             </fieldset> 
         </form>
 
@@ -218,7 +235,7 @@
         <br><br><br>
 
         <button type="button"  id="prev"  onclick="click_b(4,3)" disabled> Wstecz</button>
-        <button type="button"  id="next0" onclick="click_b(4,5)" disabled> Dalej</button>
+        <button type="button"  id="next0" onclick="click_b(4,5)" > Dalej</button>
 
            <br><br>
 </div>
@@ -227,9 +244,9 @@
         <fieldset>
             <legend> Wypłata odszkodowania</legend>
                 <div>
-                <button type="button" id="express" > EXPRESS (do 24h) <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
+                <button type="button" id="express" onclick='add_compensation(1)' > EXPRESS (do 24h) <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
                     przyjęcia poprawnego zgłoszenia.</button></div><br><br><div>
-                <button type="button" id="standard" > STANDARD <br><br>Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji
+                <button type="button" id="standard" onclick='add_compensation(2)'> STANDARD <br><br>Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji
                     roszczenia przez linię lotniczą <br> i otrzymaniu od niej odszkodowania.</button> </div>
         </fieldset>  
     </form> 
@@ -263,6 +280,8 @@
                 </div>
     </form>  
         <br><br><br>
+        <button type="button"  id="prev"  onclick="click_b(5,4)" > Wstecz</button>
+        <button type="button"  id="next" onclick="add_compensation2()" > Dalej</button>
 </div>
 </body>
 </html>
