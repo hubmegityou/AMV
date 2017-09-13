@@ -49,8 +49,7 @@ function getAirports($connection, $term){
 
     $result = array();
     foreach ($data as $object){ 
-            array_push($result, array("label" => ($object['city_name']." ".$object['airport_name']." ".$object['country_name']), "value" => $object['ICAO_code']) );
-         
+            array_push($result, array("label" => ($object[$db_airports_city]." ".$object[$db_airports_name]." ".$object[$db_airports_country]), "value" => $object[$db_airports_ICAO]? $object[$db_airports_ICAO] : $object[$db_airports_IATA] ) );
     }
     return $result;
 }

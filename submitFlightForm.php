@@ -1,7 +1,8 @@
 <?php
 
+session_start();
 require 'APIData.php';
-require'GreatCircle.php';
+require 'GreatCircle.php';
 
 // pobranie danych wpisanych przez uzytkownika-> miejsce wylotu 
 $departure=explode(',  ', $_POST['departure']);
@@ -55,5 +56,5 @@ if ($departureRegion!='EUR' && $arrivalRegion!='EUR'){
     
 }else{
     //weryfikacja pozytywna- obliczanie odleglosci miedzy lotniskami
-   $distance= GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);      
+   $distance = GreatCircle::distance($departureData['latitude'], $departureData['longitude'],$arrivalData['latitude'],$arrivalData['longitude']);      
 }

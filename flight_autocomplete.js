@@ -48,15 +48,8 @@ $(document).ready(function(){
         response(tab);    
     };
     function addHandlers(){
-        $("[name=departure]").autocomplete({
+        $("[name=departure], [name=waypoint], [name=destination]").autocomplete({
             source: "getData.php?type=airport"});
-
-        $("[name=waypoint]").autocomplete({
-            source: "getData.php?type=airport"});
-        
-        $("[name=destination]").autocomplete({
-            source: "getData.php?type=airport"});
-            
             
             //source: function(request,response){search(request, response);}});
         $("[name=airlines]").autocomplete(airlines);

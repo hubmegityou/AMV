@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2017 at 01:25 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Czas generowania: 13 Wrz 2017, 22:51
+-- Wersja serwera: 10.1.22-MariaDB
+-- Wersja PHP: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,17 +19,19 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `m1147_mvp`
+-- Baza danych: `m1147_mvp`
 --
+CREATE DATABASE IF NOT EXISTS `m1147_mvp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `m1147_mvp`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `airlines`
+-- Struktura tabeli dla tabeli `airlines`
 --
 
 CREATE TABLE `airlines` (
-  `id` int(11) NOT NULL,
+  `airline_ID` int(11) NOT NULL,
   `operator_name` varchar(102) DEFAULT NULL,
   `IATA_code` varchar(3) DEFAULT NULL,
   `country_code` varchar(3) DEFAULT NULL,
@@ -36,10 +40,10 @@ CREATE TABLE `airlines` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `airlines`
+-- Zrzut danych tabeli `airlines`
 --
 
-INSERT INTO `airlines` (`id`, `operator_name`, `IATA_code`, `country_code`, `country_name`, `region`) VALUES
+INSERT INTO `airlines` (`airline_ID`, `operator_name`, `IATA_code`, `country_code`, `country_name`, `region`) VALUES
 (1, 'AEROFLOT - RUSSIAN AIRLINES', 'AFL', 'RUS', 'Russian Federation', 'EUR'),
 (2, 'AHK AIR HONG KONG LIMITED', 'AHK', 'CHN', 'China', 'ASIA'),
 (3, 'INSEL AIR INTERNATIONAL', 'NLU', 'NLD', 'Netherlands', 'EUR'),
@@ -470,7 +474,7 @@ INSERT INTO `airlines` (`id`, `operator_name`, `IATA_code`, `country_code`, `cou
 -- --------------------------------------------------------
 
 --
--- Table structure for table `airports`
+-- Struktura tabeli dla tabeli `airports`
 --
 
 CREATE TABLE `airports` (
@@ -490,7 +494,7 @@ CREATE TABLE `airports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `airports`
+-- Zrzut danych tabeli `airports`
 --
 
 INSERT INTO `airports` (`ID`, `name`, `city`, `country`, `IATA`, `ICAO`, `latitude`, `longitude`, `altitude`, `timezone`, `dst`, `country_code`, `region`) VALUES
@@ -6277,11 +6281,11 @@ INSERT INTO `airports` (`ID`, `name`, `city`, `country`, `IATA`, `ICAO`, `latitu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `application`
+-- Struktura tabeli dla tabeli `application`
 --
 
 CREATE TABLE `application` (
-  `id` int(11) NOT NULL,
+  `application_ID` int(11) NOT NULL,
   `incident` int(11) NOT NULL,
   `cause` int(11) NOT NULL,
   `delay` int(11) NOT NULL,
@@ -6294,11 +6298,11 @@ CREATE TABLE `application` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `compensation`
+-- Struktura tabeli dla tabeli `compensation`
 --
 
 CREATE TABLE `compensation` (
-  `id` int(11) NOT NULL,
+  `compensation_ID` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `payment` text NOT NULL,
   `currency` text NOT NULL,
@@ -6308,11 +6312,11 @@ CREATE TABLE `compensation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `connect`
+-- Struktura tabeli dla tabeli `connect`
 --
 
 CREATE TABLE `connect` (
-  `id` int(11) NOT NULL,
+  `connect_ID` int(11) NOT NULL,
   `passenger_ID` int(11) NOT NULL,
   `trip_ID` int(11) NOT NULL,
   `boarding_pass` text NOT NULL,
@@ -6322,39 +6326,39 @@ CREATE TABLE `connect` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flight`
+-- Struktura tabeli dla tabeli `flight`
 --
 
 CREATE TABLE `flight` (
-  `id` int(11) NOT NULL,
+  `flight_ID` int(11) NOT NULL,
   `departure_ID` int(11) NOT NULL,
   `arrival_ID` int(11) NOT NULL,
   `flight_number` text NOT NULL,
   `flight_date` date NOT NULL,
-  `airline_ID` int(11) NOT NULL,
-  `distance` int(11) NOT NULL
+  `airline_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flight_info`
+-- Struktura tabeli dla tabeli `flight_info`
 --
 
 CREATE TABLE `flight_info` (
-  `id` int(11) NOT NULL,
+  `flight_info_ID` int(11) NOT NULL,
   `application_ID` int(11) NOT NULL,
+  `flight_ID` int(11) NOT NULL,
   `next_flight_info_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passengers_details`
+-- Struktura tabeli dla tabeli `passengers_details`
 --
 
 CREATE TABLE `passengers_details` (
-  `id` int(11) NOT NULL,
+  `passenger_ID` int(11) NOT NULL,
   `first_name` text CHARACTER SET latin1 NOT NULL,
   `last_name` text CHARACTER SET latin1 NOT NULL,
   `address` text CHARACTER SET latin1 NOT NULL,
@@ -6371,26 +6375,26 @@ CREATE TABLE `passengers_details` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trip`
+-- Struktura tabeli dla tabeli `trip`
 --
 
 CREATE TABLE `trip` (
-  `id` int(11) NOT NULL,
+  `trip_ID` int(11) NOT NULL,
   `flight_info_ID` int(11) NOT NULL,
   `delay` int(11) NOT NULL,
-  `sum` float NOT NULL,
-  `string_id` varchar(25) NOT NULL
+  `distance` float NOT NULL,
+  `sum` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Indeksy dla zrzutów tabel
 --
 
 --
 -- Indexes for table `airlines`
 --
 ALTER TABLE `airlines`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`airline_ID`);
 
 --
 -- Indexes for table `airports`
@@ -6402,94 +6406,94 @@ ALTER TABLE `airports`
 -- Indexes for table `application`
 --
 ALTER TABLE `application`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`application_ID`);
 
 --
 -- Indexes for table `compensation`
 --
 ALTER TABLE `compensation`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`compensation_ID`);
 
 --
 -- Indexes for table `connect`
 --
 ALTER TABLE `connect`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`connect_ID`);
 
 --
 -- Indexes for table `flight`
 --
 ALTER TABLE `flight`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`flight_ID`);
 
 --
 -- Indexes for table `flight_info`
 --
 ALTER TABLE `flight_info`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`flight_info_ID`);
 
 --
 -- Indexes for table `passengers_details`
 --
 ALTER TABLE `passengers_details`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`passenger_ID`);
 
 --
 -- Indexes for table `trip`
 --
 ALTER TABLE `trip`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `string_id` (`string_id`);
+  ADD PRIMARY KEY (`trip_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `airlines`
+-- AUTO_INCREMENT dla tabeli `airlines`
 --
 ALTER TABLE `airlines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=427;
+  MODIFY `airline_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=427;
 --
--- AUTO_INCREMENT for table `airports`
+-- AUTO_INCREMENT dla tabeli `airports`
 --
 ALTER TABLE `airports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5764;
 --
--- AUTO_INCREMENT for table `application`
+-- AUTO_INCREMENT dla tabeli `application`
 --
 ALTER TABLE `application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `application_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `compensation`
+-- AUTO_INCREMENT dla tabeli `compensation`
 --
 ALTER TABLE `compensation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `compensation_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `connect`
+-- AUTO_INCREMENT dla tabeli `connect`
 --
 ALTER TABLE `connect`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `connect_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `flight`
+-- AUTO_INCREMENT dla tabeli `flight`
 --
 ALTER TABLE `flight`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `flight_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `flight_info`
+-- AUTO_INCREMENT dla tabeli `flight_info`
 --
 ALTER TABLE `flight_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `flight_info_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `passengers_details`
+-- AUTO_INCREMENT dla tabeli `passengers_details`
 --
 ALTER TABLE `passengers_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `passenger_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `trip`
+-- AUTO_INCREMENT dla tabeli `trip`
 --
 ALTER TABLE `trip`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `trip_ID` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
