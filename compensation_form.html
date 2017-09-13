@@ -235,7 +235,7 @@
         <br><br><br>
 
         <button type="button"  id="prev"  onclick="click_b(4,3)" disabled> Wstecz</button>
-        <button type="button"  id="next0" onclick="click_b(4,5)" disabled> Dalej</button>
+        <button type="button"  id="next0" onclick="click_b(4,5)" > Dalej</button>
 
            <br><br>
 </div>
@@ -244,9 +244,9 @@
         <fieldset>
             <legend> Wypłata odszkodowania</legend>
                 <div>
-                <button type="button" id="express" > EXPRESS (do 24h) <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
+                <button type="button" id="express" onclick='add_compensation(1)' > EXPRESS (do 24h) <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
                     przyjęcia poprawnego zgłoszenia.</button></div><br><br><div>
-                <button type="button" id="standard" > STANDARD <br><br>Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji
+                <button type="button" id="standard" onclick='add_compensation(2)'> STANDARD <br><br>Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji
                     roszczenia przez linię lotniczą <br> i otrzymaniu od niej odszkodowania.</button> </div>
         </fieldset>  
     </form> 
@@ -280,6 +280,8 @@
                 </div>
     </form>  
         <br><br><br>
+        <button type="button"  id="prev"  onclick="click_b(5,4)" > Wstecz</button>
+        <button type="button"  id="next" onclick="add_compensation2()" > Dalej</button>
 </div>
 </body>
 </html>
