@@ -81,7 +81,7 @@ var validateForm = (function(){
     };
     //sprawdzanie adresu (ulica + numer domu/mieszkania)
     function testInputAddress(input) {
-        var reg = new RegExp('^[a-zA-Z]+\s[1-9]+[0-9]*[a-zA-Z]{0,1}\/{0,1}[1-9]+[0-9]*$', 'gi');
+        var reg = new RegExp('^[a-zA-Z]+[1-9]+[0-9]*[a-zA-Z]{0,1}\/{0,1}[1-9]+[0-9]*$', 'gi');
         return check(input, reg);
     };
     //sprawdzanie numeru telefonu (z numerem kierunkowym)
@@ -103,7 +103,7 @@ var validateForm = (function(){
                 var type = element.type.toUpperCase();
                 var name = element.name.toLowerCase();
                 //do r�nych typ�w p�l (kolejno: zwyk�y tekst, email, kod pocztowy, numer domu/mieszkania dodajemy funkcje sprawdzaj�ce poprawno��
-                if (name == 'fname' || name == 'lname' || name == 'city') {
+                if (name == 'fname' || name == 'lname' || name == 'city' || name == 'country') {
                     element.addEventListener('keyup', function() {testInputText(element);});
                     element.addEventListener('blur', function() {testInputText(element);});
                 }
