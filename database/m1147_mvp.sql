@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2017 at 01:25 AM
+-- Generation Time: Sep 14, 2017 at 03:57 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -6344,6 +6344,7 @@ CREATE TABLE `flight` (
 CREATE TABLE `flight_info` (
   `id` int(11) NOT NULL,
   `application_ID` int(11) NOT NULL,
+  `flight_ID` int(11) NOT NULL,
   `next_flight_info_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
