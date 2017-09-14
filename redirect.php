@@ -3,7 +3,7 @@
     require_once "database/dbinfo.php";
     require_once "database/connect.php";
 
-
+    $connection = db_connection();
     $sql = "SELECT $db_trip_id, $db_trip_string_id FROM $db_trip_tab WHERE $db_trip_string_id = ? ";
     $stmt = $connection->prepare($sql);
     $term = $_GET['id'];
