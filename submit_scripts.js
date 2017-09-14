@@ -75,6 +75,25 @@ function add_five(val){
 
 
 
+function add_sum(){
+    
+     $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "scripts.php",
+         data: {}, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {        
+        }        
+      })
+  }
+    
+    
+
+
+
+
 function add_passenger(){    
    
    var fname = $("#fname").val();
