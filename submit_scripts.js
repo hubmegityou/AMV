@@ -1,3 +1,80 @@
+function add_one(val){
+    
+       $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_one.php",
+         data: { val:val}, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {        
+        }        
+      })
+  }
+
+
+function add_two(val){
+    
+       $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_two.php",
+         data: { val:val}, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {        
+        }        
+      })
+  }
+
+
+function add_three(val){
+    
+       $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_three.php",
+         data: { val:val}, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {        
+        }        
+      })
+  }
+
+
+
+function add_four(val){
+    
+       $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_four.php",
+         data: { val:val}, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {        
+        }        
+      })
+  }
+
+function add_five(val){
+    
+       $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_five.php",
+         data: { val:val}, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {        
+        }        
+      })
+  }
+
+
+
+
 function add_passenger(){    
    
    var fname = $("#fname").val();

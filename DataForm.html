@@ -6,14 +6,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" type="text/css" href="css/form.css">
     </head>
     <body>
             
     
   
-  <form id="contact" action="submit_dataForm.php" method="post">
-    <fieldset>
-        <legend>Chcę uzyskać odszkodowanie</legend>
+  <form id="contact" action="submit_dataForm.php" class='form' method="post">
+      <h3>Chcę uzyskać odszkodowanie</h3>
+    <fieldset class="fieldset">
+        
             <div>
                 <br> E-mail (pole obowiązkowe)<br>
                 <input  type="email" name="email" required></div><div>
@@ -25,8 +27,8 @@
                 <input type="text" name="last_name" ></div><div>
                     <input type="checkbox" id='terms' name='terms' required> Akceptuje regulamin</div>
  
-  
-      <button name="submit" type="submit">Wyślij</button>
+                    <br><br>
+                    <center><button name="submit" class='button' type="submit">Wyślij</button></center>
     </fieldset>
     
   </form>    

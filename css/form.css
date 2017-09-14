@@ -26,7 +26,6 @@
 }
 
 
-
 .form .error {
     color:#DB083E;
 }
@@ -40,7 +39,7 @@
 
 body{
     background-color: #F0F4F5; 
-     text-align: center;
+    text-align: center;
 }
 
 .form{
@@ -62,7 +61,7 @@ body{
 }
 
 
-input[type=text],input[type=date], input[type=email] {
+input[type=text],input[type=date], input[type=email], input[type=tel] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
