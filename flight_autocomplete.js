@@ -1,65 +1,35 @@
 $(document).ready(function(){   
-    var AirportsList;
-    var AirlinesList;
-    //cacheData();
     addHandlers();
     
-    function cacheData(){
-
-        $.ajax({
-            url: "https://v4p4sz5ijk.execute-api.us-east-1.amazonaws.com/anbdata/airports/locations/international-list?api_key=1d2a8cd0-83d5-11e7-a40a-b35c55abe8b5&format=json",
-            dataType: "jsonp",
-            cache: true,
-            success: function(data){
-                AirportsList = data;
-                getAirlines();
-            }
-        });
-            function getAirlines(){
-                $.ajax({
-                    url: "https://v4p4sz5ijk.execute-api.us-east-1.amazonaws.com/anbdata/airlines/designators/iosa-registry-list?api_key=1d2a8cd0-83d5-11e7-a40a-b35c55abe8b5&format=json",
-                    dataType: "jsonp",
-                    cache: true,
-                    success: function(data){
-                        AirlinesList = data;  
-                        addHandlers();
-                    }
-                });
-            };
-    };
-
 
     //$("#flightForm").on("keyup", "input", autocomplete);
-    var airport = {
-        source: "getData.php?type=airport"
-    };
-    var link = "getData.php?type=airport";
-    var airlines = {
-        source: "getData.php?type=airline"
-    };    
-    function search(request, response){
-        var re = new RegExp(request.term, 'i');
-        var tab = new Array();
-        AirportsList.forEach(function(item, index){
-            if (item['countryName'].match(re) || item["cityName"].match(re) || item["airportName"].match(re) || item["airportCode"].match(re)) {
-                tab.push({label: item["cityName"]+" "+item["airportName"]+" "+item["countryName"], value:item["airportCode"]}); // do something
-            }  
-        });
-        response(tab);    
-    };
     function addHandlers(){
-        $("[name=departure]").autocomplete({
-            source: "getData.php?type=airport"});
-
-        $("[name=waypoint]").autocomplete({
-            source: "getData.php?type=airport"});
-        
-        $("[name=destination]").autocomplete({
-            source: "getData.php?type=airport"});
-            
+        $("[name=departure], [name=waypoint], [name=destination]").autocomplete({
+            source: "getData.php?type=airport",
+           /* close: function(event, ui) {
+                if (!$("ul.ui-autocomplete").is(":visible")) {
+                    $("ul.ui-autocomplete").show();
+                    return false;
+                }
+            },*/
+            select: function(event, ui) {
+                event.preventDefault();
+                $(this).val(ui.item['label']);
+                $(this).attr('data-code', ui.item['value']);
+                return;
+            }
+        });
             
             //source: function(request,response){search(request, response);}});
-        $("[name=airlines]").autocomplete(airlines);
+        $("[name=airlines]").autocomplete({
+            source: "getData.php?type=airline",
+            select: function(event, ui) {
+                event.preventDefault();
+                $(this).val(ui.item['label']);
+                $(this).attr('data-code', ui.item['value']);
+                return;
+            }
+        });
     };
 
     
@@ -72,7 +42,14 @@ $(document).ready(function(){
         if( $(this).val() == '' ) return;
         $(this).removeClass("last");
         $(this).clone().val('').addClass("last").appendTo("#waypoints").autocomplete({
-            source: "getData.php?type=airport"});       
+            source: "getData.php?type=airport",
+            select: function(event, ui) {
+                event.preventDefault();
+                $(this).val(ui.item['label']);
+                $(this).attr('data-code', ui.item['value']);
+                return;
+            }
+        });       
     }
 
 
