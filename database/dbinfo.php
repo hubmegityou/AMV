@@ -54,7 +54,7 @@
         //informacje o grupie lot�w
         $db_trip_tab = "trip";
             $db_trip_id = "id";
-            $db_trip_first_flight_info_id= "flight_info_ID";
+            $db_trip_first_flight_info_id = "flight_info_ID";
             $db_trip_delay = "delay";
             //$db_trip_distance = "distance"; //shoudn't be necessary 
             $db_trip_sum = "sum";
