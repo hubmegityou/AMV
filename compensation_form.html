@@ -1,115 +1,98 @@
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
-    <style>
-        .class{}
-        .btn{}
-        
-        .form .error {
-    color:#DB083E;
-}
-.form .error input[type="text"],
-.form .error input[type="email"],
-.form .error select {
-    background-image: none;
-    padding-right:4px;
-}
-    </style>
+   
   <meta charset="utf-8"/>
   <title>formularz</title>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="compensation_scripts.js" ></script>
   <script src="submit_scripts.js" ></script>
+  <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
 
 <body>
     
 <div id='1'>
-        <br><br>
 
-   <form id="f">
-        <fieldset>
-            <legend>Co się wydarzyło z lotem?</legend>
-            <input type="radio" name="question1" onclick="option(1, 2, 3)"> Opóźniony lot<br>
-            <input type="radio" name="question1" onclick="option(2, 1, 3)"> Odwołany lot<br>
-            <input type="radio" name="question1" onclick="option(3, 1, 2)"> Odmowa wejścia na pokład<br>  
+   <form id="f" class="forms">
+    <h3>Co się wydarzyło z lotem?</h3>
+        <fieldset class="fieldset">   
+            <div class='input1'><input type="button" name="question1" class='question'  onclick="option(1, 2, 3)"><br>    Opóźniony lot<br></div>
+            <div class='input1'><input type="button" name="question1" class= 'question1' onclick="option(2, 1, 3)"> <br>   Odwołany lot<br></div>
+            <div class='input1'><input type="button" name="question1" class='question2' onclick="option(3, 1, 2)"><br>   Odmowa wejścia na pokład<br></div>
         </fieldset>
 
     <!--dla opóźnionego-->
-    <div id="option1" hidden>
-         <br><br>
-        <fieldset>
-            <legend>Jaki był powód opóźnienia?</legend>
-                <input type="radio" name="question2">problemy techniczne<br>
-                <input type="radio" onclick="end(1)" name="question2">złe warunki pogodowe<br>
-                <input type="radio" name="question2">wpływ innych lotów<br>
-                <input type="radio" name="question2">problemy portu lotniczego<br>
-                <input type="radio" onclick="end(2)" name="question2">strajk<br>
-                <input type="radio" name="question2">nie podano powodu<br>
-                <input type="radio" name="question2">nie wiem<br>
+<div id="option1" hidden>
+
+    <h3>Jaki był powód opóźnienia?</h3>
+        <fieldset class="fieldset">
+            <div class='input1'><input type="button" class='question3' name="question2"><br>problemy techniczne<br></div>
+            <div class='input1'><input type="button" class='question4' onclick="end(1)" name="question2"><br>złe warunki pogodowe<br></div>
+            <div class='input1'><input type="button" class='question5' name="question2"><br>wpływ innych lotów<br></div>
+            <div class='input1'> <input type="button" class='question6' name="question2"><br>problemy portu lotniczego<br></div>
+            <div class='input1'><input type="button" class='question7' onclick="end(2)" name="question2"><br>strajk<br></div>
+            <div class='input1'><input type="button" class='question8' name="question2"><br>nie podano powodu<br></div>
+            <div class='input1'><input type="button" class='question9' name="question2"><br>nie wiem<br></div>
         </fieldset>
 
+    <h3>Jakie było opóźnienie w porcie docelowym?</h3>
 
-    <br><br>
-<fieldset>
-    <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-         <input type="radio" onclick="end(3)" name="question3">mniej niż 2h<br>
-         <input type="radio" onclick="end(3)" name="question3">2-3 godziny<br>
-         <input type="radio" name="question3">3-4 godziny<br>
-         <input type="radio" name="question3">powyżej 4 godzin<br>
-         <input type="radio" name="question3">nie wiem<br> 
-</fieldset>
+        <fieldset class="fieldset">
+            <div class='input1'><input type="button" class='question10' onclick="end(3)" name="question3"><br>mniej niż 2h<br></div>
+            <div class='input1'><input type="button" class='question11' onclick="end(3)" name="question3"><br>2-3 godziny<br></div>
+            <div class='input1'><input type="button" class='question12' name="question3"><br>3-4 godziny<br></div>
+            <div class='input1'> <input type="button" class='question13' name="question3"><br>powyżej 4 godzin<br></div>
+            <div class='input1'><input type="button" class='question14' name="question3"><br>nie wiem<br> </div>
+        </fieldset>
 </div>
 <!--dla odwołanego-->
 <div id="option2" hidden>
- <br><br>
-<fieldset>
-    <legend>Kiedy linia lotnicza ponformowała o odwołaniu lotu?</legend>
-         <input type="radio" name="question4">mniej niż 14 dni<br>
-         <input type="radio" onclick="end(4)" name="question4">więcej niż 14 dni<br> 
-</fieldset>
  
+    <h3>Kiedy linia lotnicza ponformowała o odwołaniu lotu?</h3>
+        <fieldset class="fieldset">
+            <div class='input1'><input type="button"  class='question15' name="question4"><br>mniej niż 14 dni<br></div>
+            <div class='input1'><input type="button" class='question16' onclick="end(4)" name="question4"><br>więcej niż 14 dni<br> </div>
+        </fieldset>
  
- <br><br>
-<fieldset>
-    <legend>Jaki był powód odwołania lotu?</legend>
-         <input type="radio" name="question5">problemy techniczne<br>
-         <input type="radio" onclick="end(1)" name="question5">złe warunki pogodowe<br>
-         <input type="radio" name="question5">wpływ innych lotów<br>
-         <input type="radio" name="question5">problemy portu lotniczego<br>
-         <input type="radio" onclick="end(2)" name="question5">strajk<br>
-         <input type="radio" name="question5">nie podano powodu<br>
-         <input type="radio" name="question5">nie wiem<br>
-</fieldset>
- <br><br>
-<fieldset>
-    <legend>Jakie było opóźnienie w porcie docelowym?</legend>
-         <input type="radio"  name="question6">mniej niż 2h<br>
-         <input type="radio"  name="question6">2-3 godziny<br>
-         <input type="radio" name="question6">3-4 godziny<br>
-         <input type="radio" name="question6">powyżej 4 godzin<br>
-         <input type="radio" name="question6">nie wiem<br> 
-</fieldset>
+
+    <h3>Jaki był powód odwołania lotu?</h3>
+        <fieldset class="fieldset">
+            <div class='input1'><input type="button" class='question3' name="question5"><br>problemy techniczne<br></div>
+            <div class='input1'><input type="button" class='question4' onclick="end(1)" name="question5"><br>złe warunki pogodowe<br></div>
+            <div class='input1'><input type="button" class='question5' name="question5"><br>wpływ innych lotów<br></div>
+            <div class='input1'><input type='button' class='question6' name="question5"><br>problemy portu lotniczego<br></div>
+            <div class='input1'><input type="button" class='question7' onclick="end(2)" name="question5"><br>strajk<br></div>
+            <div class='input1'><input type="button" class='question8' name="question5"><br>nie podano powodu<br></div>
+            <div class='input1'><input type="button" class='question9' name="question5"><br>nie wiem<br></div>
+        </fieldset>
+
+ 
+    <h3>Jakie było opóźnienie w porcie docelowym?</h3>
+        <fieldset class="fieldset">
+            <div class='input1'><input type="button" class='question10' name="question6"><br>mniej niż 2h<br></div>
+            <div class='input1'><input type="button" class='question11' name="question6"><br>2-3 godziny<br></div>
+            <div class="input1"><input type="button" class='question12' name="question6"><br>3-4 godziny<br></div>
+            <div class='input1'><input type="button" class='question13' name="question6"><br>powyżej 4 godzin<br></div>
+            <div class='input1'><input type="button" class='question14' name="question6"><br>nie wiem<br></div>
+        </fieldset>
 </div>
 <!--nie zdazył-->
 <div id="option3" hidden>
- <br><br>
- 
- <fieldset>
-    <legend>czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?</legend>
-         <input type="radio" onclick="end(5)" name="question7">tak<br>
-         <input type="radio" name="question7">nie<br> 
-</fieldset>
- 
 
+ <h3>czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy <br>albo otrzymałeś inną rekompensatę od linii lotniczej?</h3>
+        <fieldset class="fieldset">
+           <button type="button" class="input2" onclick="end(5)" name="question7">tak</button>
+           <button type="button" class="input3" name="question7">nie</button>
+        </fieldset>
 
-    </div>
+</div>
         
     </form>        
-    <br><br><br>
-    <form  id="flight_data">
-        <fieldset id="flight_data_form">
-            <legend> Dane lotu</legend>
+    
+    <form  id="flight_data" class="forms">
+    <h3> Dane lotu</h3>
+        <fieldset id="flight_data_form" class="fieldset">
             <div>
                 <br>Numer lotu<br>
                 <input type="text" name="flight_num" required /></div><div>
@@ -119,10 +102,13 @@
     </form>
 
     <br><br><br>
-        <button type='button' id="next" onclick="click_b('1a',2)" >Dalej </button>
-    <br><br><br>
-    <br><br>
+        <button type='button' id="next" onclick="click_b('1a',2)" class="button">Dalej </button>
+        <br><br><br>
 </div>
+ 
+    
+    
+    
     
 <div id="a" hidden>   
         <button onClick="op('#poka');">Szczegóły</button>
@@ -134,12 +120,13 @@
         </div>
         
 </div>    
-    <br><br><br> 
+ 
+    
     
 <div id='2' hidden>
-        <form class="form" id="personal_data">
-            <fieldset id="form">
-                <legend>Dane pasażera</legend>
+    <form class="form" id="personal_data" >
+    <h3>Dane pasażera</h3>
+        <fieldset id="form" class="fieldset">
                     <div>
                     Imię<br>
                     <input type="text" id="fname" name="fname" required /></div><div>
@@ -154,95 +141,136 @@
                     <br>Kraj<br>
                     <input type="text" id="country" name="country" required /></div>
                     <input type="hidden" id="hd" value='1'/>
+                    <br>
+                    
+                    <img src="css/img/20.png">   
+                    
+                    <a href="javascript:add_passenger()" >dodaj pasażera</a>
             </fieldset>
-        </form>
-           <a href="javascript:add_passenger()" >dodaj pasażera</a>
-        <br><br>
+    </form>
+    <br>
+      
+     
+  
         
-        <form class="form" id="contact">
-            <fieldset>
-            <legend>Dane kontaktowe</legend>
+    <form class="form" id="contact">
+    <h3>Dane kontaktowe</h3>
+        <fieldset class="fieldset">   
                 <div>
                 <br>Numer telefonu<br>
                 <input type="text" id="tnumber" name="tnumber" required /></div><div>
                 <br>Email<br>
                 <input type="email" id="email" name="email" required /></div>  
-            </fieldset>
-        </form>
+        </fieldset>
+    </form>
         <br><br><br>
-        <button type="button"  id="prev"  onclick="click_b(2,1)"> Wstecz</button>
-        <button type="button"  id="next" onclick="click_b(2,3); add_contact()" > Dalej</button>
-        <br><br>
+        <button type="button"  id="prev"  onclick="click_b(2,1)" class="button"> Wstecz</button>
+        <button type="button"  id="next" onclick="click_b(2,3); add_contact()" class="button"> Dalej</button>
+         <br><br><br>
+     
 </div>
+    
+    
+ 
+    
 <div id='3' hidden>  
+    <br>
+    <form id="documents" class="forms">
+        <fieldset class="fieldset">
 
-        <form id="documents" >
-            
-            
-             <fieldset>
-                <legend>Karta pokładowa</legend>
-                    <div>
-                    <br>Dodaj dokument<br>
-                    <input  type="file" name="file1"  id="file1" accept="image/*" ></div>
-            </fieldset> 
-            <fieldset>
-                <legend>Rezerwacja</legend>
-                    <div>
-                    <br>Dodaj dokument<br>
-                    <input  type="file" name="file1"  id="file1" accept="image/*" ></div>
-            </fieldset> 
-            <fieldset>
-                <legend> Paszport</legend>
-                    <div>
-                    <br>Dodaj dokument<br>
-                    <input  type="file" name="file2" id="file2" accept="image/*"></div>
-            </fieldset>    
-            <fieldset>
-                <legend> Dowód osobisty</legend>
-                    <div>
-                    <br>Dodaj przód dokumentu<br>
-                    <input  type="file" name="file3"  id="file3" accept="image/*"></div>
-                    <div>
-                    <br>Dodaj tył dokumentu<br>
-                    <input  type="file" name="file4"  id="file4" accept="image/*"></div>
-            </fieldset> 
+            <center><img src="css/img/21.png"></center>         
+        </fieldset>  
+        
+        <br> 
+        
+    <h3>Karta pokładowa</h3>
+        <fieldset class="fieldset">
+            <center> <img src="css/img/24.png"></center>
+            <br>
+                <div>
+                <br>Dodaj dokument<br>
+                <input  type="file" name="file1"  id="file1" accept="image/*" ></div>
+        </fieldset> 
+  
+    <h3>Rezerwacja</h3>
+        <fieldset class="fieldset">
+            <center> <img src="css/img/23.png"></center>
+            <br>
+                <div>
+                <br>Dodaj dokument<br>
+                <input  type="file" name="file1"  id="file1" accept="image/*" ></div>
+        </fieldset> 
+
+    <h3> Paszport</h3>
+    
+        <fieldset class="fieldset">
+            <center> <img src="css/img/22.png"></center>
+     <br>
+                <div>
+                <br>Dodaj dokument<br>
+                <input  type="file" name="file2" id="file2" accept="image/*"></div>
+        </fieldset> 
+
+    <h3> Dowód osobisty</h3>
+        <fieldset class="fieldset">
+             <center> <img src="css/img/25.png"></center>
+                <div>
+                <br>Dodaj przód dokumentu<br>
+                <input  type="file" name="file3"  id="file3" accept="image/*"></div>
+                <div>
+                <br>Dodaj tył dokumentu<br>
+                <input  type="file" name="file4"  id="file4" accept="image/*"></div>
+        </fieldset> 
         </form>
 
         <br><br><br>
-        <button type="button"  id="prev" onclick="click_b(3,2)"> Wstecz</button>
-        <button type="button"  id="next" onclick="click_b(3,4)"> Dalej</button>
+        <button type="button"  id="prev" onclick="click_b(3,2)" class="button"> Wstecz</button>
+        <button type="button"  id="next" onclick="click_b(3,4)" class="button"> Dalej</button>
+         <br><br><br>
 
-        <br><br>
 </div>
+    
+    
+    
+    
 <div id='4' hidden>
-        <form id="conditions" >
-            <fieldset>
-                <legend> Zawarcie umowy</legend>
+        <form id="conditions" class="forms">
+        <h3> Zawarcie umowy</h3>
+            <fieldset class="fieldset">
                     <div>
-                        <input type="checkbox" id="checkAll" checked> Zaznacz wszystkie zgody</div><br><br><div>
-                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked> Oświadczam, że stawiłem się na odprawę w określonym
-                            przez linie lotnicze czasie. Jeżeli czas nie był wskazany przez linie, obowiązuje czas 45 minut przed wylotem.</div><br><div>
-                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Oświadczam, że stawiłem się na boarding w czasie wskazanym
-                            na karcie pokładowej.</div><br><div>       
-                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.</div><br><div> 
-                        <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane 
-                            sa prawdziwe.</div>
+                    <input type="checkbox" id="checkAll" checked> Zaznacz wszystkie zgody</div><br><br><div>
+                    <input type="checkbox" name="agreement" onclick="checkagreement()" required checked> Oświadczam, że stawiłem się na odprawę w określonym
+                         przez linie lotnicze czasie. Jeżeli czas nie był wskazany przez linie, obowiązuje czas 45 minut przed wylotem.</div><br><div>
+                    <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Oświadczam, że stawiłem się na boarding w czasie wskazanym
+                         na karcie pokładowej.</div><br><div>       
+                    <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.</div><br><div>                      <input type="checkbox" name="agreement" onclick="checkagreement()" required checked>Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane 
+                         sa prawdziwe.</div>
+                    <br><br>
+                    <center> <img src="css/img/26.png"></center>
             </fieldset>
         </form>   
 
-        <br><br><br>
+        
         ///////elektronicny podpis!!/////////
         <br><br><br>
 
-        <button type="button"  id="prev"  onclick="click_b(4,3)" disabled> Wstecz</button>
-        <button type="button"  id="next0" onclick="click_b(4,5)" > Dalej</button>
+        <button type="button"  id="prev"  onclick="click_b(4,3)"  class="button"> Wstecz</button>
+        <button type="button"  id="next0" onclick="click_b(4,5)"  class="button"> Dalej</button>
+         <br><br><br>
 
-           <br><br>
+         
 </div>
+    
+    
+    
+    
+    
+    
+    
 <div id='5' hidden>        
-    <form id="compensation" >
-        <fieldset>
-            <legend> Wypłata odszkodowania</legend>
+    <form id="compensation" class="forms">
+    <h3> Wypłata odszkodowania</h3>
+        <fieldset class="fieldset">   
                 <div>
                 <button type="button" id="express" onclick='add_compensation(1)' > EXPRESS (do 24h) <br><br> Odszkodowanie przekażemy na wskazane poniżej konto w 24h od 
                     przyjęcia poprawnego zgłoszenia.</button></div><br><br><div>
@@ -250,11 +278,13 @@
                     roszczenia przez linię lotniczą <br> i otrzymaniu od niej odszkodowania.</button> </div>
         </fieldset>  
     </form> 
-        <br><br><br>
+       
 
-    <form id="compensation2"  >
-        <fieldset>
-            <legend> Wybierz sposób wypłaty odszkodowania</legend>
+    <form id="compensation2" class="forms" >
+        
+    <h3> Wybierz sposób wypłaty odszkodowania</h3>
+        <fieldset class="fieldset">
+            
                 <div>
                 <input type="radio" id="paypal" onclick="payOption('1')" value="1" name="radio"> Płatność PayPal (bez opłat)
                 </div>
@@ -269,7 +299,11 @@
                     <option>INNA</option>
                     </select>
                 </div>
-        </fieldset> 
+       
+            <br>
+            <center> <img src="css/img/27.png"></center>
+            <br>
+        
                 <div id="paypalOption" hidden >
                 <br>Twoje konto PayPal (adres e-mail) <br>       
                 <input type="text"  id="account_num">
@@ -278,10 +312,14 @@
                 <br>Numer konta bankowego <br>       
                 <input type="text" id="account_num2">
                 </div>
+        
+    </fieldset> 
+                
     </form>  
         <br><br><br>
-        <button type="button"  id="prev"  onclick="click_b(5,4)" > Wstecz</button>
-        <button type="button"  id="next" onclick="add_compensation2()" > Dalej</button>
+        <button type="button"  id="prev"  onclick="click_b(5,4)" class="button"> Wstecz</button>
+        <button type="button"  id="next" onclick="add_compensation2()" class="button"> Dalej</button>
+         <br><br><br>
 </div>
 </body>
 </html>

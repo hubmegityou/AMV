@@ -68,6 +68,17 @@ function add_compensation(num){
           cache: false,
          success: function(m) 
          {     
+             if (num==1){
+                 document.getElementById("express").style.background = "#99ccff";
+                 document.getElementById("standard").style.background = "";  
+             }else{
+                 document.getElementById("express").style.background = "";
+                 document.getElementById("standard").style.background = "#99ccff";
+             }
+             
+             
+             
+             
         }       
       }) 
 }
