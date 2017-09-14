@@ -38,18 +38,15 @@ do{
     $token = random_str(25);
     $sql = "SELECT $db_trip_id FROM $db_trip_tab WHERE $db_trip_string_id='$token'";
     $result = $connection->query($sql);
-    echo $sql."<br>";
 }while ($row = $result->fetch_assoc());
 
 $sql = "INSERT INTO $db_trip_tab ($db_trip_id, $db_trip_string_id) VALUES ( NULL, '$token')";
-if ($connection->query($sql))
-    echo $sql."<br>";
+$connection->query($sql);
 $trip_id = $connection->insert_id;
-
+$_SESSION['trip_id'] = $trip_id;
 $sql = "INSERT INTO $db_connect_tab ($db_connect_id, $db_connect_passenger_id, $db_connect_trip_id) VALUES (NULL, '$passenger_id', '$trip_id')";
-if ($connection->query($sql))
-    echo $sql."<br>";
+$connection->query($sql);
 
-//header('Location: flight_form.html');
+header('Location: flight_form.html');
 exit;
 ?>
