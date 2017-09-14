@@ -12,15 +12,19 @@ $connection = db_connection();
 
 
 $sql="Select $db_flight_distance from  $db_flight_tab where $db_flight_id=".$_SESSION['flightid'];
-$distance=$connection->query($sql);
+$result=$connection->query($sql);
+$row = $result->fetch_assoc();
+$distance = $row[$db_flight_distance];
 
 $sql= "SELECT $db_airports_region from $db_airports_tab WHERE $db_airports_id=".$_SESSION['departure'];
-$dep=$connection->query($sql);
+$result = $connection->query($sql);
+$row = $result->fetch_assoc();
+$dep = $row[$db_airports_region];
 
 $sql= "SELECT $db_airports_region from $db_airports_tab WHERE $db_airports_id=".$_SESSION['arrival'];
-$arr=$connection->query($sql);
-
-
+$result = $connection->query($sql);
+$row = $result->fetch_assoc();
+$arr=$row[$db_airports_region];
 
 If ($distance<=1500){
     $x=1;
@@ -68,7 +72,4 @@ If ($x==1){
         $sub=600;
     }
 }
-
-
-
-echo $sum;
+echo $sub;

@@ -83,10 +83,11 @@ function add_sum(){
          url: "scripts.php",
          data: {}, // Dane przesyłane $_POST
           cache: false,
-         success: function(m) 
-         {        
+         success: function(data) 
+         {
+             $('#sum').append("odszkodowanie: "+data);
         }        
-      })
+      });
   }
     
     
