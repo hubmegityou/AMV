@@ -67,6 +67,7 @@
             $db_flight_info_id= "id";
             $db_flight_info_applicationid = "application_ID";
             $db_flight_info_nextflight = "next_flight_info_ID";
+            $db_flight_id = "flight_ID";
             
             
          
