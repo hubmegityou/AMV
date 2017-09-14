@@ -94,13 +94,14 @@ function add_sum(){
 
 function add_data(){
     
-    
+    var fnumber = $("#fnumber").val();
+    var date = $("#date").val();
     
       $.ajax( // wywołanie ajaxa
       { 
          type: "POST", 
          url: "submit_flightdata.php",
-         data: {fnumber:  , date: }, // Dane przesyłane $_POST
+         data: {fnumber: fnumber , date:date }, // Dane przesyłane $_POST
           cache: false,
          success: function(m) 
          {        
