@@ -26,9 +26,12 @@ require_once "database/dbinfo.php";
 require_once "database/connect.php";
 
 $connection = db_connection();
-$sql = "INSERT INTO $db_passengers_tab($db_passengers_firstname, $db_passengers_lastname, $db_passengers_telnumber, $db_passengers_email)
-VALUES ('$fname', '$lname', '$tel', '$email')";
-$connection->query($sql);
+$connection->query(sprintf("INSERT INTO $db_passengers_tab($db_passengers_firstname, $db_passengers_lastname, $db_passengers_telnumber, $db_passengers_email)
+VALUES ('%s','%s','%s','%s')", 
+mysqli_real_escape_string($connection, $fname), 
+mysqli_real_escape_string($connection, $lname), 
+mysqli_real_escape_string($connection, $tel), 
+mysqli_real_escape_string($connection, $email)));
 
 $passenger_id = $connection->insert_id; //passenger id
 $_SESSION['passenger_id']=$passenger_id;
@@ -47,6 +50,11 @@ $_SESSION['trip_id'] = $trip_id;
 $sql = "INSERT INTO $db_connect_tab ($db_connect_id, $db_connect_passenger_id, $db_connect_trip_id) VALUES (NULL, '$passenger_id', '$trip_id')";
 $connection->query($sql);
 
-header('Location: flight_form.html');
+mail(
+    "$email", 
+    "AMV - zgłoszenie odszkodowania", 
+    "Twój link: localhost/AMV/flight_form.html?$token");
+
+//header('Location: flight_form.html');
 exit;
 ?>
