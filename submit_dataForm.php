@@ -26,6 +26,7 @@ require_once "database/dbinfo.php";
 require_once "database/connect.php";
 
 $connection = db_connection();
+//SQL injection - repaire it
 $connection->query(sprintf("INSERT INTO $db_passengers_tab($db_passengers_firstname, $db_passengers_lastname, $db_passengers_telnumber, $db_passengers_email)
 VALUES ('%s','%s','%s','%s')", 
 mysqli_real_escape_string($connection, $fname), 
@@ -42,7 +43,6 @@ do{
     $sql = "SELECT $db_trip_id FROM $db_trip_tab WHERE $db_trip_string_id='$token'";
     $result = $connection->query($sql);
 }while ($row = $result->fetch_assoc());
-
 $sql = "INSERT INTO $db_trip_tab ($db_trip_id, $db_trip_string_id) VALUES ( NULL, '$token')";
 $connection->query($sql);
 $trip_id = $connection->insert_id;
@@ -53,8 +53,8 @@ $connection->query($sql);
 mail(
     "$email", 
     "AMV - zgłoszenie odszkodowania", 
-    "Twój link: localhost/AMV/flight_form.html?$token");
+    "Twój link: localhost/AMV/redirect.php?id=$token");
 
-//header('Location: flight_form.html');
+header("Location: redirect.php?id=$token");
 exit;
 ?>

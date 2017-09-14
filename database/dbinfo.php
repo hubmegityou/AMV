@@ -67,7 +67,7 @@
             $db_flight_info_id= "id";
             $db_flight_info_applicationid = "application_ID";
             $db_flight_info_nextflight = "next_flight_info_ID";
-            $db_flight_id = "flight_ID";
+            $db_flight_info_flightid = "flight_ID";
             
             
          
@@ -93,7 +93,7 @@
             $db_flight_date = "flight_date"; // data lotu
             $db_flight_airlineid = "airline_ID"; // linie lotnicze 
             $db_flight_distance = "distance";
-            
+            $db_flight_compensation = "compensation_availability"; //czy lot nadaje sie do odszkodowania
             
         //informacje o sposobie wyp�aty odszkodowania
         $db_compensation_tab = "compensation";

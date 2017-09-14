@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     //$("#flightForm").on("keyup", "input", autocomplete);
     function addHandlers(){
-        $("[name=departure], [name=waypoint], [name=destination]").autocomplete({
+        $("[name=departure], [name=waypoint0], [name=destination]").autocomplete({
             source: "getData.php?type=airport",
            /* close: function(event, ui) {
                 if (!$("ul.ui-autocomplete").is(":visible")) {
@@ -41,7 +41,7 @@ $(document).ready(function(){
         if( !$(this).hasClass("last")) return; 
         if( $(this).val() == '' ) return;
         $(this).removeClass("last");
-        $(this).clone().val('').addClass("last").appendTo("#waypoints").autocomplete({
+        $(this).clone().val('').addClass("last").attr("id", parseInt($(this).attr("id"))+1).attr("name", $(this).attr("name").substr(0,8)+(parseInt($(this).attr("id"))+1)).appendTo("#waypoints").autocomplete({
             source: "getData.php?type=airport",
             select: function(event, ui) {
                 event.preventDefault();
