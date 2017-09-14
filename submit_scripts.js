@@ -92,6 +92,25 @@ function add_sum(){
     
 
 
+function add_data(){
+    
+    
+    
+      $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST", 
+         url: "submit_flightdata.php",
+         data: {fnumber:  , date: }, // Dane przesyłane $_POST
+          cache: false,
+         success: function(m) 
+         {        
+        }        
+      })
+    
+    
+}
+
+
 
 
 function add_passenger(){    
