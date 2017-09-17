@@ -100,7 +100,7 @@ $sql = "SELECT $db_airports_id, $db_airports_region, $db_airports_latitude, $db_
                 $arrivalreg = $row[$db_airports_region];
 var_dump($prev_airport, $arrival, $airlinesRegion);
 
-if (($prev_airport_reg != 'EUR' && $arrivalreg != 'EUR') || ($arrivalreg != 'EUR' && $airlinesRegion != 'EUR')){
+if (($prev_airport_reg != 'EUR' && $arrivalreg != 'EUR') || ($prev_airport_reg != 'EUR' && $airlinesRegion != 'EUR')){
     $sql = "INSERT INTO $db_flight_tab ($db_flight_departureid, $db_flight_arrivalid, $db_flight_airlineid, $db_flight_compensation) VALUES ('$prev_airport_id','$arrivalid', '$airlinesId', false)";
     echo "alert('Twoj lot nie może zostać objęty reklamacją')";
     header("location: DataForm.html");
