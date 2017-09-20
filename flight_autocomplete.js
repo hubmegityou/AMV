@@ -54,3 +54,36 @@ $(document).ready(function(){
 
 
 });
+
+
+$(document).ready(function(){ 
+    
+    $('#ver1').hide();
+    $('#ver2').hide();
+    $('#ver3').hide();
+
+  $('#click1').click(function(){
+      
+    $('#ver1').show();
+    $('#ver2').hide();
+    $('#ver3').hide();   
+  })
+  
+    $('#click2').click(function(){
+      
+    $('#ver2').show();
+    $('#ver1').hide();
+    $('#ver3').hide();
+    
+  })
+  
+   $('#click3').click(function(){
+      
+    $('#ver3').show();
+    $('#ver2').hide();
+    $('#ver1').hide();
+   
+  })
+    
+    
+})

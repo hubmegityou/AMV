@@ -6,7 +6,8 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="style.css" type="text/css" />	
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu&amp;subset=latin-ext" rel="stylesheet">	
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu&amp;subset=latin-ext" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 <div id="container">
@@ -73,16 +74,16 @@
 			Co się wydarzyło z tym lotem
 		</div>
 		<div class="answer">
-			<div class="part">
+			<div class="part" id='click1'>
 				<img src="grafika_testowa/13.png" />
 				opóźniony
 			</div>
-			<div class="part">
+			<div class="part" id='click2'>
 				<img src="grafika_testowa/4.png" />
 				odwołany
 			</div>
 			<div style="clear:both;"></div>
-			<div class="end">
+			<div class="end" id='click3'>
 				<img src="grafika_testowa/5.png" />
 				<br>odmowa wejścia na pokład
 			</div>
@@ -159,7 +160,7 @@
 				<div style="clear:both;"></div>
 			</div>
 			<div class="question">
-				Jaki był powód opóźnienia?
+				Jaki był powód odwołania lotu?
 			</div>
 			<div class="answer">
 				<div class="part">
@@ -221,32 +222,7 @@
 		</div>
 		
 		<div id="ver3">	<!-- overbooking -->
-			<div class="question">
-				Jakie było opóźnienie?
-			</div>
-			<div class="answer">
-				<div class="part">
-					<img src="grafika_testowa/16.png" />
-					Mniej niż 2 godziny
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/17.png" />
-					2 - 3 godziny
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/18.png" />
-					3 - 4 godziny
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/19.png" />
-					Powyżej 4 godzin
-				</div>
-				<div style="clear:both;"></div>
-				<div class="end">
-					<img src="grafika_testowa/12.png" />
-					<br>Nie wiem
-				</div>
-			</div>
+			
 			<div class="question">
 				Czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?
 			</div>
@@ -541,5 +517,10 @@
 	
 </div>
 
+    
+    
+<script src="http://code.jquery.com/jquery-1.12.4.js" type='text/javascript'></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" type='text/javascript'></script>   
+<script src="flight_autocomplete.js"></script>    
 </body>
 </html>
