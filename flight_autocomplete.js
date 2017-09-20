@@ -1,5 +1,8 @@
 $(document).ready(function(){   
     addHandlers();
+    check();
+    showQuestins();
+    payOption();
     
 
     //$("#flightForm").on("keyup", "input", autocomplete);
@@ -51,6 +54,62 @@ $(document).ready(function(){
             }
         });       
     }
-
-
 });
+
+  function showQuestins(){  
+    $('#ver1').hide();
+    $('#ver2').hide();
+    $('#ver3').hide();
+
+  $('#click1').click(function(){
+      
+    $('#ver1').show();
+    $('#ver2').hide();
+    $('#ver3').hide();   
+  })
+  
+    $('#click2').click(function(){
+      
+    $('#ver2').show();
+    $('#ver1').hide();
+    $('#ver3').hide();
+    
+  })
+  
+   $('#click3').click(function(){
+      
+    $('#ver3').show();
+    $('#ver2').hide();
+    $('#ver1').hide();
+   
+  })
+  }
+    
+
+// zaznaczanie i odznaczanie wszystkich checkboxów
+
+function check(){
+    $("#checkAll").change(function() {
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+        checkagreement();
+    })}
+
+
+
+
+
+function payOption(){
+    
+    $("#paypalOption").hide();
+    $("#accountOption").hide();
+    
+    $('#paypal').click(function(){
+        $("#paypalOption").show();
+        $("#accountOption").hide();
+    });
+    
+    $('#account').click(function(){
+        $("#paypalOption").hide();
+        $("#accountOption").show();
+    })
+}
