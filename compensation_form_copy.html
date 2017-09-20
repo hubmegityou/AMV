@@ -6,7 +6,10 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="style.css" type="text/css" />	
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu&amp;subset=latin-ext" rel="stylesheet">	
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu&amp;subset=latin-ext" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-1.12.4.js" type='text/javascript'></script>
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" type='text/javascript'></script>
+        <script src="newjs.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="container">
@@ -33,12 +36,16 @@
 			Czy lot był z przesiadką?
 		</div>
 		<div class="flights">
-			<button class="btn_yn" type="button">TAK</button>
-			<button class="btn_yn" type="button">NIE</button>
+			<button id="Y" class="btn_yn" type="button">TAK</button>
+			<button id="N" class="btn_yn" type="button">NIE</button>
 			<div style="clear:both;"></div>
-			<br>Lotnisko<br>
-			<input type="text" autocomplete="off"/>
-			<a>+ dodaj następną przesiadkę</a>
+                        <div id="airports">
+                            <br>Lotniska<br>
+                            <div>
+                                <input type="text" autocomplete="off"/>
+                            </div>
+                            <a>+ dodaj następną przesiadkę</a>
+                        </div>
 		</div>
 		
 		<div class="question">
@@ -540,6 +547,5 @@
 	</div>
 	
 </div>
-
 </body>
 </html>
