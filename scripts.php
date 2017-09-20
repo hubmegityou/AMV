@@ -28,7 +28,7 @@ $arr=$row[$db_airports_region];
 
 If ($distance<=1500){
     $x=1;
-} elseif ( $distance >1500 && $dep='EUR' && $arr= 'EUR'|| $distance <3500 ){
+} elseif ( ($distance >1500 && $dep=='EUR' && $arr=='EUR') || $distance <3500 ){
     $x=2;
 }else {
     $x=3;
@@ -66,10 +66,10 @@ If ($x==1){
 } elseif ($x==3){
     //y- opóźnienie poniżej 4h czyli poniżej opcji 4 w locie odwołanym
     //z- opóźniony lot opcja 3 - w locie opóźnionym
-    If($delay==3 && $incident==1 ||$delay<4 && $incident==2 ){
+    If(($delay==3 && $incident==1) || ($delay<4 && $incident==2) ){
         $sub=300;
     }else{
         $sub=600;
     }
 }
-echo $sub;
+echo $echo;

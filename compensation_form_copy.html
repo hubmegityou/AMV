@@ -1,0 +1,545 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="style.css" type="text/css" />	
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu&amp;subset=latin-ext" rel="stylesheet">	
+</head>
+<body>
+<div id="container">
+	<div id="step1">
+		<div class="topbar">
+			Weryfikacja lotu
+		</div>
+		<div class="stepline">
+			"oś czasu" wyświetlająca aktywny krok
+			<div id="ad">
+			Wysokość odszkodowania<br><b>nawet do 600&euro;</b>
+			</div>
+		</div>
+			
+		<div class="flights">
+			<h1>Weryfikacja lotu</h1>
+			Miejsce wylotu
+			<input type="text" name="departure" autocomplete="off" required/>
+			Miejsce przylotu
+			<input type="text" name="destination" autocomplete="off" required/>
+		</div>
+		
+		<div class="question">
+			Czy lot był z przesiadką?
+		</div>
+		<div class="flights">
+			<button class="btn_yn" type="button">TAK</button>
+			<button class="btn_yn" type="button">NIE</button>
+			<div style="clear:both;"></div>
+			<br>Lotnisko<br>
+			<input type="text" autocomplete="off"/>
+			<a>+ dodaj następną przesiadkę</a>
+		</div>
+		
+		<div class="question">
+			Jakie było opóźnienie w porcie docelowym?
+		</div>
+		<div class="answer">
+			<div class="part">
+				<img src="grafika_testowa/1.png" />
+				mniej niż 3 godziny
+			</div>
+			<div class="part">
+				<img src="grafika_testowa/2.png" />
+				ponad 3 godziny
+			</div>
+			<div style="clear:both;"></div>
+			<div class="end">
+				<img src="grafika_testowa/3.png" />
+				<br>nie dotarłem na miejsce
+			</div>
+		</div>
+		
+		<div class="question">
+			Z którym lotem wystąpił problem?
+		</div>
+		<div class="answer">
+			Tutaj przyciski z wybranymi trasami (jeżeli były przesiadki)
+			<!--<button class="btn" type="button">(jaki lot)</button>-->
+		</div>
+		
+		<div class="question">
+			<p>(trasa lotu)</p>
+			Co się wydarzyło z tym lotem
+		</div>
+		<div class="answer">
+			<div class="part">
+				<img src="grafika_testowa/13.png" />
+				opóźniony
+			</div>
+			<div class="part">
+				<img src="grafika_testowa/4.png" />
+				odwołany
+			</div>
+			<div style="clear:both;"></div>
+			<div class="end">
+				<img src="grafika_testowa/5.png" />
+				<br>odmowa wejścia na pokład
+			</div>
+		</div>
+		
+		<div id="ver1">	<!-- delayed -->
+			<div class="question">
+				Jaki był powód opóźnienia?
+			</div>
+			<div class="answer">
+				<div class="part">
+					<img src="grafika_testowa/6.png" />
+					Problemy techniczne
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/7.png" />
+					Złe warunki atmosferyczne
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/8.png" />
+					Wpływ innych lotów
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/9.png" />
+					Kłopoty portu lotniczego
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/10.png" />
+					Strajk
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/11.png" />
+					Nie podano
+				</div>
+				<div style="clear:both;"></div>
+				<div class="end">
+					<img src="grafika_testowa/12.png" />
+					<br>Nie wiem
+				</div>
+			</div>
+			<div class="question">
+				Jakie było opóźnienie?
+			</div>
+			<div class="answer">
+				<div class="part">
+					<img src="grafika_testowa/1.png" />
+					Mniej niż 3 godziny
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/1.png" />
+					Więcej niż 3 godziny
+				</div>
+				<div style="clear:both;"></div>
+				<div class="end">
+					<img src="grafika_testowa/3.png" />
+					<br>Nie dotarłem na miejsce
+				</div>
+			</div>
+		</div>
+		
+		<div id="ver2">	<!-- cancellation -->
+			<div class="question">
+				Kiedy linia lotnicza poinformowała o odwołaniu lotu?
+			</div>
+			<div class="answer">
+				<div class="part">
+					<img src="grafika_testowa/14.png" />
+					<br>Mniej niż 14 dni przed wylotem
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/15.png" />
+					<br>Więcej niż 14 dni przed wylotem
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="question">
+				Jaki był powód opóźnienia?
+			</div>
+			<div class="answer">
+				<div class="part">
+					<img src="grafika_testowa/6.png" />
+					Problemy techniczne
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/7.png" />
+					Złe warunki atmosferyczne
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/8.png" />
+					Wpływ innych lotów
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/9.png" />
+					Kłopoty portu lotniczego
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/10.png" />
+					Strajk
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/11.png" />
+					Nie podano
+				</div>
+				<div style="clear:both;"></div>
+				<div class="end">
+					<img src="grafika_testowa/12.png" />
+					<br>Nie wiem
+				</div>
+			</div>
+			<div class="question">
+				Jakie było opóźnienie?
+			</div>
+			<div class="answer">
+				<div class="part">
+					<img src="grafika_testowa/16.png" />
+					Mniej niż 2 godziny
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/17.png" />
+					2 - 3 godziny
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/18.png" />
+					3 - 4 godziny
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/19.png" />
+					Powyżej 4 godzin
+				</div>
+				<div style="clear:both;"></div>
+				<div class="end">
+					<img src="grafika_testowa/12.png" />
+					<br>Nie wiem
+				</div>
+			</div>
+		</div>
+		
+		<div id="ver3">	<!-- overbooking -->
+			<div class="question">
+				Jakie było opóźnienie?
+			</div>
+			<div class="answer">
+				<div class="part">
+					<img src="grafika_testowa/16.png" />
+					Mniej niż 2 godziny
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/17.png" />
+					2 - 3 godziny
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/18.png" />
+					3 - 4 godziny
+				</div>
+				<div class="part">
+					<img src="grafika_testowa/19.png" />
+					Powyżej 4 godzin
+				</div>
+				<div style="clear:both;"></div>
+				<div class="end">
+					<img src="grafika_testowa/12.png" />
+					<br>Nie wiem
+				</div>
+			</div>
+			<div class="question">
+				Czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?
+			</div>
+			<div class="answer">
+				<div id="yes"><h1>TAK</h1></div>
+				<div id="no"><h1>NIE</h1></div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+		
+		
+		<div class="flights">
+			Nazwa lini lotniczej<br>
+			<input type="text" name="airlines" placeholder="Podaj nazwę linii" autocomplete="off" />
+			Numer lotu<br>
+			<input type="text" name="fnumber" placeholder="Podaj numer lotu" autocomplete="off" />
+			Data lotu<br>
+			<input type="date" name="date" placeholder="Dodaj datę" autocomplete="off" />
+		</div>
+		<div class="flights">
+			<button class="btn_next" type="button">Dalej &rarr;</button>
+		</div>
+	</div><!-- end of step 1 -->
+	
+	
+	<div id="step2">
+		<div class="topbar">
+			Dane osobowe
+		</div>
+		<div class="stepline">
+			"oś czasu" wyświetlająca aktywny krok
+			<!--
+			<div id="flightinfo">
+				Szczegóły odszkodowania
+			</div>
+			-->
+		</div>
+
+		<div class="flights">
+			<h1>Dane pasażera</h1>
+			Imię
+			<input type="text" name="first_name" required>
+			Nazwisko
+			<input type="text" name="last_name" required>
+			Adres
+			<input type="text" name="address" required>
+			Kod pocztowy
+			<input type="text" name="code" required>
+			Miejscowość
+			<input type="text" name="city" required>
+			Kraj
+			<input type="text" name="country" required>
+			<a>+ Dodaj pasażera</a>
+		</div>
+		
+		<div class="question">
+			Dane kontaktowe
+		</div>
+		<div class="flights">
+			Adres e-mail
+			<input type="email" name="first_name" required>
+			Telefon
+			<input type="tel" name="first_name">
+		</div>
+		<div class="flights">
+			<button class="btn_next" type="button">Dalej &rarr;</button>
+			<button class="btn_prev" type="button">&larr; Wróć</button>
+		</div>
+	</div><!-- end of step 2 -->
+	
+	<div id="step3">
+		<div class="topbar">
+			Dokumenty
+		</div>
+		<div class="stepline">
+			"oś czasu" wyświetlająca aktywny krok
+			<!--
+			<div id="flightinfo">
+				Szczegóły odszkodowania
+			</div>
+			-->
+		</div>
+		<div class="flights">
+			<h1>Dokumenty</h1>
+			<h2>Przesłane dokumenty muszą być czytelne<br> i z widocznymi krawędziami</h2>
+		</div>
+		<div class="question">
+			Rezerwacja / Karta pokładowa
+		</div>
+		<div class="flights">
+			<div class="documents"><!-- each passenger in another div-->
+				(Imię i nazwisko)
+				<input type="file">
+			</div>
+		</div>
+		<div class="question">
+			Paszport
+		</div>
+		<div class="flights">
+			<div class="documents"><!-- each passenger in another div-->
+				(Imię i nazwisko)
+				<input type="file">
+			</div>
+		</div>
+		<div class="question">
+			Dowód osobisty
+		</div>
+		<div class="flights">
+			<div class="documents"><!-- each passenger in another div-->
+				(Imię i nazwisko)
+				<input type="file">
+			</div>
+		</div>
+		<div class="flights">
+			<button class="btn_next" type="button">Dalej &rarr;</button>
+			<button class="btn_prev" type="button">&larr; Wróć</button>
+		</div>
+	</div><!-- end of step 3 -->
+	
+	<div id="step4">
+		<div class="topbar">
+			Zawarcie umowy
+		</div>
+		<div class="stepline">
+			"oś czasu" wyświetlająca aktywny krok
+			<!--
+			<div id="flightinfo">
+				Szczegóły odszkodowania
+			</div>
+			-->
+		</div>
+		<div class="flights">
+			<h1>Zawarcie umowy</h1>
+			<div class="topcheck">
+<!--			<section> CSS experiment with checkbox layout 
+				<div class="checkboxFive">
+					<input type="checkbox" id="checkAll" checked />
+					<label for="checkboxFiveInput"></label>
+				</div>
+				</section>-->
+					<input type="checkbox" id="checkAll" checked />
+				<div class="text">
+				Zaznacz wszystkie zgody
+				</div>
+			</div>
+			
+			<div style="clear:both"></div>
+			
+			<div class="check">
+<!--				<div class="checkboxFive">
+					<input type="checkbox" id="checkboxFiveInput" name="agreement" onclick="checkagreement()" required checked />
+					<label for="checkboxFiveInput"></label>
+				</div>-->
+					<input type="checkbox" id="checkboxFiveInput" name="agreement" onclick="checkagreement()" required checked />
+				<div class="text">
+				Oświadczam, że stawiłem się na odprawę w określonym przez linie lotnicze czasie. Jeżeli czas nie był wskazany przez linie, obowiązuje czas 45 minut przed wylotem.<br>
+				<span>pole wymagane</span>
+				</div>
+			</div>
+			
+			<div style="clear:both"></div>
+			<div class="check">
+<!--				<div class="checkboxFive">
+					<input type="checkbox" name="agreement" onclick="checkagreement()" required checked />
+					<label for="checkboxFiveInput"></label>
+				</div>-->
+					<input type="checkbox" name="agreement" onclick="checkagreement()" required checked />
+				<div class="text">
+				Oświadczam, że stawiłem się na boarding w czasie wskazanym na karcie pokładowej.<br>
+				<span>pole wymagane</span>
+				</div>
+			</div>
+			
+			<div style="clear:both"></div>
+			
+			<div class="check">
+<!--				<div class="checkboxFive">
+					<input type="checkbox" name="agreement" onclick="checkagreement()" required checked />
+					<label for="checkboxFiveInput"></label>
+				</div>-->
+					<input type="checkbox" name="agreement" onclick="checkagreement()" required checked />
+				<div class="text">
+				Oświadczam, że nie otrzymałem żadnej innej rekompensaty za niniejszy lot.<br>
+				<span>pole wymagane</span>
+				</div>
+			</div>
+			
+			<div style="clear:both"></div>
+			
+			<div class="check">
+<!--				<div class="checkboxFive">
+					<input type="checkbox" name="agreement" onclick="checkagreement()" required checked />
+					<label for="checkboxFiveInput"></label>
+				</div>-->
+					<input type="checkbox" name="agreement" onclick="checkagreement()" required checked />
+				<div class="text">
+				Świadomy odpowiedzialności karnej oświadczam, że wszystkie podane przeze mnie dane sa prawdziwe.<br>
+				<span>pole wymagane</span>
+				</div>
+			</div>
+		</div>
+		<div class="flights">
+			<center>(Docu sign)</center>
+		</div>
+		<div class="flights">
+			<button class="btn_next" type="button">Dalej &rarr;</button>
+			<button class="btn_prev" type="button">&larr; Wróć</button>
+		</div>
+		
+	</div><!-- end of step 4 -->
+	
+	<div id="step5">
+		<div class="topbar">
+			Wypłata odszkodowania
+		</div>
+		<div class="stepline">
+			"oś czasu" wyświetlająca aktywny krok
+			<!--
+			<div id="flightinfo">
+				Szczegóły odszkodowania
+			</div>
+			-->
+		</div>
+		
+		<div class="flights">
+			<h1>Wypłata odszkodowania</h1>
+			<div>
+                <button type="button" class="btn_comp" id="express" onclick='add_compensation(1)' >
+					<h1>EXPRESS (do 24h)</h1>
+					<h2>wypłacimy (obliczona kwota) &euro;</h2>
+					Odszkodowanie przekażemy na wskazane poniżej konto w 24h od przyjęcia poprawnego zgłoszenia.
+				</button>
+			</div>
+			<div>
+                <button type="button" class="btn_comp" id="standard" onclick='add_compensation(2)'>
+					<h1>STANDARD</h1>
+					<h2>wypłacimy (obliczona kwota) &euro;</h2>
+					Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji roszczenia przez linię lotniczą i otrzymaniu od niej odszkodowania.
+				</button> 
+			</div>
+		</div>
+		<div class="question">
+			Wybierz sposób wypłaty odszkodowania
+		</div>
+		<div class="flights">
+			<div style="border: 1px solid #797F93; padding: 20px;">
+				<div>
+					<input type="radio" id="paypal" onclick="payOption('1')" value="1" name="radio">
+					<div class="payment1">
+						Płatność PayPal
+					</div>
+					<div class="payment2">
+						BEZ OPŁAT
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				<div style="border-top: 1px solid #797F93; margin-top: 10px; margin-bottom: 10px;"></div>
+				<div>
+					<input type="radio" id="account" onclick= "payOption('2')" value="2" name="radio" >
+					<div class="payment1">
+						Płatność na konto
+					</div>
+					<div class="payment2" style="width: auto;">
+						WYBIERZ WALUTĘ
+					</div>
+					<select id="select"> 
+						<option>---</option>
+						<option>EURO</option>
+						<option>PLN</option>
+						<option>USD</option>
+						<option>CHF</option>
+						<option>GBP</option>
+						<option>INNA</option>
+						</select>
+                </div>
+			
+			</div>
+			<div id="paypalOption" >
+				<br>Twoje konto PayPal (adres e-mail) <br>       
+				<input type="email" id="account_num">
+			</div>
+			<div id="accountOption" >
+				<br>Numer konta bankowego <br>       
+				<input type="text" id="account_num2">
+			</div>
+		</div>
+		<div class="flights">
+			<button class="btn_next" type="button">Dalej &rarr;</button>
+			<button class="btn_prev" type="button">&larr; Wróć</button>
+		</div>
+	</div>
+	
+</div>
+
+</body>
+</html>
