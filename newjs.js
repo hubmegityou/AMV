@@ -6,9 +6,12 @@ jQuery(document).ready(function($){
         $('#airports').hide();
         $('html,body').animate({scrollTop: $(this).parent().next().offset().top}, time);
     });
-    $('#step1 > div').hide();
-    var top = $('.topbar');
-    top[1].show();
+//    var elem = $('#step1 > div');
+//    console.log(elem);
+//    for (var i = 0; i <= 2; i++)
+        
+//    $('#step1 > div').not('.topbar').not('.stepline').not('.flights').hide();
+//    $('.topbar').show();
     $('#step2').hide();
     $('#step3').hide();
     $('#step4').hide();
