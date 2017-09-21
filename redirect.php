@@ -22,7 +22,8 @@
     $_SESSION['trip_string_id'] = $data[$db_trip_string_id];  // just in case 
 
     if(!isset($data[$db_trip_first_flight_info_id])){
-        header('Location: flight_form.html');
+//        header('Location: flight_form.html');
+        header('Location: compensation_form_copy.html');
         exit;
     }else{
         header('Location: trip.html');
