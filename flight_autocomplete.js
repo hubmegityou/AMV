@@ -2,7 +2,6 @@ jQuery(document).ready(function(){
     addHandlers();
     check();
     payOption();
-    
 
     //$("#flightForm").on("keyup", "input", autocomplete);
     function addHandlers(){

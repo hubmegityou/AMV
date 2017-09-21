@@ -29,19 +29,26 @@ jQuery(document).ready(function($){
         $('html,body').animate({scrollTop: elem.next().offset().top}, time);
     });
     
+    //move to payment options
+    $('.btn_comp').on('click', function(){
+        var elem = $('#step5 > .flights').slice(-2,-1);
+        elem.show();
+        //fix
+        $('html,body').animate({scrollTop: elem.offset().top()}, time);
+    });
     //move to next step
     $('.btn_next').on('click', function(){
         var elem = $(this).parent().parent();
-        elem.hide(1000);
-        elem.next().show();
-        $('html,body').animate({scrollTop: elem.offset().top}, time);
+        elem.hide(450);
+        elem.next().show(time);
+        $('html,body').animate({scrollTop: elem.offset().top()}, time);
     });
     
     //move to previous step
     $('.btn_prev').on('click', function(){
         var elem = $(this).parent().parent();
         elem.hide(500);
-        elem.prev().show(1000);
+        elem.prev().show(time);
         $('html,body').animate({scrollTop: elem.prev().offset().top}, time);        
     })
 });

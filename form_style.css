@@ -1,0 +1,56 @@
+.data_form > input
+{
+	width: 100%;
+	font-size: 18px;
+	padding: 20px;
+	position: center;
+	left: -20px;
+	border: 1px solid #E3E2E8;
+	border-radius: 30px;
+	margin-right: 100%;
+	margin-top: 10px;
+	margin-bottom: 20px;
+        background-color: #E3E2E8;
+}
+
+.data_form
+{
+        padding: 10px;
+}
+
+.data_form > input:focus
+{
+	border: 1px solid #A29BFF;
+        background-color: #A29BFF;
+        color: white;
+}
+#terms
+{
+        width: 15px;
+        margin: 10px;
+        float: left;
+}
+
+.btn_next_form
+{
+	width: 60%;
+	background-color: #6960EE;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	margin-top: 50px;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-bottom: 10px;
+	border: 2px solid #6960EE;
+	border-radius: 30px;
+	padding: 15px;
+}
+
+.btn_next_form:hover
+{
+	-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	cursor: pointer;
+}
