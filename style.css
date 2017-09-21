@@ -7,28 +7,14 @@
 #797F93 - grey (answers font, buttons borders)
 #F7CD44 - yellow/orange (who cares, just ad background colour)
 */
-body
-{
-	background-color: #DCE4E9;
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 14px;
-	font-weight: bold;
-	border-color: #797F93;
-}
 
+/*adding new airport or passenger*/
 a
 {
 	color: #6960EE;
 }
 
-#container
-{
-	width: 600px;
-	margin-top: -8px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
+/*advertisement*/
 #ad
 {
 	font-size: 20px;
@@ -49,7 +35,8 @@ a
 	font-size: 30px;
 }
 
-#flightinfo
+/*details about the trip*/
+.flightinfo
 {
 	background-color: white;
 	padding: 20px;
@@ -60,6 +47,7 @@ a
 	font-size: 18px;
 }
 
+/*background for line with circles*/
 .stepline
 {
 	background-color: #DBF4FF;
@@ -68,6 +56,7 @@ a
 	/*border-top: 10px solid #DBF4FF;*/
 }
 
+/*place for uploading documents*/
 .documents
 {
 	font-size: 16px;
@@ -103,6 +92,8 @@ input[type=radio]
 	float: left;
 	margin: 12px;
 }
+
+/*checkbox style*/
 
 /*
 .checkboxFive
@@ -149,6 +140,7 @@ input[type=radio]
 }
 */
 
+/*text beside checkboxes, acceptance of the rules*/
 .text
 {
 	padding-left: 42px;
@@ -156,6 +148,7 @@ input[type=radio]
 	text-align: justify;
 }
 
+/*required field*/
 .text > span
 {
 	font-size: 12px;
@@ -163,10 +156,11 @@ input[type=radio]
 	width: 100%;
 }
 
+/*checkboxes field*/
 .check, .topcheck
 {
 	margin: 10px;
-    width: 100%;
+        width: 100%;
 }
 
 .check
@@ -182,6 +176,7 @@ input[type=radio]
 	width: 100%;
 }
 
+/*question field*/
 .question
 {
 	background-color: #EDF5FA;
@@ -191,6 +186,7 @@ input[type=radio]
 	font-size: 20px;
 }
 
+/*answer field*/
 .answer
 {
 	background-color: white;
@@ -199,6 +195,7 @@ input[type=radio]
 	font-size: 20px;
 }
 
+/*part of answer, a place for images*/
 .part
 {
 	height: auto;
@@ -209,6 +206,7 @@ input[type=radio]
 	min-height: 250px;
 }
 
+/*place for the last image*/
 .end
 {
 	text-align: center;
@@ -219,17 +217,18 @@ input[type=radio]
 {
 	position: center;
 	margin-left: auto;
-	maring-right: auto;
+	marnig-right: auto;
 	border: 5px solid #FFF;
 	border-radius: 25px;
 }
 
-.part > img:hover, .end > img:hover /*and img-active*/
+.part > img:hover, .end > img:hover, active_img
 {
 	border-color: #6960EE;
 	cursor: pointer;
 }
 
+/* buttons "yes/no" relating to version 3 of the form*/
 #yes, #no
 {
 	color: white;
@@ -266,6 +265,7 @@ input[type=radio]
         font-size: 105%;
 }
 
+/*buttons "yes/no" beside transfer question*/
 .btn_yn
 {
 	width: 40%;
@@ -328,6 +328,7 @@ input[type=radio]
 	cursor: pointer;
 }
 
+/*choose the kind of payment - buttons layout*/
 .btn_comp
 {
 	margin-bottom: 20px;
@@ -344,7 +345,7 @@ input[type=radio]
 	color: black;
 }
 
-.btn_comp:hover /*and btn_comp-active*/
+.btn_comp:hover, .active_comp
 {
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
@@ -358,6 +359,7 @@ input[type=radio]
 	color: #6960EE;
 }
 
+/*chose the kind of money transfer - field for radio buttons*/
 .payment1, .payment2
 {
 	float: left;
