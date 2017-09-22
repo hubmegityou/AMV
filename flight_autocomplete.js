@@ -3,7 +3,7 @@ jQuery(document).ready(function(){
 
     //$("#flightForm").on("keyup", "input", autocomplete);
     function addHandlers(){
-        $("[name=departure], [name=waypoint0], [name=destination]").autocomplete({
+        $("[name=departure], [name=waypoint], [name=destination]").autocomplete({
             source: "getData.php?type=airport",
            /* close: function(event, ui) {
                 if (!$("ul.ui-autocomplete").is(":visible")) {
@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
 
     
     
-    $("#waypoints").on("keyup", "input", addWaypoint);
+//    $("#waypoints").on("keyup", "input", addWaypoint);
 
     function addWaypoint(){
         if( !$(this).hasClass("last") && $(this).val() == ''){ $(".last").remove(); return;}

@@ -38,215 +38,222 @@
 			<button id="Y" class="btn_yn" type="button">TAK</button>
 			<button id="N" class="btn_yn" type="button">NIE</button>
 			<div style="clear:both;"></div>
-                        <div id="airports">
-                            <br>Lotniska<br>
-                            <div>
-                                <input type="text" autocomplete="off"/>
-                            </div>
-                            <a>+ dodaj następną przesiadkę</a>
-                        </div>
 		</div>
+		<div id="transfer">
+			<div id="airports" class="flights">
+				<br>Lotniska<br>
+				<div id="waypoints">
+					<input name="waypoint" class="last" id="point1" type="text" autocomplete="off"/>
+				</div>
+				<a>+ dodaj następną przesiadkę</a>
+			</div>
 		
-		<div class="question">
+			<div class="question">
 			Jakie było opóźnienie w porcie docelowym?
-		</div>
-		<div class="answer">
-			<div class="part">
-				<img src="grafika_testowa/1.png" />
-				mniej niż 3 godziny
-			</div>
-			<div class="part">
-				<img src="grafika_testowa/2.png" />
-				ponad 3 godziny
-			</div>
-			<div style="clear:both;"></div>
-			<div class="end">
-				<img src="grafika_testowa/3.png" />
-				<br>nie dotarłem na miejsce
-			</div>
-		</div>
-		
-		<div class="question">
-			Z którym lotem wystąpił problem?
-		</div>
-		<div class="answer">
-			Tutaj przyciski z wybranymi trasami (jeżeli były przesiadki)
-			<!--<button class="btn" type="button">(jaki lot)</button>-->
-		</div>
-		
-		<div class="question">
-			<p>(trasa lotu)</p>
-			Co się wydarzyło z tym lotem
-		</div>
-		<div class="answer">
-			<div class="part" >
-				<img id="click1" src="grafika_testowa/13.png" />
-				opóźniony
-			</div>
-			<div class="part" >
-				<img id="click2" src="grafika_testowa/4.png" />
-				odwołany
-			</div>
-			<div style="clear:both;"></div>
-			<div class="end" >
-				<img id="click3" src="grafika_testowa/5.png" />
-				<br>odmowa wejścia na pokład
-			</div>
-		</div>
-		
-		<div id="ver1">	<!-- delayed -->
-			<div class="question">
-				Jaki był powód opóźnienia?
-			</div>
-			<div class="answer">
-				<div class="part">
-					<img src="grafika_testowa/6.png" />
-					Problemy techniczne
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/7.png" />
-					Złe warunki atmosferyczne
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/8.png" />
-					Wpływ innych lotów
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/9.png" />
-					Kłopoty portu lotniczego
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/10.png" />
-					Strajk
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/11.png" />
-					Nie podano
-				</div>
-				<div style="clear:both;"></div>
-				<div class="end">
-					<img src="grafika_testowa/12.png" />
-					<br>Nie wiem
-				</div>
-			</div>
-			<div class="question">
-				Jakie było opóźnienie?
 			</div>
 			<div class="answer">
 				<div class="part">
 					<img src="grafika_testowa/1.png" />
-					Mniej niż 3 godziny
+					mniej niż 3 godziny
 				</div>
 				<div class="part">
-					<img src="grafika_testowa/1.png" />
-					Więcej niż 3 godziny
+					<img src="grafika_testowa/2.png" />
+					ponad 3 godziny
 				</div>
 				<div style="clear:both;"></div>
 				<div class="end">
 					<img src="grafika_testowa/3.png" />
-					<br>Nie dotarłem na miejsce
+					<br>nie dotarłem na miejsce
 				</div>
 			</div>
-		</div>
-		
-		<div id="ver2">	<!-- cancellation -->
-			<div class="question">
-				Kiedy linia lotnicza poinformowała o odwołaniu lotu?
-			</div>
-			<div class="answer">
-				<div class="part">
-					<img src="grafika_testowa/14.png" />
-					<br>Mniej niż 14 dni przed wylotem
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/15.png" />
-					<br>Więcej niż 14 dni przed wylotem
-				</div>
-				<div style="clear:both;"></div>
-			</div>
-			<div class="question">
-				Jaki był powód odwołania lotu?
-			</div>
-			<div class="answer">
-				<div class="part">
-					<img src="grafika_testowa/6.png" />
-					Problemy techniczne
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/7.png" />
-					Złe warunki atmosferyczne
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/8.png" />
-					Wpływ innych lotów
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/9.png" />
-					Kłopoty portu lotniczego
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/10.png" />
-					Strajk
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/11.png" />
-					Nie podano
-				</div>
-				<div style="clear:both;"></div>
-				<div class="end">
-					<img src="grafika_testowa/12.png" />
-					<br>Nie wiem
-				</div>
-			</div>
-			<div class="question">
-				Jakie było opóźnienie?
-			</div>
-			<div class="answer">
-				<div class="part">
-					<img src="grafika_testowa/16.png" />
-					Mniej niż 2 godziny
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/17.png" />
-					2 - 3 godziny
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/18.png" />
-					3 - 4 godziny
-				</div>
-				<div class="part">
-					<img src="grafika_testowa/19.png" />
-					Powyżej 4 godzin
-				</div>
-				<div style="clear:both;"></div>
-				<div class="end">
-					<img src="grafika_testowa/12.png" />
-					<br>Nie wiem
-				</div>
-			</div>
-		</div>
-		
-		<div id="ver3">	<!-- overbooking -->
 			
+			<div id="trips">
+				<div class="question">
+					Z którym lotem wystąpił problem?
+				</div>
+				<div class="answer">
+					Tutaj przyciski z wybranymi trasami (jeżeli były przesiadki)
+					<!--<button class="btn" type="button">(jaki lot)</button>-->
+				</div>
+			</div>
+		</div>
+		
+		<div id="form">
 			<div class="question">
-				Czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?
+				<p>(trasa lotu)</p>
+				Co się wydarzyło z tym lotem
 			</div>
 			<div class="answer">
-				<div id="yes"><h1>TAK</h1></div>
-				<div id="no"><h1>NIE</h1></div>
+				<div class="part" >
+					<img id="click1" src="grafika_testowa/13.png" />
+					opóźniony
+				</div>
+				<div class="part" >
+					<img id="click2" src="grafika_testowa/4.png" />
+					odwołany
+				</div>
 				<div style="clear:both;"></div>
+				<div class="end" >
+					<img id="click3" src="grafika_testowa/5.png" />
+					<br>odmowa wejścia na pokład
+				</div>
+			</div>
+			
+			<div id="ver1">	<!-- delayed -->
+				<div class="question">
+					Jaki był powód opóźnienia?
+				</div>
+				<div class="answer">
+					<div class="part">
+						<img src="grafika_testowa/6.png" />
+						Problemy techniczne
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/7.png" />
+						Złe warunki atmosferyczne
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/8.png" />
+						Wpływ innych lotów
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/9.png" />
+						Kłopoty portu lotniczego
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/10.png" />
+						Strajk
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/11.png" />
+						Nie podano
+					</div>
+					<div style="clear:both;"></div>
+					<div class="end">
+						<img src="grafika_testowa/12.png" />
+						<br>Nie wiem
+					</div>
+				</div>
+				<div class="question">
+					Jakie było opóźnienie?
+				</div>
+				<div class="answer">
+					<div class="part">
+						<img src="grafika_testowa/1.png" />
+						Mniej niż 3 godziny
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/1.png" />
+						Więcej niż 3 godziny
+					</div>
+					<div style="clear:both;"></div>
+					<div class="end">
+						<img src="grafika_testowa/3.png" />
+						<br>Nie dotarłem na miejsce
+					</div>
+				</div>
+			</div>
+			
+			<div id="ver2">	<!-- cancellation -->
+				<div class="question">
+					Kiedy linia lotnicza poinformowała o odwołaniu lotu?
+				</div>
+				<div class="answer">
+					<div class="part">
+						<img src="grafika_testowa/14.png" />
+						<br>Mniej niż 14 dni przed wylotem
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/15.png" />
+						<br>Więcej niż 14 dni przed wylotem
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div class="question">
+					Jaki był powód odwołania lotu?
+				</div>
+				<div class="answer">
+					<div class="part">
+						<img src="grafika_testowa/6.png" />
+						Problemy techniczne
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/7.png" />
+						Złe warunki atmosferyczne
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/8.png" />
+						Wpływ innych lotów
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/9.png" />
+						Kłopoty portu lotniczego
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/10.png" />
+						Strajk
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/11.png" />
+						Nie podano
+					</div>
+					<div style="clear:both;"></div>
+					<div class="end">
+						<img src="grafika_testowa/12.png" />
+						<br>Nie wiem
+					</div>
+				</div>
+				<div class="question">
+					Jakie było opóźnienie?
+				</div>
+				<div class="answer">
+					<div class="part">
+						<img src="grafika_testowa/16.png" />
+						Mniej niż 2 godziny
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/17.png" />
+						2 - 3 godziny
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/18.png" />
+						3 - 4 godziny
+					</div>
+					<div class="part">
+						<img src="grafika_testowa/19.png" />
+						Powyżej 4 godzin
+					</div>
+					<div style="clear:both;"></div>
+					<div class="end">
+						<img src="grafika_testowa/12.png" />
+						<br>Nie wiem
+					</div>
+				</div>
+			</div>
+			
+			<div id="ver3">	<!-- overbooking -->
+				
+				<div class="question">
+					Czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?
+				</div>
+				<div class="answer">
+					<div id="yes"><h1>TAK</h1></div>
+					<div id="no"><h1>NIE</h1></div>
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+			
+			
+			<div class="flights">
+				Nazwa lini lotniczej<br>
+				<input type="text" name="airlines" placeholder="Podaj nazwę linii" autocomplete="off" />
+				Numer lotu<br>
+				<input type="text" name="fnumber" placeholder="Podaj numer lotu" autocomplete="off" />
+				Data lotu<br>
+				<input type="date" name="date" placeholder="Dodaj datę" autocomplete="off" />
 			</div>
 		</div>
 		
-		
-		<div class="flights">
-			Nazwa lini lotniczej<br>
-			<input type="text" name="airlines" placeholder="Podaj nazwę linii" autocomplete="off" />
-			Numer lotu<br>
-			<input type="text" name="fnumber" placeholder="Podaj numer lotu" autocomplete="off" />
-			Data lotu<br>
-			<input type="date" name="date" placeholder="Dodaj datę" autocomplete="off" />
-		</div>
 		<div class="flights">
 			<button class="btn_next" type="button">Dalej &rarr;</button>
 		</div>
@@ -524,7 +531,7 @@
     
 <script src="http://code.jquery.com/jquery-1.12.4.js" type='text/javascript'></script>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" type='text/javascript'></script>   
-<script src="flight_autocomplete.js"></script>
+<script src="flight_autocomplete.js" type="text/javascript"></script>
 <script src="newjs.js" type="text/javascript"></script>
 </body>
 </html>

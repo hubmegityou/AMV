@@ -14,6 +14,11 @@ a
 	color: #6960EE;
 }
 
+a:hover
+{
+    cursor: pointer;
+}
+
 /*advertisement*/
 #ad
 {
@@ -228,7 +233,7 @@ input[type=radio]
 	cursor: pointer;
 }
 
-/* buttons "yes/no" relating to version 3 of the form*/
+/* buttons "yes/no" relating to version number 3 of the form*/
 #yes, #no
 {
 	color: white;
@@ -281,7 +286,7 @@ input[type=radio]
 	float: left;
 }
 
-.btn_yn:hover /*, .btn_yn-active*/
+.btn_yn:hover, .active_btn_yn
 {
 	background-color: #6960EE;
 	border-color: #6960EE;
