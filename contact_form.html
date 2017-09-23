@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html lang="pl">
+<head>
+        <meta charset="UTF-8">
+        <title>AMV - dane osobowe</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<link rel="stylesheet" type="text/css" href="css/form.css">-->
+        <link rel="stylesheet" type="text/css" href="form_style.css">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu&amp;subset=latin-ext" rel="stylesheet">
+        
+</head>
+<body>
+    <div id="container">
+        <div class="topbar">Kontakt</div>
+        <form id="contact" action="submit_contact_form.php" class='form' method="post">
+            <div class="flights">
+                <h1>Chcę uzyskać odszkodowanie</h1>
+                <div class="data_form">
+                    E-mail <span style="color: #797F93;">(Pole obowiązkowe)</span>
+                    <input  type="email" name="email" required>
+                </div>
+                <div class="data_form">
+                    Numer telefonu
+                    <input type="tel" name="tel">
+                </div>
+                <div class="data_form">
+                    Imię
+                    <input type="text" name="first_name">
+                </div>
+                <div class="data_form">
+                    Nazwisko
+                    <input type="text" name="last_name">
+                </div>
+                <div class="data_form">
+                    <input type="checkbox" id='terms' name='terms' required><span style="float: left;">Akceptuję <b>regulamin</b></span>
+                </div>
+
+                <button name="submit" class='btn_next_form' type="submit">Wyślij</button>
+            </div>
+        </form>    
+    </div>
+</body>
+</html>
