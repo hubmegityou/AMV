@@ -1,0 +1,87 @@
+
+	<div id="step5">
+            <div class="topbar">
+                Wypłata odszkodowania
+            </div>
+            <div class="stepline">
+                <ul>
+                    <li>✔</li>
+                    <li>✔</li>
+                    <li>✔</li>
+                    <li>✔</li>
+                    <li class="active">5</li>
+                </ul>
+                <!--
+                <div class="flightinfo">
+                    Szczegóły odszkodowania
+                </div>
+                -->
+            </div>
+            
+            <div class="flights">
+                <h1>Wypłata odszkodowania</h1>
+                <div>
+                                    <button type="button" class="btn_comp" id="express" onclick='add_compensation(1)' >
+                        <h1>EXPRESS (do 24h)</h1>
+                        <h2>wypłacimy (obliczona kwota) &euro;</h2>
+                        Odszkodowanie przekażemy na wskazane poniżej konto w 24h od przyjęcia poprawnego zgłoszenia.
+                    </button>
+                </div>
+                <div>
+                                    <button type="button" class="btn_comp" id="standard" onclick='add_compensation(2)'>
+                        <h1>STANDARD</h1>
+                        <h2>wypłacimy (obliczona kwota) &euro;</h2>
+                        Odszkodowanie przekażemy na wskazane poniżej konto po akceptacji roszczenia przez linię lotniczą i otrzymaniu od niej odszkodowania.
+                    </button> 
+                </div>
+            </div>
+            <div class="question">
+                Wybierz sposób wypłaty odszkodowania
+            </div>
+            <div class="flights">
+                <div style="border: 1px solid #797F93; padding: 20px;">
+                    <div>
+                        <input type="radio" id="paypal" value="1" name="radio">
+                        <div class="payment1">
+                            Płatność PayPal
+                        </div>
+                        <div class="payment2">
+                            BEZ OPŁAT
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div style="border-top: 1px solid #797F93; margin-top: 10px; margin-bottom: 10px;"></div>
+                    <div>
+                        <input type="radio" id="account" value="2" name="radio" >
+                        <div class="payment1">
+                            Płatność na konto
+                        </div>
+                        <div class="payment2" style="width: auto;">
+                            WYBIERZ WALUTĘ
+                        </div>
+                                                    <select id="select"> 
+                            <option>---</option>
+                            <option>EURO</option>
+                            <option>PLN</option>
+                            <option>USD</option>
+                            <option>CHF</option>
+                            <option>GBP</option>
+                            <option>INNA</option>
+                            </select>
+                                    </div>
+                
+                </div>
+                <div id="paypalOption" >
+                    <br>Twoje konto PayPal (adres e-mail) <br>       
+                    <input type="email" id="account_num">
+                </div>
+                <div id="accountOption" >
+                    <br>Numer konta bankowego <br>       
+                    <input type="text" id="account_num2">
+                </div>
+            </div>
+            <div class="flights">
+                <button class="btn_next" type="button">Dalej &rarr;</button>
+                <button class="btn_prev" type="button">&larr; Wróć</button>
+            </div>
+        </div>

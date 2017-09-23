@@ -23,7 +23,7 @@
 
     if(!isset($data[$db_trip_first_flight_info_id])){
 //        header('Location: flight_form.html');
-        header('Location: compensation_form_copy.html');
+        header('Location: form.html');
         exit;
     }else{
         header('Location: trip.html');

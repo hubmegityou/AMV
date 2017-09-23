@@ -15,6 +15,7 @@ jQuery(document).ready(function(){
                 event.preventDefault();
                 $(this).val(ui.item['label']);
                 $(this).attr('data-code', ui.item['value']);
+                $(this).attr('data-name', ui.item['label'].split(',', 1)[0]);
                 return;
             }
         });
