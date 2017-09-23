@@ -9,7 +9,8 @@ body
 
 #container
 {
-	width: 600px;
+	width: 100%;
+	max-width: 600px;
 	margin-top: -8px;
 	margin-left: auto;
 	margin-right: auto;
@@ -35,12 +36,13 @@ body
 	padding-left: 60px;
 	padding-right: 60px;
 	padding-bottom: 40px;
+	min-height: 40px;
 }
 
 .flights > h1
 {
 	text-align: center;
-	font-size: 48px;
+
 }
 
 .flights > h2

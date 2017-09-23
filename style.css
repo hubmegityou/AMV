@@ -55,9 +55,13 @@ a:hover
 /*background for line with circles*/
 .stepline
 {
+	display: flex;
+    align-items: center;
+    justify-content: center;
 	background-color: #DBF4FF;
 	min-height: 100px;
-	text-align: center;
+	position: relative;
+	z-index: -2;
 	/*border-top: 10px solid #DBF4FF;*/
 }
 
@@ -81,7 +85,7 @@ input[type=tel]
 	left: -20px;
 	border: 1px solid #797F93;
 	border-radius: 10px;
-	margin-right: 100%;
+	/*margin-right: 100%;*/
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -194,6 +198,9 @@ input[type=radio]
 /*answer field*/
 .answer
 {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	background-color: white;
 	padding: 40px;
 	color: #797F93;
@@ -208,7 +215,7 @@ input[type=radio]
 	padding: 5%;
 	width: 40%;
 	text-align: center;
-	min-height: 250px;
+	flex-grow: 0;
 }
 
 /*place for the last image*/
@@ -216,15 +223,19 @@ input[type=radio]
 {
 	text-align: center;
 	border-radius: 15px;
+	width: 40%;
+	flex-grow: 0;
 }
 
 .part > img, .end > img
 {
 	position: center;
 	margin-left: auto;
-	marnig-right: auto;
+	margin-right: auto;
 	border: 5px solid #FFF;
-	border-radius: 25px;
+	border-radius: 25px;  
+	max-width: 100%;
+    height: auto;
 }
 
 .part > img:hover, .end > img:hover, active_img

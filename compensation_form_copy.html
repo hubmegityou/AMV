@@ -3,9 +3,12 @@
 
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
         <title>AMV - formularz odszkodowania</title>
         <link rel="stylesheet" href="style.css" type="text/css" />	
-        <link rel="stylesheet" href="main.css" type="text/css" />	
+		<link rel="stylesheet" href="main.css" type="text/css" />	
+		<link rel="stylesheet" href="stepline.css" type="text/css" />	
+		
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu&amp;subset=latin-ext" rel="stylesheet">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -17,7 +20,13 @@
 			Weryfikacja lotu
 		</div>
 		<div class="stepline">
-			"oś czasu" wyświetlająca aktywny krok
+			<ul>
+					<li class="active">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				  </ul>  
 			<div id="ad">
 			Wysokość odszkodowania<br><b>nawet do 600&euro;</b>
 			</div>
@@ -37,7 +46,7 @@
 		<div class="flights">
 			<button id="Y" class="btn_yn" type="button">TAK</button>
 			<button id="N" class="btn_yn" type="button">NIE</button>
-			<div style="clear:both;"></div>
+		
 		</div>
 		<div id="transfer">
 			<div id="airports" class="flights">
