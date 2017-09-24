@@ -53,8 +53,24 @@ jQuery(document).ready(function(){
         $('#'+id).removeClass('active_btn_yn');
     }
     
-    $("#transfer > .answer > div > img ").click(function(){clean_waypoints(); check_entitlement(1);});
-
+    $("#transfer > .answer > div > img ").click(function(){
+        if (!check_waypoints()){return;} 
+        clean_waypoints();
+        check_entitlement(1);
+        fill_data("trips");
+        
+    });
+    
+    function check_waypoints(){
+        var flag = false;
+        $("#waypoints > input:visible").each(function(){
+            if($(this).val() && $(this).attr('data-code')){
+               flag = true; 
+            }
+        });
+        if(!flag){return false;}
+        return true;
+    }
     function clean_waypoints(){
         $("#waypoints > input:visible").each(function(){
             if(!$(this).val()){
