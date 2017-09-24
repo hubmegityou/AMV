@@ -6,7 +6,7 @@ jQuery(document).ready(function(){
     $('#Y').on('click', Ybutton);
     $('#N').on('click', Nbutton);
 
-    var time = 1000;
+    var time = 300;
     
     function Ybutton(){
         $('#transfer').show(time);
@@ -26,7 +26,7 @@ jQuery(document).ready(function(){
         // For some browsers, `attr` is undefined; for others,
         // `attr` is false.  Check for both
         
-        $('#transfer').hide().delay(1000);
+        $('#transfer').hide().delay(time);
         if (!((typeof dep_code !== typeof undefined && dep_code !== false) || (typeof dest_code !== typeof undefined && dest_code !== false))){
             return
         }
@@ -53,7 +53,19 @@ jQuery(document).ready(function(){
         $('#'+id).removeClass('active_btn_yn');
     }
     
+    $("#transfer > .answer > div > img ").click(function(){clean_waypoints(); check_entitlement(1);});
 
+    function clean_waypoints(){
+        $("#waypoints > input:visible").each(function(){
+            if(!$(this).val()){
+                $(this).remove()
+            }
+        });
+    };
+
+    function check_entitlement(index){
+
+    }
 
 
 
@@ -93,7 +105,7 @@ jQuery(document).ready(function(){
    $("#add_waypoint").click(addWaypoint);
 
     function addWaypoint(){
-            $("#waypoints > input").first().clone().val('').attr('data-code', "").attr('data-name', "").appendTo("#waypoints").autocomplete({
+            $("#waypoints > input:hidden").first().clone().show().appendTo("#waypoints").autocomplete({
             source: "getData.php?type=airport",
             select: function(event, ui) {
                 event.preventDefault();

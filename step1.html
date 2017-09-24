@@ -1,19 +1,4 @@
 <div id="step1">
-		<div class="topbar">
-			Weryfikacja lotu
-		</div>
-		<div class="stepline">
-			<ul>
-                <li class="active">1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-            </ul>  
-			<div id="ad">
-			Wysokość odszkodowania<br><b>nawet do 600&euro;</b>
-			</div>
-		</div>
 			
 		<div class="flights">
 			<h1>Weryfikacja lotu</h1>
@@ -35,6 +20,7 @@
 			<div id="airports" class="flights">
 				<br>Lotniska<br>
 				<div id="waypoints">
+					<input name="waypoint" type="text" autocomplete="off" hidden/>
 					<input name="waypoint" type="text" autocomplete="off"/>
 				</div>
 				<a id = "add_waypoint">+ dodaj następną przesiadkę</a>
@@ -52,21 +38,20 @@
 					<img src="grafika_testowa/2.png" />
 					ponad 3 godziny
 				</div>
-				<div style="clear:both;"></div>
 				<div class="end">
 					<img src="grafika_testowa/3.png" />
 					<br>nie dotarłem na miejsce
 				</div>
 			</div>
 			
-			<div id="trips">
-				<div class="question">
-					Z którym lotem wystąpił problem?
-				</div>
-				<div class="answer">
-					Tutaj przyciski z wybranymi trasami (jeżeli były przesiadki)
-					<!--<button class="btn" type="button">(jaki lot)</button>-->
-				</div>
+		</div>
+		<div id="trips">
+			<div class="question">
+				Z którym lotem wystąpił problem?
+			</div>
+			<div class="answer">
+				Tutaj przyciski z wybranymi trasami (jeżeli były przesiadki)
+				<!--<button class="btn" type="button">(jaki lot)</button>-->
 			</div>
 		</div>
 		
@@ -84,7 +69,6 @@
 					<img id="click2" src="grafika_testowa/4.png" />
 					odwołany
 				</div>
-				<div style="clear:both;"></div>
 				<div class="end" >
 					<img id="click3" src="grafika_testowa/5.png" />
 					<br>odmowa wejścia na pokład
@@ -138,7 +122,6 @@
 						<img src="grafika_testowa/1.png" />
 						Więcej niż 3 godziny
 					</div>
-					<div style="clear:both;"></div>
 					<div class="end">
 						<img src="grafika_testowa/3.png" />
 						<br>Nie dotarłem na miejsce
@@ -159,7 +142,6 @@
 						<img src="grafika_testowa/15.png" />
 						<br>Więcej niż 14 dni przed wylotem
 					</div>
-					<div style="clear:both;"></div>
 				</div>
 				<div class="question">
 					Jaki był powód odwołania lotu?
@@ -189,7 +171,6 @@
 						<img src="grafika_testowa/11.png" />
 						Nie podano
 					</div>
-					<div style="clear:both;"></div>
 					<div class="end">
 						<img src="grafika_testowa/12.png" />
 						<br>Nie wiem
@@ -215,7 +196,6 @@
 						<img src="grafika_testowa/19.png" />
 						Powyżej 4 godzin
 					</div>
-					<div style="clear:both;"></div>
 					<div class="end">
 						<img src="grafika_testowa/12.png" />
 						<br>Nie wiem
@@ -231,7 +211,6 @@
 				<div class="answer">
 					<div id="yes"><h1>TAK</h1></div>
 					<div id="no"><h1>NIE</h1></div>
-					<div style="clear:both;"></div>
 				</div>
 			</div>
 			
