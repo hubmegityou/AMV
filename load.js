@@ -10,24 +10,26 @@ $(document).ready(function(){
                     $("#content").html(data);
                     //copy text to header
                     $(".topbar").html($(".flights > h1").html());
-                    //set appropriate step on the stepline
-                    $(".stepline > ul").children().each(function(index){
-                        if(index < current_step){
+                },
+                complete: function(){
+                    // get scripts
+                    $.getScript("step" + String(page) +".js");
+                    //and set variable to current page
+                    current_step = page;
+
+                     //set appropriate step on the stepline
+                     $(".stepline > ul").children().each(function(index){
+                        if(index + 1 < current_step) {
                             $(this).removeClass("active");
                             $(this).html("✔");
                         }
-                        if(index == current_step){
+                        if(index + 1 == current_step){
                             $(this).addClass("active");
                         }
                     });
                     //add handler to button
                     $(".btn_next").click(function(){ get_page(current_step + 1);});
-                },
-                complete: function(){
-                    //finally, get scripts
-                    $.getScript("step" + String(page) +".js");
-                    //and set variable to current page
-                    current_step = page;
+                    $(".btn_prev").click(function(){ get_page(current_step - 1);});
                 }
             });
         };
@@ -45,5 +47,5 @@ $(document).ready(function(){
 
         //remove in final version
         get_page(1);       
-    
+        //get_initial_step();
 });    
