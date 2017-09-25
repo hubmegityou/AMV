@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
     $("#buttons").nextAll().hide();
     $('#Y').on('click', Ybutton);
     $('#N').on('click', Nbutton);
-
+    
     var time = 300;
     
     function Ybutton(){
@@ -54,12 +54,30 @@ jQuery(document).ready(function(){
     }
     
     $("#transfer > .answer > div > img ").click(function(){
-        if (!check_waypoints()){return;} 
+        if (!check_waypoints()){return;}
+        $('#trips').show();
         clean_waypoints();
-        check_entitlement(1);
-        fill_data("trips");
+//        check_entitlement(1);
+//        fill_data("trips");
         
+        //add buttons
+        var dep_code = $("[name=departure]").attr("data-code");
+        var dep_name = $("[name=departure]").attr("data-name");
+        $('#waypoints > input').slice(1).each(function(){
+            var dest_code = $(this).attr("data-code");
+            var dest_name = $(this).attr("data-name");
+            addButtons(dep_name, dep_code, dest_name, dest_code);
+            dep_name = dest_name;
+            dep_code = dest_code;
+        });
+        var dest_code = $("[name=destination]").attr("data-code");
+        var dest_name = $("[name=destination]").attr("data-name");
+        addButtons(dep_name, dep_code, dest_name, dest_code);
     });
+    
+    function addButtons(dpn, dpc, dsn, dsc){
+        $('#trips > .answer > input:hidden').first().clone().show().appendTo('#trips > .answer').attr('value', dpn + '(' + dpc + ')' + ' ' + dsn + '(' + dsc + ')').attr('data-departure-name',dpn).attr('data-departure-code',dpc).attr('data-destination-name',dsn).attr('data-destination-code',dsc);
+    }
     
     function check_waypoints(){
         var flag = false;
@@ -82,7 +100,6 @@ jQuery(document).ready(function(){
     function check_entitlement(index){
 
     }
-
 
 
     //$("#flightForm").on("keyup", "input", autocomplete);

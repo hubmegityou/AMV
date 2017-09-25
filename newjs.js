@@ -143,20 +143,8 @@ function buttonPrev(){
 
 function showQuestion(){
     var id = parseInt($(this).attr('id').slice(-1));
-//    var id2 = (id + 1) % 3 + 1; //1>3 (2), 2>1 (3), 3>2 (1)
-//    var id3 = ???
-//try to optimise it
-    switch(id){
-        case 1: var id2 = 2;
-                var id3 = 3;
-                break;
-        case 2: var id2 = 3;
-                var id3 = 1;
-                break;
-        case 3: var id2 = 2;
-                var id3 = 1;
-                break;
-    }
+    var id2 = id % 3 + 1;
+    var id2 = (id + 1) % 3 + 1;
     $('#ver'+id2).hide();
     $('#ver'+id3).hide();
     $('#ver'+id).show(1000);
