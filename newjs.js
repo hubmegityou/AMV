@@ -144,7 +144,7 @@ function buttonPrev(){
 function showQuestion(){
     var id = parseInt($(this).attr('id').slice(-1));
     var id2 = id % 3 + 1;
-    var id2 = (id + 1) % 3 + 1;
+    var id3 = (id + 1) % 3 + 1;
     $('#ver'+id2).hide();
     $('#ver'+id3).hide();
     $('#ver'+id).show(1000);
