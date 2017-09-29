@@ -61,38 +61,40 @@
 				Z którym lotem wystąpił problem?
 			</div>
 			<div class="answer">
-				<input type="button" class="btn" value="0" hidden />
+				<input type="button" class="btn" hidden/>
 			</div>
 		</div>
 		
-		<form id="form" hidden>
+		<form data-index = "-1" hidden>
+                <input type='hidden' name='departure-code' />
+                <input type='hidden' name='destination-code' />
 			<div class="question">
 				<p></p>
 				Co się wydarzyło z tym lotem?
 			</div>
-			<div class="answer">
+			<div class="answer variants">
 				<div class="part" >
-                                        <img id="click1" src="grafika_testowa/13.png" />
+                    <img name = "delayed" src="grafika_testowa/13.png" />
 					opóźniony
 				</div>
 				<div class="part" >
-					<img id="click2" src="grafika_testowa/4.png" />
+					<img name = "cancelled" src="grafika_testowa/4.png" />
 					odwołany
 				</div>
 				<div class="end" >
-					<img id="click3" src="grafika_testowa/5.png" />
+					<img name = "overbooked" src="grafika_testowa/5.png" />
 					<br>odmowa wejścia na pokład
 				</div>
 			</div>
 			
-			<div id="ver1">	<!-- delayed -->
+			<div name="delayed" hidden>	<!-- delayed -->
 				<div class="question">
 					Jaki był powód opóźnienia?
 				</div>
 				<div class="answer">
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="delayreason" hidden/>
+                                                    <input type="radio" name="delayreason" value = "technical" hidden/>
                                                     <img src="grafika_testowa/6.png" />
                                                     Problemy techniczne
                                                 </label>
@@ -101,7 +103,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="delayreason" hidden/>
+                                                    <input type="radio" name="delayreason" value = "weather" hidden/>
                                                     <img src="grafika_testowa/7.png" />
                                                     Złe warunki atmosferyczne
                                                 </label>
@@ -110,7 +112,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="delayreason" hidden/>
+                                                    <input type="radio" name="delayreason" value="other_flights" hidden/>
                                                     <img src="grafika_testowa/8.png" />
                                                     Wpływ innych lotów
                                                 </label>
@@ -119,7 +121,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="delayreason" hidden/>
+                                                    <input type="radio" name="delayreason" value = "airport" hidden/>
                                                     <img src="grafika_testowa/9.png" />
                                                     Kłopoty portu lotniczego
                                                 </label>
@@ -128,7 +130,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="delayreason" hidden/>
+                                                    <input type="radio" name="delayreason" value = "strike" hidden/>
                                                     <img src="grafika_testowa/10.png" />
                                                     Strajk
                                                 </label>
@@ -137,17 +139,16 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="delayreason" hidden/>
+                                                    <input type="radio" name="delayreason" value = "not_known" hidden/>
                                                     <img src="grafika_testowa/11.png" />
                                                     Nie podano
                                                 </label>
 <!--						<img src="grafika_testowa/11.png" />
 						Nie podano-->
 					</div>
-					<div style="clear:both;"></div>
 					<div class="end">
                                                 <label>
-                                                    <input type="radio" name="delayreason" hidden/>
+                                                    <input type="radio" name="delayreason" value = "i_dont_know" hidden/>
                                                     <img src="grafika_testowa/12.png" />
                                                     Nie wiem
                                                 </label>
@@ -161,7 +162,7 @@
 				<div class="answer">
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="delaytime" hidden/>
+                                                    <input type="radio" name="delaytime" value = "lt3"  hidden/>
                                                     <img src="grafika_testowa/1.png" />
                                                     Mniej niż 3 godziny
                                                 </label>
@@ -170,7 +171,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="delaytime" hidden/>
+                                                    <input type="radio" name="delaytime" value = "mt3" hidden/>
                                                     <img src="grafika_testowa/1.png" />
                                                     Więcej niż 3 godziny
                                                 </label>
@@ -179,7 +180,7 @@
 					</div>
 					<div class="end">
 						<label>
-                                                    <input type="radio" name="delaytime" hidden/>
+                                                    <input type="radio" name="delaytime" value = "havent_arrived"  hidden/>
                                                     <img src="grafika_testowa/3.png" />
                                                     <br>Nie dotarłem na miejsce
                                                 </label>
@@ -189,14 +190,14 @@
 				</div>
 			</div>
 			
-			<div id="ver2">	<!-- cancellation -->
+			<div name="cancelled" hidden>	<!-- cancellation -->
 				<div class="question">
 					Kiedy linia lotnicza poinformowała o odwołaniu lotu?
 				</div>
 				<div class="answer">
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationinfo" hidden/>
+                                                    <input type="radio" name="cancellationinfo" value = "lt14" hidden/>
                                                     <img src="grafika_testowa/14.png" />
                                                     <br>Mniej niż 14 dni przed wylotem
                                                 </label>
@@ -205,7 +206,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationinfo" hidden/>
+                                                    <input type="radio" name="cancellationinfo" value = "mt14"  hidden/>
                                                     <img src="grafika_testowa/15.png" />
                                                     <br>Więcej niż 14 dni przed wylotem
                                                 </label>
@@ -219,7 +220,7 @@
 				<div class="answer">
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" hidden/>
+                                                    <input type="radio" name="cancellationreason" value = "technical" hidden/>
                                                     <img src="grafika_testowa/6.png" />
                                                     Problemy techniczne
                                                 </label>
@@ -228,7 +229,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationreason" hidden/>
+                                                    <input type="radio" name="cancellationreason" value = "weather"  hidden/>
                                                     <img src="grafika_testowa/7.png" />
                                                     Złe warunki atmosferyczne
                                                 </label>
@@ -237,7 +238,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationreason" hidden/>
+                                                    <input type="radio" name="cancellationreason" value = "other_flights" hidden/>
                                                     <img src="grafika_testowa/8.png" />
                                                     Wpływ innych lotów
                                                 </label>
@@ -246,7 +247,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationreason" hidden/>
+                                                    <input type="radio" name="cancellationreason" value = "airport" hidden/>
                                                     <img src="grafika_testowa/9.png" />
                                                     Kłopoty portu lotniczego
                                                 </label>
@@ -255,7 +256,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" hidden/>
+                                                    <input type="radio" name="cancellationreason" value = "strike" hidden/>
                                                     <img src="grafika_testowa/10.png" />
                                                     Strajk
                                                 </label>
@@ -264,7 +265,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" hidden/>
+                                                    <input type="radio" name="cancellationreason" value = "not_known" hidden/>
                                                     <img src="grafika_testowa/11.png" />
                                                     Nie podano
                                                 </label>
@@ -273,7 +274,7 @@
 					</div>
 					<div class="end">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" hidden/>
+                                                    <input type="radio" name="cancellationreason" value = "i_dont_know" hidden/>
                                                     <img src="grafika_testowa/12.png" />
                                                     <br>Nie wiem
                                                 </label>
@@ -287,7 +288,7 @@
 				<div class="answer">
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationtime" hidden/>
+                                                    <input type="radio" name="cancellationtime" value = "lt2" hidden/>
                                                     <img src="grafika_testowa/16.png" />
                                                     Mniej niż 2 godziny
                                                 </label>
@@ -296,7 +297,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationtime" hidden/>
+                                                    <input type="radio" name="cancellationtime" value = "2_3"  hidden/>
                                                     <img src="grafika_testowa/17.png" />
                                                     2 - 3 godziny
                                                 </label>
@@ -305,7 +306,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationtime" hidden/>
+                                                    <input type="radio" name="cancellationtime" value = "3_4" hidden/>
                                                     <img src="grafika_testowa/18.png" />
                                                     3 - 4 godziny
                                                 </label>
@@ -314,7 +315,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationtime" hidden/>
+                                                    <input type="radio" name="cancellationtime" value = "mt4"  hidden/>
                                                     <img src="grafika_testowa/19.png" />
                                                     Powyżej 4 godzin
                                                 </label>
@@ -323,7 +324,7 @@
 					</div>
 					<div class="end">
                                                 <label>
-                                                    <input type="radio" name="cancellationtime" hidden/>
+                                                    <input type="radio" name="cancellationtime" value = "i_dont_know" hidden/>
                                                     <img src="grafika_testowa/12.png" />
                                                     <br>Nie wiem
                                                 </label>
@@ -333,19 +334,19 @@
 				</div>
 			</div>
 			
-			<div id="ver3">	<!-- overbooking -->
+			<div name="overbooked" hidden>	<!-- overbooking -->
 				
 				<div class="question">
 					Czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?
 				</div>
 				<div class="answer">
-					<div id="yes"><h1>TAK</h1></div>
-					<div id="no"><h1>NIE</h1></div>
+					<div class = "btn_yes"><h1>TAK</h1></div>
+					<div class = "btn_no"><h1>NIE</h1></div>
 				</div>
 			</div>
 			
 			
-			<div class="flights">
+			<div class="flights" hidden>
 				Nazwa lini lotniczej<br>
 				<input type="text" name="airlines" placeholder="Podaj nazwę linii" autocomplete="off" />
 				Numer lotu<br>
@@ -354,8 +355,7 @@
 				<input type="date" name="date" placeholder="Dodaj datę" autocomplete="off" />
 			</div>
 		</form>
-		
-		<div class="flights">
+	</div>
+	<div class="navigation" hidden>
 			<button class="btn_next" type="button">Dalej &rarr;</button>
-		</div>
 	</div>

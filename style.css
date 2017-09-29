@@ -227,9 +227,9 @@ input[type=radio]
 	flex-grow: 0;
 }
 
-.part > img, .end > img
+img
 {
-	position: center;
+	
 	margin-left: auto;
 	margin-right: auto;
 	border: 5px solid #FFF;
@@ -238,14 +238,14 @@ input[type=radio]
     height: auto;
 }
 
-.part > img:hover, .end > img:hover, active_img
+img:hover, img.active
 {
 	border-color: #6960EE;
 	cursor: pointer;
 }
 
 /* buttons "yes/no" relating to version number 3 of the form*/
-#yes, #no
+.btn_yes, .btn_no
 {
 	color: white;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
@@ -261,17 +261,17 @@ input[type=radio]
 	margin-right: 55px;
 }
 
-#yes
+.btn_yes
 {
 	background-color: #79DCEF;
 }
 
-#no
+.btn_no
 {
 	background-color: #F77D99;
 }
 
-#yes:hover, #no:hover
+.btn_yes:hover, .btn_no:hover
 {
 	-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
