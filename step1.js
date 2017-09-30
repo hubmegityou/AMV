@@ -170,6 +170,7 @@ jQuery(document).ready(function(){
         var name = String(index + 1)+". "+ dep_name + " (" + dep_code + ") - "+ dest_name + " (" + dest_code + ")";
         var button = $("#trips > div > input:hidden").clone().appendTo("#trips > .answer").show().val(name).attr('data-dep-code', dep_code).attr('data-dest-code', dest_code).attr('data-index', index);
         button.click(function(element){
+            $(this).toggleClass('active_btn');
             render_form(element.target);
         });
     };
