@@ -11,7 +11,7 @@
     $conn = new mysqli($host, $db_user, $db_pass, $db_name);
     if ($conn->connect_errno!=0){
         echo "Error: ".$conn->connect_errno;
-        echo "<script type=\"text/javascript\">alert('b³¹d w po³¹czeniu z baz¹…');</script>";
+        echo "<script type=\"text/javascript\">alert('bï¿½ï¿½d w poï¿½ï¿½czeniu z bazï¿½ï¿½');</script>";
         return false;
     }
     else{

@@ -65,11 +65,14 @@
          //grupy lot�w   
         $db_flight_info_tab = "flight_info";
             $db_flight_info_id= "id";
+            $db_flight_info_tripid = "trip_id";
             $db_flight_info_applicationid = "application_ID";
-            $db_flight_info_nextflight = "next_flight_info_ID";
+            //$db_flight_info_nextflight = "next_flight_info_ID";
             $db_flight_info_flightid = "flight_ID";
-            
-            
+            $db_flight_info_departureid = "departure_id";
+            $db_flight_info_arrivalid = "arrival_id";
+            $db_flight_info_order = "order";
+
          
             
        //informacje o zg�oszeniu

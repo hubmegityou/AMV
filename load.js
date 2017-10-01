@@ -25,6 +25,7 @@ $(document).ready(function(){
                         }
                         if(index + 1 == current_step){
                             $(this).addClass("active");
+                            $(this).html(current_step);
                         }
                     });
                     //add handler to button

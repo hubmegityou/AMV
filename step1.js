@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
     $("#buttons").nextAll().hide();
     $('#Y').on('click', Ybutton);
     $('#N').on('click', Nbutton);
-    $('form > .answer > div > img').click(function(element){
+    $('form > .answer > div > label > img').click(function(element){
         show_variant(element.target);
     });
     $('form').find("img").not("img[name]").on('click', show_next);

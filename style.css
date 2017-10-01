@@ -226,7 +226,7 @@ input[type=radio]
 	width: 40%;
 	flex-grow: 0;
 }
-
+/*
 img
 {
 	
@@ -243,6 +243,23 @@ img:hover, img.active
 	border-color: #6960EE;
 	cursor: pointer;
 }
+*/
+label > input{ /* HIDE RADIO */
+	visibility: hidden; /* Makes input not-clickable */
+	position: absolute; /* Remove input from document flow */
+  }
+label > input + img{ /* IMAGE STYLES */
+	cursor:pointer;
+	margin-left: auto;
+	margin-right: auto;
+	border: 5px solid #FFF;
+	border-radius: 25px;  
+	max-width: 100%;
+    height: auto;
+  }
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+	border-color: #6960EE;
+  }
 
 /* buttons "yes/no" relating to version number 3 of the form*/
 .btn_yes, .btn_no
