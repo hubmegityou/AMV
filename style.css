@@ -361,6 +361,33 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 	cursor: pointer;
 }
 
+
+/* select the flight with which the problem occurred- buttons*/
+.btn
+{
+        width: 90%;
+	background-color: white;
+	font-size: 20px;
+	font-weight: bold;
+	color: #797F93;
+	margin-left: 5%;
+	margin-right: 5%;
+        margin-bottom: 3%;
+	border: 2px solid #797F93;
+	border-radius: 30px;
+	padding: 15px;    
+}
+
+.btn:hover, .active_btn
+{
+	background-color: #6960EE;
+	border-color: #6960EE;
+	color: white;
+	cursor: pointer;
+}
+
+
+
 /*choose the kind of payment - buttons layout*/
 .btn_comp
 {
