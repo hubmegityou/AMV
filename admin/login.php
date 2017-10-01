@@ -4,13 +4,12 @@
     session_start();
 
     if(empty($_POST)){
-        $_SESSION['error'] = true;
         header('Location: login.html');
         exit();
     }
 
- require_once "database/dbinfo.php";
- require_once "database/connect.php";
+ require_once "../database/dbinfo.php";
+ require_once "../database/connect.php";
 	
     $connection = db_connection();
     if ($connection != false){
@@ -37,7 +36,6 @@
                 $_SESSION['function'] = $row[$db_users_function];
                 $_SESSION['connection'] = $connection;
 
-                unset($_SESSION['error']);
                 $result->free_result();
 
                 header('Location: index.php');
@@ -49,7 +47,6 @@
 
             }
         }
-    $connection->close();
     }	
 ?>
 

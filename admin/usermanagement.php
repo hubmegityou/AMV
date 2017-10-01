@@ -2,9 +2,6 @@
 
 session_start();
 
-If (!isset($_SESSION['id'])){
-   header('Location: login.html');  
-}
 
 If ($_SESSION['function']!=1){
    header('Location: login.html');  
@@ -102,8 +99,8 @@ If ($_SESSION['function']!=1){
                              
                             <?php  
   
-                            require_once "database/dbinfo.php";
-                            require_once "database/connect.php";
+                            require_once "../database/dbinfo.php";
+                            require_once "../database/connect.php";
     
                             $connection = db_connection();  
   
