@@ -1,6 +1,7 @@
 
-function select_onchange(){
+function select_onchange() {
     $('#select').change(function() {
+		alert('jestem');
         var id= $(this).find(":selected").val();
         var text=$(this).find(":selected").text();
         $.ajax( // wywo³anie ajaxa

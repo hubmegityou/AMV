@@ -98,62 +98,41 @@ If (!isset($_SESSION['id'])){
     $result_trip = $connection->query($sql_trip);
     while ($row_trip = $result_trip->fetch_assoc()){
         //sprawdzamy, czy zgodne miejsce przylotu
-        $sql_arrival_check = "SELECT $db_flight_info_departureid FROM $db_flight_info_tab WHERE $db_flight_info_tripid = $row_trip[$db_flight_info_tripid] ORDER BY $db_flight_info_order DESC LIMIT 1";
-        $result_arrival_check = $connection->query($sql_arrival_check);
-        if($result_arrival_check[$db_flight_info_departureid] == $depid){
+        $sql_arrival_check = "SELECT $db_flight_info_arrivalid FROM $db_flight_info_tab WHERE $db_flight_info_tripid = $row_trip[$db_flight_info_tripid] ORDER BY `$db_flight_info_tab`.`$db_flight_info_order` DESC LIMIT 1";
+		$result_arrival_check = $connection->query($sql_arrival_check);
+		$row_arrival_check = $result_arrival_check->fetch_assoc();
+        if($row_arrival_check[$db_flight_info_arrivalid] == $arrid){ 
             $tripid = $row_trip[$db_flight_info_tripid];
             $sql_person = "SELECT $db_connect_passenger_id FROM $db_connect_tab WHERE $db_connect_trip_id = $tripid";
-            $result_person = $connection->query($sql_trip);
+            $result_person = $connection->query($sql_person);
             while ($row_person = $result_person->fetch_assoc()){
                 $sql_passengers="SELECT $db_passengers_firstname, $db_passengers_lastname FROM $db_passengers_tab WHERE $db_passengers_email IS NOT NULL && $db_passengers_id= $row_person[$db_connect_passenger_id]";
-                $result_passengers = $connection->query($sql_passengers);
+				$result_passengers = $connection->query($sql_passengers);
                 if ($row_passengers = $result_passengers->fetch_assoc()){
                     $fname= $row_passengers[$db_passengers_firstname];
                     $lname= $row_passengers[$db_passengers_lastname];
                 }
             }
-            $slq_date = "SELECT $db_flight_date FROM $db_flight_tab WHERE $db_flight_id = $row_trip[$db_flight_info_flightid]";
+            $sql_date = "SELECT $db_flight_date FROM $db_flight_tab WHERE $db_flight_id = $row_trip[$db_flight_info_flightid]";
             $result_date = $connection->query($sql_date);
             $row_date = $result_date->fetch_assoc();
             $date = $row_date[$db_flight_date];
-
-//        $sql_connect="SELECT $db_connect_passenger_id FROM $db_connect_tab WHERE $db_connect_trip_id= $row_trip[$db_trip_id]";
-//        $result_connect = $connection->query($sql_connect);
-//
-//        while ($row_connect = $result_connect->fetch_assoc()){
-//            $sql_passengers="SELECT $db_passengers_firstname, $db_passengers_lastname FROM $db_passengers_tab WHERE $db_passengers_email IS NOT NULL && $db_passengers_id= $row_connect[$db_connect_passenger_id]";
-//            $result_passengers = $connection->query($sql_passengers);
-//            $row_passengers = $result_passengers->fetch_assoc();
-//            
-//            $fname= $row_passengers[$db_passengers_firstname];
-//            $lname= $row_passengers[$db_passengers_lastname];  
-//        }
-//       
-//        $sql_flightinfo= "SELECT $db_flight_info_flightid FROM $db_flight_info_tab WHERE $db_flight_info_id=$row_trip[$db_trip_first_flight_info_id]";
-//        $result_flightinfo = $connection->query($sql_flightinfo);
-//        $row_flightinfo = $result_flightinfo->fetch_assoc();
-//
-//        $sql_flight= "SELECT $db_flight_date FROM $db_flight_tab WHERE $db_flight_id= $row_flightinfo[$db_flight_info_flightid]";
-//        $result_flight = $connection->query($sql_flight);
-//        $row_flight = $result_flight->fetch_assoc();
-//            
-//        $date= $row_flight[$db_flight_date];
+			
+			$sql_status= "SELECT $db_trip_status FROM $db_trip_tab WHERE $db_trip_id= $tripid";
+			$result_status = $connection->query($sql_status);
+			$row_status = $result_status->fetch_assoc();
+			$tripstatus= $row_status[$db_trip_status];
         
 
-        echo '<tr onMouseover=this.bgColor="#D9E4E6" onMouseout=this.bgColor="white"'." onclick='tr2($row_trip[$db_trip_id])'>";
+        echo '<tr onMouseover=this.bgColor="#D9E4E6" onMouseout=this.bgColor="white"'." onclick='tr2($tripid)'>";
         echo "<td>$date </td>".    
         "<td>$fname </td>".
         "<td>$lname</td>".
-        "<td>$tripstatus</td>".
-//        "<td>$row_trip[$db_trip_status]</td>".    
+        "<td>$tripstatus</td>".    
         "</tr>";   
         }
     }
-    echo $sql_trip."<br";
-    echo $sql_arrival_check."<br";
-    echo $sql_date."<br";
-    echo $sql_passengers."<br";
-    echo $sql_person."<br";
+
   ?>                        
                              
  </tbody> 
