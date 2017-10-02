@@ -1,7 +1,8 @@
 <?php
     require_once "database/dbinfo.php";
     require_once "database/connect.php";
-
+    
+    
     class Table {
         public $id;
         protected $table_name;
@@ -9,6 +10,7 @@
         protected $data;
         protected $column_aliases;
         function __construct($id = null){
+            global $connection;
             if($id){
                 $this->id = $id;
                 //$id_var_name = "db_".str_replace("_tab", "_id", $this->table_name); //$id_var_name = 'db_flight_info_id'
@@ -35,33 +37,42 @@
                 }
             }
         }
-
+        /*This is so bad, refactor it someday */
         public function update_assoc($table){
+            require "definitions.php";
+
             foreach($table as $key => $value){
-                foreach($this->column_aliases as $alias => $column_name){
-                    if($key == $alias || $key == $column_name){
-                        $this->update($column_name, $value);
+                foreach($name_to_tab_and_column as $keyname => $tab_and_column){
+                    if($key == $keyname && $tab_and_column[0] == $this->table_name){ // check if the key is for this class
+                        foreach($value_to_number as $value_name => $number){ //if so then translate value name to number
+                            if($value == $value_name){
+                                $this->update($tab_and_column[1], $number); //and update appropriate column
+                            }
+                        }
                     }
                 }
             }
         }
         public function update($what, $value){
-            $sql = "UPDATE $this->table_name SET ? = ? WHERE $this->table_name.$this->table_id = ?";
+            
+            global $connection;
+            
+            $sql = "UPDATE `".$this->table_name."` SET `$what` = ? WHERE `".$this->table_id."` = ?";
             $stmt = $connection->prepare($sql);
             
             if(is_string($value)){
-                $stmt->bind_param("ssi", $what, $value, $this->id);
+                $stmt->bind_param("si", $value, $this->id);
             }elseif(is_int($value)){
-                $stmt->bind_param("si", $what, $value, $this->id);
+                $stmt->bind_param("ii", $value, $this->id);
             }else{
                 $stmt->close(); 
-                throw new Exception('Unable to update '.$this->table_name.'  with id = '. $this->id .'due to invalid value = '.$value);                
+                throw new Exception('Unable to update '.$this->table_name.'  with id = '. $this->id .' due to invalid value = '.$value);                
             }
             
             $flag = $stmt->execute();   
             $stmt->close(); 
             if(!$flag){
-                throw new Exception('Unable to update '.$this->table_name.'  with id ='. $this->id);
+                throw new Exception('Unable to update '.$this->table_name.'  with id = '. $this->id);
             }
             $this->$what = $value;
         }

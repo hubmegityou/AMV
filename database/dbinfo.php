@@ -84,6 +84,7 @@
             $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwo�aniu lotu
             $db_application_resignation = "resignation"; // czy klient zrezygnowa� z lotu w zamian za korzy�ci
             //$db_application_permission = "permission "; // czy by�a zgoda na zmian� planu podr�y  
+            $db_application_compensation = "compensation_availability";
             $db_application_compensationid = "compensation_ID";
             
        

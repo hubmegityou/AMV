@@ -64,8 +64,10 @@
 				<input type="button" id="flight" class="btn" hidden/>
 			</div>
 		</div>
-		
-		<form data-index = "-1" hidden>
+		<form name = "all" data-index = "-2" hidden>
+			<input type='hidden' name='flights[]' />
+		</form>
+		<form name = "default" data-index = "-1" hidden>
                 <input type='hidden' name='departure-code' />
                 <input type='hidden' name='destination-code' />
 			<div class="question">
@@ -230,7 +232,7 @@
 				<div class="answer">
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" value = "technical" hidden/>
+                                                    <input type="radio" name="delayreason" value = "technical" hidden/>
                                                     <img src="grafika_testowa/6.png" />
                                                     Problemy techniczne
                                                 </label>
@@ -239,7 +241,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationreason" value = "weather"  hidden/>
+                                                    <input type="radio" name="delayreason" value = "weather"  hidden/>
                                                     <img src="grafika_testowa/7.png" />
                                                     Złe warunki atmosferyczne
                                                 </label>
@@ -248,7 +250,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationreason" value = "other_flights" hidden/>
+                                                    <input type="radio" name="delayreason" value = "other_flights" hidden/>
                                                     <img src="grafika_testowa/8.png" />
                                                     Wpływ innych lotów
                                                 </label>
@@ -257,7 +259,7 @@
 					</div>
 					<div class="part">
 						<label>
-                                                    <input type="radio" name="cancellationreason" value = "airport" hidden/>
+                                                    <input type="radio" name="delayreason" value = "airport" hidden/>
                                                     <img src="grafika_testowa/9.png" />
                                                     Kłopoty portu lotniczego
                                                 </label>
@@ -266,7 +268,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" value = "strike" hidden/>
+                                                    <input type="radio" name="delayreason" value = "strike" hidden/>
                                                     <img src="grafika_testowa/10.png" />
                                                     Strajk
                                                 </label>
@@ -275,7 +277,7 @@
 					</div>
 					<div class="part">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" value = "not_known" hidden/>
+                                                    <input type="radio" name="delayreason" value = "not_known" hidden/>
                                                     <img src="grafika_testowa/11.png" />
                                                     Nie podano
                                                 </label>
@@ -284,7 +286,7 @@
 					</div>
 					<div class="end">
                                                 <label>
-                                                    <input type="radio" name="cancellationreason" value = "i_dont_know" hidden/>
+                                                    <input type="radio" name="delayreason" value = "i_dont_know" hidden/>
                                                     <img src="grafika_testowa/12.png" />
                                                     <br>Nie wiem
                                                 </label>
@@ -350,13 +352,20 @@
 					Czy dobrowolnie zrezygnowałeś z lotu w zamian za bilet na lot późniejszy albo otrzymałeś inną rekompensatę od linii lotniczej?
 				</div>
 				<div class="answer">
-					<div class = "btn_yes"><h1>TAK</h1></div>
-					<div class = "btn_no"><h1>NIE</h1></div>
+					<div class = "btn_yes">
+						<input type="radio" name="overbookingresignation" value = "yes" hidden/>
+						<h1>TAK</h1>
+					</div>
+					<div class = "btn_no">
+						<input type="radio" name="overbookingresignation" value = "no" hidden/>
+						<h1>NIE</h1>
+					</div>
 				</div>
 			</div>
 			
 			
 			<div class="flights" hidden>
+				<input type='hidden' name='airline-code' />
 				Nazwa lini lotniczej<br>
 				<input type="text" name="airlines" placeholder="Podaj nazwę linii" autocomplete="off" />
 				Numer lotu<br>

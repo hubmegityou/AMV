@@ -13,6 +13,9 @@ jQuery(document).ready(function(){
 
     function submit_forms(){
         $("form").each(function(){
+            if($(this).filter("[name=all]").length > 0){
+                $.post("submit_form.php?type=flights", $(this).serialize(), function(data){console.log(data);});
+            }
             if(!$(this).find("[name=departure-code]").val()){
                 return true;
             }
@@ -47,7 +50,7 @@ jQuery(document).ready(function(){
     
     function Nbutton(){
         //fix it
-        $("form:not(:first)").remove();
+        //$("form:not(:first, [name=all])").remove();
         $("#trips").hide();
         var dep_code = $("[name=departure]").attr("data-code");
         var dest_code = $("[name=destination]").attr("data-code");
@@ -60,14 +63,14 @@ jQuery(document).ready(function(){
         if (!((typeof dep_code !== typeof undefined && dep_code !== false) && (typeof dest_code !== typeof undefined && dest_code !== false))){
             return;
         }
-        
+        $("form[name=all] > input").first().clone().val(dep_code+"-"+dest_code).appendTo("form[name=all]");
         //fillRoute([dep_name, dep_code, dest_name, dest_code]);
-        $("form > div.question").children().html(dep_name + " ("+ dep_code+") - "+ dest_name + " ("+ dest_code+") </br>");        
-        $('form').show(time);
-        $("form").find("[name=departure-code]").val(dep_code);
-        $("form").find("[name=destination-code]").val(dest_code);
+        $("form[name=default] > div.question").children().html(dep_name + " ("+ dep_code+") - "+ dest_name + " ("+ dest_code+") </br>");        
+        $("form[name=default]").show(time);
+        $("form[name=default]").find("[name=departure-code]").val(dep_code);
+        $("form[name=default]").find("[name=destination-code]").val(dest_code);
         secondPart($(this));
-        $('html,body').animate({scrollTop: $('form').first().offset().top}, time);
+        $('html,body').animate({scrollTop: $('form[name=default]').offset().top}, time);
     }
     
     function fillRoute(array){
@@ -169,6 +172,7 @@ jQuery(document).ready(function(){
         var dest_name = destination.attr("data-name");
         var name = String(index + 1)+". "+ dep_name + " (" + dep_code + ") - "+ dest_name + " (" + dest_code + ")";
         var button = $("#trips > div > input:hidden").clone().appendTo("#trips > .answer").show().val(name).attr('data-dep-code', dep_code).attr('data-dest-code', dest_code).attr('data-index', index);
+        $("form[name=all] > input").first().clone().val(dep_code+"-"+dest_code).appendTo("form[name=all]");
         button.click(function(element){
             $(this).toggleClass('active_btn');
             render_form(element.target);
@@ -180,7 +184,7 @@ jQuery(document).ready(function(){
         var dest_code = $(button).attr('data-dest-code');
         var form_index = parseInt($(button).attr('data-index'));
         var flag = false;
-        var forms = $("form"); 
+        var forms = $("form:not([name=all])"); 
         forms.each(function(){
             if($(this).find("[name=departure-code]").val() == dep_code){
                 $(this).remove();
@@ -189,7 +193,7 @@ jQuery(document).ready(function(){
             }
         });
         if (flag){return;};
-        var newform = forms.first().clone();
+        var newform = forms.filter("[name=default]").first().clone();
         newform.attr('data-index', form_index);
         newform.find("[name=departure-code]").val(dep_code);
         newform.find("[name=destination-code]").val(dest_code);
@@ -208,21 +212,31 @@ jQuery(document).ready(function(){
         }
         newform[0].reset(); //just to be sure, shouldn't be filled
         newform.find(".question > p").html($(button).val());
-        newform.find('.answer > div > img').click(function(element){
+        newform.find('.answer > div > label > img[name]').click(function(element){
             show_variant(element.target);
         });
         newform.find("img").not("img[name]").on('click', show_next);
+        newform.find("[name=airlines]").autocomplete({
+            source: "getData.php?type=airline",
+            select: function(event, ui) {
+                event.preventDefault();
+                $(this).val(ui.item['label']);
+                $(this).attr('data-code', ui.item['value']);
+                $(".flights > [name=airline-code]").val(ui.item['value']);
+                return;
+            }
+        });
         newform.show();
     }
 
     function clean_trips(){
         $('#trips > .answer').children().slice(1).remove();
     }
-    
+    /*
     function addButtons(dpn, dpc, dsn, dsc, id){
         $('#trips > .answer > btn').first().clone().show().appendTo('#trips > .answer').attr('value', dpn + '(' + dpc + ')' + ' ' + dsn + '(' + dsc + ')').attr('data-departure-name',dpn).attr('data-departure-code',dpc).attr('data-destination-name',dsn).attr('data-destination-code',dsc).attr('id', 'button'+id);
     }
-    
+    */
     function addForms(){
 //        $('#trips > .answer > *').slice(1).
     }
@@ -276,6 +290,7 @@ jQuery(document).ready(function(){
                 event.preventDefault();
                 $(this).val(ui.item['label']);
                 $(this).attr('data-code', ui.item['value']);
+                $(".flights > [name=airline-code]").val(ui.item['value']);
                 return;
             }
         });

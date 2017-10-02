@@ -67,7 +67,7 @@ function getAirlines($connection, $term){
 
     $result = array();
     foreach ($data as $object){ 
-            array_push($result, array("label" => ($object[$db_airlines_operator].", ".$object[$db_airlines_name])));
+            array_push($result, array("label" => ($object[$db_airlines_operator].", ".$object[$db_airlines_name]), "value" => $object[$db_airlines_IATA]));
     }
     return $result;
 }
