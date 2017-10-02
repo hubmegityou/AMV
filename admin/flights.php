@@ -89,28 +89,39 @@ If (!isset($_SESSION['id'])){
     
     $connection = db_connection();  
   
-   $sql= "SELECT $db_trip_first_flight_info_id, $db_trip_id,  $db_trip_campaign FROM  $db_trip_tab GROUP BY $db_trip_campaign ";
+  
+  //dla lotów z campaign_id
+  
+  
+   $sql= "SELECT $db_trip_first_flight_info_id, $db_trip_id,  $db_trip_campaign FROM  $db_trip_tab GROUP BY $db_trip_campaign WHERE $db_trip_campaign IN NOT NULL ";
    $result = $connection->query($sql);
    while($row = $result->fetch_assoc()){  
        $sql2="SELECT $db_flight_info_flightid, $db_flight_info_nextflight FROM $db_flight_info_tab WHERE $db_flight_info_id=".$row[$db_trip_first_flight_info_id];  
        $result2 = $connection->query($sql2);
        $row2 = $result2->fetch_assoc();
-       If($row2[$db_flight_info_nextflight]==0){
-            $sql3= "SELECT $db_flight_departureid, $db_flight_arrivalid, $db_flight_airlineid FROM $db_flight_tab WHERE $db_flight_id=".$row2[$db_flight_info_flightid];
+       
+	    $sql3= "SELECT $db_flight_departureid, $db_flight_airlineid FROM $db_flight_tab WHERE $db_flight_id=".$row2[$db_flight_info_flightid];
             $result3 = $connection->query($sql3); 
-            $row3 = $result3->fetch_assoc();
-            
+            $row3 = $result3->fetch_assoc();    
             $departure= $row3[$db_flight_departureid];
-            $arrival=$row3[$db_flight_arrivalid];
-        
+			$nextfight= $row2[$db_flight_info_nextflight];
+			
+		   
+		   do {
+			   $sql_select="SELECT $db_flight_info_flightid, $db_flight_info_nextflight FROM $db_flight_info_tab WHERE $db_flight_info_id=".$nextflight;  
+			   $result_select = $connection->query($sql_select);
+			   $row_select = $result_select->fetch_assoc();
+			   $nextflight= $row_select[$db_flight_info_nextflight];
+		   }
+		   
+		   while ($row_select[$db_flight_info_nextflight])
+			   
+		   
+            $sql_arrival= "SELECT $db_flight_arrivalid FROM $db_flight_tab WHERE $db_flight_id=".$row_select[$db_flight_info_flightid];
+            $result_arrival = $connection->query($sql_arrival);
+            $row_arrival = $result_arrival->fetch_assoc();
             
-            
-       }else{
-            $sql3= "SELECT $db_flight_departureid FROM $db_flight_tab WHERE $db_flight_id=".$row2[$db_flight_info_flightid];
-            $result3 = $connection->query($sql3);
-            $row3 = $result3->fetch_assoc();
-            
-            $departure= $row3[$db_flight_departureid];
+            $arrival= $row_select[$db_flight_arrivalid];
        }
        
         $sql4="SELECT $db_airports_name, $db_airports_city, $db_airports_country FROM  $db_airports_tab WHERE $db_airports_id=$departure";
