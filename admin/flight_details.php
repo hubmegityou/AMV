@@ -87,8 +87,8 @@ If (!isset($_SESSION['id'])){
               
        <?php  
   
-    require_once "database/dbinfo.php";
-    require_once "database/connect.php";
+    require_once "../database/dbinfo.php";
+    require_once "../database/connect.php";
     
     $connection = db_connection();  
     $id=$_GET['id'];

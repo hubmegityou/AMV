@@ -17,30 +17,6 @@
             $db_airlines_countrycode = "country_code";
             $db_airlines_name = "country_name";
             $db_airlines_region = "region";
-            
-        //informacje o lotniskach    
-        $db_airports_tab = "airports";
-            $db_airports_id = "ID";
-            $db_airports_name = "name"; 
-            $db_airports_city = "city";
-            $db_airports_country = "country";
-            $db_airports_IATA = "IATA";
-            $db_airports_ICAO = "ICAO";
-            $db_airports_latitude = "latitude";
-        $db_airlines_tab = 'airlines';
-            $db_airlines_id = "id";
-            $db_airlines_operator = "operator_name";
-            $db_airlines_IATA = "IATA_code";
-            $db_airlines_countrycode = "country_code";
-            $db_airlines_name = "country_name";
-            $db_airlines_region = "region";
-        $db_airlines_tab = 'airlines';
-            $db_airlines_id = "id";
-            $db_airlines_operator = "operator_name";
-            $db_airlines_IATA = "IATA_code";
-            $db_airlines_countrycode = "country_code";
-            $db_airlines_name = "country_name";
-            $db_airlines_region = "region";
          
             
         //informacje o lotniskach    

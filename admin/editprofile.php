@@ -73,8 +73,8 @@ If (!isset($_SESSION['id'])){
                                    <form action="editp.php" method="post">
 <center>
 <?php
-    require_once "database/dbinfo.php";
-require_once "database/connect.php";
+    require_once "../database/dbinfo.php";
+require_once "../database/connect.php";
     
     $connection = db_connection();
     if ($connection != false){
