@@ -110,21 +110,11 @@
        //informacje o zgłoszeniu
         $db_application_tab = "application";
             $db_application_id = "id";
-<<<<<<< HEAD
-            $db_application_incident = "incident"; // co sie sta�o
-            $db_application_cause = "cause"; //pow�d
-            $db_application_delay = "delay"; // op�nienie
-            $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwo�aniu lotu
-            $db_application_resignation = "resignation"; // czy klient zrezygnowa� z lotu w zamian za korzy�ci
-            //$db_application_permission = "permission "; // czy by�a zgoda na zmian� planu podr�y  
-            $db_application_compensation = "compensation_availability";
-=======
             $db_application_incident = "incident"; // co sie stało
             $db_application_cause = "cause"; //powód
             $db_application_delay = "delay"; // opóźnienie
             $db_application_cancel = "cancellation_information"; // kiedy poinformowali o odwołaniu lotu
             $db_application_resignation = "resignation"; // czy klient zrezygnować z lotu w zamian za korzy?ci 
->>>>>>> d8298adac854d5fe466ecca124eb581ec49d1fa3
             $db_application_compensationid = "compensation_ID";
             
        
