@@ -90,6 +90,14 @@ input[type=tel]
 	margin-bottom: 10px;
 }
 
+input.correct{
+	border-color: #5cb85c;
+}
+
+input.error{
+	border-color: red;
+}
+
 input[type=checkbox]
 {
 	float: left;
@@ -437,3 +445,4 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 {
 	font-size: 12px;
 }
+

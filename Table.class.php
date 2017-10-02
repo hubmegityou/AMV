@@ -43,7 +43,7 @@
 
             foreach($table as $key => $value){
                 foreach($name_to_tab_and_column as $keyname => $tab_and_column){
-                    if($key == $keyname && $tab_and_column[0] == $this->table_name){ // check if the key is for this class
+                    if($key == $keyname && $tab_and_column[0] == $this->table_name){ // check if the key is for this class                        
                         foreach($value_to_number as $value_name => $number){ //if so then translate value name to number
                             if($value == $value_name){
                                 $this->update($tab_and_column[1], $number); //and update appropriate column

@@ -8,10 +8,12 @@
   text-align: center;
   line-height: 2em;
   border-radius: 1em;
-  background: dodgerblue;
+  border: 0.1em solid;
+  border-color: #5cb85c;
+  background: white;
   margin: 0 1em;
   display: inline-block;
-  color: white;
+  color: #5cb85c;
   position: relative;
 }
 
@@ -22,7 +24,7 @@
   left: -4em;
   width: 4em;
   height: .2em;
-  background: dodgerblue;
+  background: #5cb85c;
   z-index: -1;
 }
 
@@ -33,11 +35,14 @@
 }
 
 .stepline .active {
-  background: dodgerblue;
+  background: #5cb85c;
+  color: white;
 }
 
 .stepline .active ~ li {
-  background: lightblue;
+  background: white;
+  border-color: lightblue;
+  color: lightblue;
 }
 
 .stepline .active ~ li::before {

@@ -11,6 +11,28 @@ jQuery(document).ready(function(){
     $('form').find("img").not("img[name]").on('click', show_next);
     $(".btn_next").click(submit_forms);
 
+    $("[name=departure]").validate();
+    
+//overkill, change it 
+    jQuery.fn.extend({
+        validate: function() {
+            $.ajax({
+                url: "getData.php",
+                dataType: "html",
+                data: {
+                    type: "region",
+                    term: this.attr("data-code")
+                },
+                cache: true,
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        }
+      });
+
+    
+
     function submit_forms(){
         $("form").each(function(){
             if($(this).filter("[name=all]").length > 0){
@@ -50,7 +72,7 @@ jQuery(document).ready(function(){
     
     function Nbutton(){
         //fix it
-        //$("form:not(:first, [name=all])").remove();
+        $("form:not([name=default], [name=all])").remove();
         $("#trips").hide();
         var dep_code = $("[name=departure]").attr("data-code");
         var dest_code = $("[name=destination]").attr("data-code");
@@ -61,6 +83,7 @@ jQuery(document).ready(function(){
         
         $('#transfer').hide().delay(time);
         if (!((typeof dep_code !== typeof undefined && dep_code !== false) && (typeof dest_code !== typeof undefined && dest_code !== false))){
+            
             return;
         }
         $("form[name=all] > input").first().clone().val(dep_code+"-"+dest_code).appendTo("form[name=all]");
@@ -194,6 +217,7 @@ jQuery(document).ready(function(){
         });
         if (flag){return;};
         var newform = forms.filter("[name=default]").first().clone();
+        newform.attr("name", "");
         newform.attr('data-index', form_index);
         newform.find("[name=departure-code]").val(dep_code);
         newform.find("[name=destination-code]").val(dest_code);
@@ -224,6 +248,12 @@ jQuery(document).ready(function(){
                 $(this).attr('data-code', ui.item['value']);
                 $(".flights > [name=airline-code]").val(ui.item['value']);
                 return;
+            },
+            change: function (event, ui) {
+                if (!ui.item) {
+                    $(this).val("");
+                    // Handle the error
+                } 
             }
         });
         newform.show();
@@ -279,7 +309,15 @@ jQuery(document).ready(function(){
                 $(this).val(ui.item['label']);
                 $(this).attr('data-code', ui.item['value']);
                 $(this).attr('data-name', ui.item['label'].split(',', 1)[0]);
+                $(this).addClass("correct");
                 return;
+            },
+            change: function (event, ui) {
+                if (!ui.item) {
+                    $(this).removeClass("correct");
+                    $(this).val("");
+                    // Handle the error
+                } 
             }
         });
             
@@ -291,7 +329,15 @@ jQuery(document).ready(function(){
                 $(this).val(ui.item['label']);
                 $(this).attr('data-code', ui.item['value']);
                 $(".flights > [name=airline-code]").val(ui.item['value']);
+                $(this).validate();
                 return;
+            },
+            change: function (event, ui) {
+                if (!ui.item) {
+                    $(this).removeClass("correct");
+                    $(this).val("");
+                    // Handle the error
+                } 
             }
         });
     };
@@ -309,6 +355,13 @@ jQuery(document).ready(function(){
                 $(this).attr('data-code', ui.item['value']);
                 $(this).attr('data-name', ui.item['label'].split(',', 1)[0]);
                 return;
+            },
+            change: function (event, ui) {
+                if (!ui.item) {
+                    $(this).removeClass("correct");
+                    $(this).val("");
+                    // Handle the error
+                } 
             }
         });       
     };

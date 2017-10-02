@@ -17,13 +17,17 @@ $stmt->close();
 
 header('Content-Type: application/json');
 //$APIData= new APIData();
-
+if (!isset($_GET['type'])){
+    echo "Error";
+}
 if ($_GET['type'] == "airport"){
     //$table = $APIData -> findAirport($_GET['term']);
     $table = getAirports($connection, $term);
-}else{
+}elseif($_GET['type'] == "airline"){
     //$table = $APIData -> findAirline($_GET['term']);
     $table = getAirlines($connection, $term);
+}elseif($_GET['type'] == "region"){
+    $table = getRegion($connection, $term);
 }
 echo json_encode($table);
 
@@ -69,6 +73,22 @@ function getAirlines($connection, $term){
     foreach ($data as $object){ 
             array_push($result, array("label" => ($object[$db_airlines_operator].", ".$object[$db_airlines_name]), "value" => $object[$db_airlines_IATA]));
     }
+    return $result;
+}
+function getRegion($connection, $term){
+    require "database/dbinfo.php"; 
+
+    $sql = "SELECT $db_airports_region FROM $db_airports_tab WHERE $db_airports_IATA LIKE @term LIMIT 1 ";
+    
+    $stmt = $connection->prepare($sql);    
+    $stmt->execute();
+    $dataSet = $stmt->get_result();
+    //pull all results as an associative array
+    $data = $dataSet->fetch_all(MYSQLI_ASSOC);
+
+    $result= ""; 
+    $result = $data[0][$db_airlines_region];
+    
     return $result;
 }
 

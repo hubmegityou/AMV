@@ -10,6 +10,7 @@ require_once "Flight.class.php";
 require_once "Application.class.php";
 require_once "Airport.class.php";
 require_once "GreatCircle.php";
+require_once "Money.class.php";
 
 $_SESSION["trip_id"] = 2; // just for testing !!!!!!!!!!!!!!!!!!!!
 //if(!isset($_SESSION['trip_id'])){wywal gdzies}
@@ -49,7 +50,9 @@ function create_or_update_flight_info($flight, $i){
     $stmt->execute();
     $dataSet = $stmt->get_result();
     if ($dataSet->num_rows > 0){
+        echo("there ?");
         $data = $dataSet->fetch_array(MYSQLI_ASSOC);
+        print_r($data);
         $stmt->close();
         $flight_info_object = new Flight_info($data["id"]);
         $flight_info_object->update($db_flight_info_order, $i);
@@ -57,15 +60,7 @@ function create_or_update_flight_info($flight, $i){
         $stmt->close();
         insert_flight_info($flight, $i);
     }
-    /*
-    function update_flight_info_order($id, $order){
-        $sql = "UPDATE $db_flight_info_tab SET $db_flight_info_order = ? WHERE $db_flight_info_tab.$db_flight_info_id = ?";
-        $stmt = $connection->prepare($sql);
-        $stmt->bind_param("ii", $order, $id);
-        $flag = $stmt->execute();   
-        $stmt->close(); 
-        return $flag;
-    }*/
+   
 
     
     
@@ -97,13 +92,7 @@ function insert_flight_info($flight, $order){
     $flight_info_object->update($db_flight_info_arrivalid, $airports_ids[1]);
     $flight_info_object->update($db_flight_info_order, $order);
     
-    /*
-    $sql = "INSERT INTO $db_flight_info_tab ($db_flight_info_tripid, $db_flight_info_departureid, $db_flight_info_arrivalid, $db_flight_info_order) VALUES (?, ?, ?, ?)";
-    $stmt = $connection->prepare($sql);
-    $stmt->bind_param("iiii", $_SESSION['trip_id'], $airports_ids[0], $airports_ids[1], $order);
-    $flag = $stmt->execute();   
-    $stmt->close();
-    return $flag; */
+ 
 }
 /* This function selects and updates appropriate application and creates flight - if we have an application then we got a bunch of info about flight, such as date and flight number, so we can create it and link this flight to application. We cannot update the flight, as it is shared by many */
 function create_or_update_application(){
@@ -127,13 +116,25 @@ function create_or_update_application(){
     if(isset($application_id)){
         update_application($application_id);
     }else{
-        insert_application($flight_info_id);
+        $application_id = insert_application($flight_info_id);
     }
 
     create_flight($flight_info_id);
- 
+    fill_compensation($application_id, $flight_info_id);
 
     }
+
+    function fill_compensation($application_id, $flight_info_id){
+        require "database/dbinfo.php";
+        
+        $application_object = new Application($application_id);
+        $flight_info_object = new Flight_info($flight_info_id);
+        $amount = Money::compensation($flight_info_object->flight_id, $flight_info_object->departure_id, $flight_info_object->arrival_id, $application_object->id); 
+        $application_object->update($db_application_compensation, $amount);
+
+    }
+
+
     function update_application($application_id){
         $application_object = new Application($application_id);
         $application_object->update_assoc($_POST);
@@ -143,10 +144,11 @@ function create_or_update_application(){
     function insert_application($flight_info_id){
         require "database/dbinfo.php";
         $application_object = new Application();
-        $application_object->update_assoc($_POST);//##############################################?????????????
+        $application_object->update_assoc($_POST);
 
         $flight_info_object = new Flight_info($flight_info_id);
         $flight_info_object->update($db_flight_info_applicationid, $application_object->id);
+        return $application_object->id;
     }
     /* WORK TO BE DONE HERE */
     function create_flight($flight_info_id){
@@ -163,37 +165,7 @@ function create_or_update_application(){
 
         
     
-    /*
-    function update_flight_info($flight_info_id, $application_id){
-        $sql = "UPDATE $db_flight_info_tab SET $db_flight_info_applicationid = ? WHERE $db_flight_info_tab.$db_flight_info_id = ?";
-        $stmt = $connection->prepare($sql);
-        $stmt->bind_param("ii", $application_id, $flight_info_id);
-        $flag = $stmt->execute();   
-        $stmt->close(); 
-        return $flag;
-    } */
-    /*
-    //$sql = "SELECT application.* FROM application INNER JOIN flight_info ON application.id = flight_info.application_id INNER JOIN flight on flight.id = flight_info.flight_ID INNER JOIN trip on trip.id = flight_info.trip_id WHERE flight.departure_ID = ? and trip.id = ?";
-        $stmt = $connection->prepare($sql);
-        
-    // $term = $_SESSION['trip_id'];
-    // $stmt->bind_param("s", $term); //check for sql injection
-    $v1 = "KTW";
-    $v2 = 1;
-    $stmt->bind_param("si", $v1, $v2);
-        $stmt->execute();
-        $dataSet = $stmt->get_result();
-        //pull one row as an associative array
-        $data = $dataSet->fetch_array(MYSQLI_ASSOC);
-        $stmt->close();
-        echo($data);
-        if ($data["exists"]){
-            $sql = "UPDATE ";
-            
-        }else{
-            $sql = "INSERT INTO application.* FROM application INNER JOIN flight_info ON application.id = flight_info.application_id INNER JOIN flight on flight.id = flight_info.flight_ID INNER JOIN trip on trip.id = flight_info.trip_id WHERE flight.departure_ID = ? and trip.id = ?";
-        }
-        */
+   
 }
 
 function link_or_insert_flight($flight_info_id){
@@ -236,7 +208,7 @@ function insert_flight($flight_info_object, $airline_id){
     $destination_airport_object = new Airport($flight_info_object->arrival_id);
     
     $distance = GreatCircle::distance($departure_airport_object->lat, $departure_airport_object->long, $destination_airport_object->lat, $destination_airport_object->long);
-    $distance = intval($distance);;
+    $distance = intval($distance);
     $flight_object->update($db_flight_distance, $distance); //calculate distance
     
     //$availability = check_compensation_availability($departure_airport_object, $destination_airport_object, $distance);
