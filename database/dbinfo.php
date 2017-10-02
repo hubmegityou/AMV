@@ -99,6 +99,7 @@
          //grupy lotów   
         $db_flight_info_tab = "flight_info";
             $db_flight_info_id= "id";
+            $db_flight_info_tripid = "trip_id";
             $db_flight_info_departureid = "departure_id"; //odlot
             $db_flight_info_arrivalid = "arrival_id"; // przylot
             $db_flight_info_applicationid = "application_ID";
