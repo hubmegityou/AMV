@@ -6287,11 +6287,13 @@ INSERT INTO `airports` (`ID`, `name`, `city`, `country`, `IATA`, `ICAO`, `latitu
 CREATE TABLE `application` (
   `id` int(11) NOT NULL,
   `incident` int(11) NOT NULL,
-  `cause` int(11) NOT NULL,
+  `cause` int(11) DEFAULT NULL,
   `delay` int(11) NOT NULL,
-  `cancellation_information` int(11) NOT NULL,
-  `resignation` int(11) NOT NULL,
-  `compensation_ID` int(11) NOT NULL
+  `cancellation_information` int(11) DEFAULT NULL,
+  `resignation` int(11) DEFAULT NULL,
+  `boarding_pass/res` text,
+  `compensation_availability` tinyint(1) DEFAULT NULL,
+  `compensation_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6335,8 +6337,8 @@ CREATE TABLE `flight` (
   `flight_number` text NOT NULL,
   `flight_date` date NOT NULL,
   `airline_ID` int(11) NOT NULL,
-  `distance` int(11) NOT NULL,
-  `compensation_availability` tinyint(1) NOT NULL
+  `distance` int(11) DEFAULT NULL,
+  `compensation_availability` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6347,9 +6349,11 @@ CREATE TABLE `flight` (
 
 CREATE TABLE `flight_info` (
   `id` int(11) NOT NULL,
-  `application_ID` int(11) NOT NULL,
-  `flight_ID` int(11) NOT NULL,
-  `next_flight_info_ID` int(11) NOT NULL,
+  `trip_id` int(11) NOT NULL,
+  `application_ID` int(11) DEFAULT NULL,
+  `flight_ID` int(11) DEFAULT NULL,
+  `departure_id` int(11) NOT NULL,
+  `arrival_id` int(11) NOT NULL,
   `order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
