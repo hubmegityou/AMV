@@ -43,7 +43,7 @@ function create_or_update_flight_infos(){
 function create_or_update_flight_info($flight, $i){
     require "database/dbinfo.php";
     global $connection;
-    $sql = "SELECT fi.$db_flight_info_id AS 'id' FROM $db_flight_info_tab fi INNER JOIN $db_trip_tab t on t.$db_trip_id = fi.$db_flight_info_tripid  INNER JOIN $db_airports_tab aa ON fi.$db_flight_info_arrivalid = aa.$db_airports_id INNER JOIN $db_airports_tab ad ON fi.$db_flight_info_departureid = ad.$db_airports_id  WHERE ad.$db_airports_IATA  = ? AND aa.$db_airports_IATA  = ? AND t.$db_trip_id = ? LIMIT 1  ";
+    $sql = "SELECT fi.$db_flight_info_id AS 'id' FROM $db_flight_info_tab fi INNER JOIN $db_airports_tab aa ON fi.$db_flight_info_arrivalid = aa.$db_airports_id INNER JOIN $db_airports_tab ad ON fi.$db_flight_info_departureid = ad.$db_airports_id  WHERE ad.$db_airports_IATA  = ? AND aa.$db_airports_IATA  = ? AND fi.$db_flight_info_tripid = ? LIMIT 1  ";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("ssi", $flight[0], $flight[1], $_SESSION["trip_id"]);
     $stmt->execute();
@@ -97,7 +97,6 @@ function insert_flight_info($flight, $order){
     $flight_info_object->update($db_flight_info_arrivalid, $airports_ids[1]);
     $flight_info_object->update($db_flight_info_order, $order);
     
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!REWORK
     /*
     $sql = "INSERT INTO $db_flight_info_tab ($db_flight_info_tripid, $db_flight_info_departureid, $db_flight_info_arrivalid, $db_flight_info_order) VALUES (?, ?, ?, ?)";
     $stmt = $connection->prepare($sql);
@@ -116,7 +115,7 @@ function create_or_update_application(){
     $stmt->execute();
     $dataSet = $stmt->get_result();
     if ($dataSet->num_rows < 1){
-        echo("Lessthanone");
+       // echo("Lessthanone");
         $stmt->close();
         return false;
     }
