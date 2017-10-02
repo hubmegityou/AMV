@@ -148,7 +148,12 @@ If (!isset($_SESSION['id'])){
 //        "<td>$row_trip[$db_trip_status]</td>".    
         "</tr>";   
         }
-    }         
+    }
+    echo $sql_trip."<br";
+    echo $sql_arrival_check."<br";
+    echo $sql_date."<br";
+    echo $sql_passengers."<br";
+    echo $sql_person."<br";
   ?>                        
                              
  </tbody> 
