@@ -170,10 +170,10 @@ while ($row_passengers = $result_passengers->fetch_assoc()){
 echo "<br>"; 
 
  
-$sql_trip="SELECT $db_trip_first_flight_info_id, $db_trip_delay, $db_trip_sum FROM $db_trip_tab WHERE $db_trip_id=$id ";
+$sql_trip="SELECT $db_trip_delay, $db_trip_sum FROM $db_trip_tab WHERE $db_trip_id=$id ";
 $result_trip = $connection->query($sql_trip);
 $row_trip = $result_trip->fetch_assoc();
-$flightid = $row_trip[$db_trip_first_flight_info_id];
+
 
 echo "<br><br>INFORMACJE O LOCIE: <br><br>";
 
@@ -226,85 +226,84 @@ echo "PRZEBIEG TRASY:";
     <?php
 
 
-
-// do {
     
-    // $sql_flightinfo="SELECT $db_flight_info_flightid, $db_flight_info_applicationid, $db_flight_info_nextflight FROM $db_flight_info_tab WHERE $db_flight_info_id=$flightid ";
-    // $result_flightinfo = $connection->query($sql_flightinfo);
-    // $row_flightinfo = $result_flightinfo->fetch_assoc();
+    $sql_flightinfo="SELECT $db_flight_info_flightid, $db_flight_info_applicationid FROM $db_flight_info_tab WHERE  $db_flight_info_tripid=$id";
+    $result_flightinfo = $connection->query($sql_flightinfo);
+    while ($row_flightinfo = $result_flightinfo->fetch_assoc()){
     
     
    
-    // $sql_flight= "SELECT * FROM $db_flight_tab WHERE $db_flight_id=".$row_flightinfo[$db_flight_info_flightid];
-    // $result_flight = $connection->query($sql_flight);
-    // ($row_flight = $result_flight->fetch_assoc());  
+    $sql_flight= "SELECT * FROM $db_flight_tab WHERE $db_flight_id=".$row_flightinfo[$db_flight_info_flightid];
+    $result_flight = $connection->query($sql_flight);
+    ($row_flight = $result_flight->fetch_assoc());  
  
     
-    // $sql_departure= "SELECT * FROM $db_airports_tab WHERE $db_airports_id=".$row_flight[$db_flight_departureid] ;
-    // $result_departure = $connection->query($sql_departure);
-    // $row_departure = $result_departure->fetch_assoc();
+    $sql_departure= "SELECT * FROM $db_airports_tab WHERE $db_airports_id=".$row_flight[$db_flight_departureid] ;
+    $result_departure = $connection->query($sql_departure);
+    $row_departure = $result_departure->fetch_assoc();
     
-    // $sql_arrival= "SELECT * FROM $db_airports_tab WHERE $db_airports_id=".$row_flight[$db_flight_arrivalid];
-    // $result_arrival = $connection->query($sql_arrival);
-    // $row_arrival = $result_arrival->fetch_assoc();
-    
-    
-    // $sql_airlines= "SELECT * FROM $db_airlines_tab WHERE $db_airlines_id=".$row_flight[$db_flight_airlineid];
-    // $result_airlines = $connection->query($sql_airlines);
-    // $row_airlines = $result_airlines->fetch_assoc();
-    
-    // $sql_application="SELECT * FROM $db_application_tab WHERE $db_application_id=".$row_flightinfo[$db_flight_info_applicationid];
-    // $result_application = $connection->query($sql_application);
-    // $row_application = $result_application->fetch_assoc();
+    $sql_arrival= "SELECT * FROM $db_airports_tab WHERE $db_airports_id=".$row_flight[$db_flight_arrivalid];
+    $result_arrival = $connection->query($sql_arrival);
+    $row_arrival = $result_arrival->fetch_assoc();
     
     
+    $sql_airlines= "SELECT * FROM $db_airlines_tab WHERE $db_airlines_id=".$row_flight[$db_flight_airlineid];
+    $result_airlines = $connection->query($sql_airlines);
+    $row_airlines = $result_airlines->fetch_assoc();
     
-     // echo "<tr>
-        // <td>$row_flight[$db_flight_number]</td>     
-        // <td>$row_flight[$db_flight_date] </td>
-        // <td>$row_flight[$db_flight_distance] km</td>
-        // <td>nazwa: $row_departure[$db_airports_name] <br>miasto: $row_departure[$db_airports_city]<br>kraj: $row_departure[$db_airports_country] <br>kod IATA: $row_departure[$db_airports_IATA] <br>kod ICAO: $row_departure[$db_airports_ICAO] <br>region: $row_departure[$db_airports_region]</td> 
-        // <td>nazwa: $row_arrival[$db_airports_name] <br>miasto: $row_arrival[$db_airports_city]<br>kraj: $row_arrival[$db_airports_country] <br>kod IATA: $row_arrival[$db_airports_IATA] <br>kod ICAO: $row_arrival[$db_airports_ICAO] <br>region: $row_arrival[$db_airports_region]</td> 
-        // <td>nazwa: $row_airlines[$db_airlines_operator] <br> kraj: $row_airlines[$db_airlines_name] <br>kod IATA: $row_airlines[$db_airlines_IATA] <br>region: $row_airlines[$db_airlines_region]</td>";  
+    $sql_application="SELECT * FROM $db_application_tab WHERE $db_application_id=".$row_flightinfo[$db_flight_info_applicationid];
+    $result_application = $connection->query($sql_application);
+    $row_application = $result_application->fetch_assoc();
+    
+    
+     echo "<tr>
+        <td>$row_flight[$db_flight_number]</td>     
+        <td>$row_flight[$db_flight_date] </td>
+        <td>$row_flight[$db_flight_distance] km</td>
+        <td>nazwa: $row_departure[$db_airports_name] <br>miasto: $row_departure[$db_airports_city]<br>kraj: $row_departure[$db_airports_country] <br>kod IATA: $row_departure[$db_airports_IATA] <br>kod ICAO: $row_departure[$db_airports_ICAO] <br>region: $row_departure[$db_airports_region]</td> 
+        <td>nazwa: $row_arrival[$db_airports_name] <br>miasto: $row_arrival[$db_airports_city]<br>kraj: $row_arrival[$db_airports_country] <br>kod IATA: $row_arrival[$db_airports_IATA] <br>kod ICAO: $row_arrival[$db_airports_ICAO] <br>region: $row_arrival[$db_airports_region]</td> 
+        <td>nazwa: $row_airlines[$db_airlines_operator] <br> kraj: $row_airlines[$db_airlines_name] <br>kod IATA: $row_airlines[$db_airlines_IATA] <br>region: $row_airlines[$db_airlines_region]</td>";  
 
       ?>
    <td> <?php 
    
-   // $incident = $row_application[$db_application_incident];
-   // $cause = $row_application[$db_application_cause];
-   // $delay = $row_application[$db_application_delay];
-   // $cancel = $row_application[$db_application_cancel];
-   // $resignation = $row_application[$db_application_resignation];
-   // require_once('aliasesForFlight.php');
+   $incident = $row_application[$db_application_incident];
+   $cause = $row_application[$db_application_cause];
+   $delay = $row_application[$db_application_delay];
+   $cancel = $row_application[$db_application_cancel];
+   $resignation = $row_application[$db_application_resignation];
+   require('aliasesForFlight.php');
    
    
-   // if($incident){
-	   // echo 'przyczyna: '. $incident.'<br>';
-   // }
+   if($incident){
+	   echo 'przyczyna: '. $incident.'<br>';
+   }
    
-    // if($cause){
-	   // echo 'powód: '. $cause.'<br>';
-   // }
+    if($cause){
+	   echo 'powód: '. $cause.'<br>';
+   }
    
-     // if($delay){
-	   // echo 'opóźnienie: '. $delay.'<br>';
-   // }
+     if($delay){
+	   echo 'opóźnienie: '. $delay.'<br>';
+   }
    
-     // if($cancel){
-	   // echo 'podanie informacji o odwołaniu lotu: '. $cancel.'<br>';
-   // }
+     if($cancel){
+	   echo 'podanie informacji o odwołaniu lotu: '. $cancel.'<br>';
+   }
    
-    // if($resignation){
-	   // echo 'rezygnacja z lotu: '. $resignation.'<br>';
-   // }
+    if($resignation){
+	   echo 'rezygnacja z lotu: '. $resignation.'<br>';
+   }
 
    ?>  </td>
        </tr>    
     <?php
 
-    // $flightid = $row_flightinfo[$db_flight_info_nextflight];
     
-// }while( $row_flightinfo[$db_flight_info_nextflight]);
+	}
+	//koniec while
+	
+	
 
 ?>   
 </tbody> 
@@ -315,14 +314,14 @@ echo "PRZEBIEG TRASY:";
 echo "DANE DO PRZELEWU<br><br>";
 
 
-// $sql_compensation="SELECT * FROM $db_compensation_tab WHERE $db_compensation_id= $row_application[$db_application_compensationid]";
-// $result_compensation= $connection->query($sql_compensation);
-// $row_compensation = $result_compensation->fetch_assoc();
+$sql_compensation="SELECT * FROM $db_compensation_tab WHERE $db_compensation_id= $row_application[$db_application_compensationid]";
+$result_compensation= $connection->query($sql_compensation);
+$row_compensation = $result_compensation->fetch_assoc();
 
-// $type= $row_compensation[$db_compensation_type];
-// $payment=$row_compensation[$db_compensation_payment];
+$type= $row_compensation[$db_compensation_type];
+$payment=$row_compensation[$db_compensation_payment];
 
-// require_once('aliasesForPayment.php');
+require_once('aliasesForPayment.php');
 
 
  ?> 
