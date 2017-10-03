@@ -37,7 +37,7 @@ If (!isset($_SESSION['id'])){
           <div id="sidebar"  class="nav-collapse ">
   
               <ul class="sidebar-menu">                
-                  <li class="active">
+                  <li >
                       <a class="" href="index.php">
                           <i class="icon_house_alt"></i>
                           <span>Strona główna</span>
@@ -56,8 +56,8 @@ If (!isset($_SESSION['id'])){
                       <a class="" href="flights.php">
                           <span>Zgłoszenia</span>
                       </a>
-                  </li>'; 
-					echo ' <li>
+                  </li>';  
+				    echo ' <li class="active">
                       <a class="" href="import.php">
                           <span>Importuj pliki</span>
                       </a>
@@ -73,7 +73,22 @@ If (!isset($_SESSION['id'])){
  
 			  <div class="row">
 				<div class="col-lg-12">
-					<h3 class="page-header"><i class="fa fa-laptop"></i>Strona główna</h3>
+					<h3 class="page-header"><i class="fa fa-laptop"></i>Import plików</h3>
+					
+					
+					pliki z lotami :<br>  
+					dla tabeli w formacie ->   ID lotniska wylotu,ID lotniska przylotu,numer lotu,data lotu,ID linii lotniczych<br><br>
+					
+					
+					<form enctype="multipart/form-data" method="post" action="import_csv.php">
+					<input type='file' id='file'name="file" accept=".csv"><br>
+					<input type="submit" value="dodaj">
+					</form>
+					
+					
+					
+					
+					
 					
 				</div>
 			</div>

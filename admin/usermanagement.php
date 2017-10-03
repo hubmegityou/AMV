@@ -57,7 +57,12 @@ If ($_SESSION['function']!=1){
                       <a class="" href="flights.php">
                           <span>Zgłoszenia</span>
                       </a>
-                  </li>';  
+                  </li>'; 
+					echo ' <li>
+                      <a class="" href="import.php">
+                          <span>Importuj pliki</span>
+                      </a>
+                  </li>';
                 }  ?>
           
                   

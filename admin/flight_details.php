@@ -56,7 +56,12 @@ If (!isset($_SESSION['id'])){
                       <a class="" href="flights.php">
                           <span>Zgłoszenia</span>
                       </a>
-                  </li>';  
+                  </li>'; 
+					echo ' <li>
+                      <a class="" href="import.php">
+                          <span>Importuj pliki</span>
+                      </a>
+                  </li>';
                 }  ?>
                   
                   
@@ -93,10 +98,20 @@ If (!isset($_SESSION['id'])){
     $connection = db_connection();
     $arrid = $_GET['arrid'];
     $depid = $_GET['depid'];
+	$campaign= $_GET['campaign'];
+	if ($campaign=='undefined'){
+		$campaign='';
+	}
     
     $sql_trip= "SELECT $db_flight_info_flightid, $db_flight_info_tripid FROM $db_flight_info_tab WHERE $db_flight_info_departureid = $depid";
     $result_trip = $connection->query($sql_trip);
     while ($row_trip = $result_trip->fetch_assoc()){
+		$sql_tripcheck=" SELECT $db_trip_campaign FROM $db_trip_tab  WHERE $db_trip_id=$row_trip[$db_flight_info_tripid]";
+		$result_tripcheck = $connection->query($sql_tripcheck);
+		$row_tripcheck = $result_tripcheck->fetch_assoc();
+		if ($campaign==$row_tripcheck[$db_trip_campaign]){
+		
+		
         //sprawdzamy, czy zgodne miejsce przylotu
         $sql_arrival_check = "SELECT $db_flight_info_arrivalid FROM $db_flight_info_tab WHERE $db_flight_info_tripid = $row_trip[$db_flight_info_tripid] ORDER BY `$db_flight_info_tab`.`$db_flight_info_order` DESC LIMIT 1";
 		$result_arrival_check = $connection->query($sql_arrival_check);
@@ -131,7 +146,7 @@ If (!isset($_SESSION['id'])){
         "<td>$tripstatus</td>".    
         "</tr>";   
         }
-    }
+    }}
 
   ?>                        
                              

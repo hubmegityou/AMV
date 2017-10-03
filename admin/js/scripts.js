@@ -20,8 +20,8 @@ function select_onchange() {
     });
 }
 
-function tr(depid, arrid){       
-    location.href = "flight_details.php?depid="+depid+"&arrid="+arrid;   
+function tr(depid, arrid, campaign){       
+    location.href = "flight_details.php?depid="+depid+"&arrid="+arrid+"&campaign="+campaign;   
 }
 
 

@@ -54,7 +54,12 @@ If (!isset($_SESSION['id'])){
                       <a class="" href="active.php">
                           <span>Zgłoszenia</span>
                       </a>
-                  </li>';  
+                  </li>'; 
+					echo ' <li>
+                      <a class="" href="import.php">
+                          <span>Importuj pliki</span>
+                      </a>
+                  </li>';
                 }  ?>
                   
                   
@@ -119,7 +124,7 @@ If (!isset($_SESSION['id'])){
         $arrivall= "$row5[$db_airports_name], $row5[$db_airports_city], $row5[$db_airports_country]";
        
        
-             echo '<tr onMouseover=this.bgColor="#D9E4E6" onMouseout=this.bgColor="white"'." onclick='tr($departure, $arrival)'>";
+             echo '<tr onMouseover=this.bgColor="#D9E4E6" onMouseout=this.bgColor="white"'." onclick='tr($departure, $arrival, $row[$db_trip_campaign])'>";
              echo "<td>$row[$db_trip_campaign]</td>     
              <td>$departuree </td>
              <td>$arrivall</td>   

@@ -59,7 +59,12 @@ $id=$_GET['id'];
                       <a class="" href="flights.php">
                           <span>Zgłoszenia</span>
                       </a>
-                  </li>';  
+                  </li>'; 
+					echo ' <li>
+                      <a class="" href="import.php">
+                          <span>Importuj pliki</span>
+                      </a>
+                  </li>';
                 }  ?>
                   
                   
@@ -153,9 +158,9 @@ while ($row_passengers = $result_passengers->fetch_assoc()){
       
         echo " </td> 
         <td>$row_passengers[$db_passengers_telnumber]</td> 
-        <td><a href='download.php?name='$row_passengers[$db_passengers_passport]'> pobierz</a> </td>     
-        <td><a href='download.php?name='$row_passengers[$db_passengers_idcard1]'> pobierz</a> </td>
-        <td><a href='download.php?name='$row_passengers[$db_passengers_idcard2]'> pobierz</a></td>
+        <td><a target='_blank' href='../$row_passengers[$db_passengers_passport]'> pobierz</a> </td>     
+        <td><a target='_blank' href='../$row_passengers[$db_passengers_idcard1]'> pobierz</a> </td>
+        <td><a target='_blank' href='../$row_passengers[$db_passengers_idcard2]'> pobierz</a></td>
         </tr>";  
         
  
@@ -197,8 +202,8 @@ echo "<br><br>INFORMACJE O LOCIE: <br><br>";
  echo "<tr>
          <td>$row_trip[$db_trip_delay] </td>     
         <td>$row_trip[$db_trip_sum] zł </td>
-        <td><a href='download.php?name='$reservation'> pobierz</a></td>
-        <td><a href='download.php?name='$boarding '> pobierz</a></td> 
+        <td><a target='_blank' href='../$reservation'> pobierz</a></td>
+        <td><a target='_blank' href='../$boarding'> pobierz</a></td> 
         </tr><tbody><table>"; 
 
 echo "<br><br>";
