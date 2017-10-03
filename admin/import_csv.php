@@ -29,6 +29,7 @@
 			$sql_flight= "INSERT into $db_flight_info_tab ($db_flight_info_flightid, $db_flight_info_arrivalid, $db_flight_info_departureid) values ('$last_id', '$emapData[1]', '$emapData[0]')";
 			$result = $connection->query($sql_flight);
 			$last_flight_id = $connection->insert_id;
+			;
 			
 			$num= rand(0,999999999);
 			
@@ -36,19 +37,20 @@
 			$sql_trip= "INSERT into  $db_trip_tab ($db_trip_first_flight_info_id, $db_trip_campaign) values ('$last_flight_id','$num')";
 			$result = $connection->query($sql_trip);
 			$last_trip = $connection->insert_id;
+		
 			
 			$sql= "update $db_flight_info_tab set $db_flight_info_tripid=$last_trip WHERE $db_flight_info_id=$last_flight_id ";
 			$result = $connection->query($sql);
 			
          }
          fclose($file);
-		  echo "<script type=\"text/javascript\">window.alert('udało się');
-                 window.location.href = 'import.php'</script>";
+		 echo "<script type=\"text/javascript\">window.alert('udało się');
+                window.location.href = 'import.php'</script>";
 
 		}
 	else {
-		 echo "<script type=\"text/javascript\">window.alert('Wystąpił błąd');
-                 window.location.href = 'import.php'</script>";
+		echo "<script type=\"text/javascript\">window.alert('Wystąpił błąd');
+                window.location.href = 'import.php'</script>";
 		
 	}
 

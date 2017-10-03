@@ -143,7 +143,6 @@ If (!isset($_SESSION['id'])){
 			$tripstatus= $row_status[$db_trip_status];
 			
 
-        $lname='aa'; $fname='bb';
 		if (!empty($lname)&& !empty($fname)){
         echo '<tr onMouseover=this.bgColor="#D9E4E6" onMouseout=this.bgColor="white"'." onclick='tr2($tripid)'>";
         echo "<td>$date </td>".    
