@@ -92,7 +92,7 @@ function removeDuplicateRows($table){
 jQuery(document).ready(function(){
 	
 
-removeDuplicateRows($('table'));
+removeDuplicateRows($('table[name="table_delete"]'));
     
     
                                                                            

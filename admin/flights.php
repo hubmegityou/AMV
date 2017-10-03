@@ -76,7 +76,7 @@ If (!isset($_SESSION['id'])){
 					<h3 class="page-header"><i class="fa fa-laptop"></i>Zgłoszenia</h3>
            
                            <div style='margin-left:70%' > wyszukaj <input id='search' type='text'> </div>                
-                         <table class="responstable" id='table'>
+                         <table class="responstable" id='table' name='table_delete'>
     <thead>                          
    <tr>
     <th>ID kampanii</th>
