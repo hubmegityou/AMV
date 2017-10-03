@@ -157,11 +157,17 @@ while ($row_passengers = $result_passengers->fetch_assoc()){
             echo "<a href=''>  wyslij ponownie e-mail z linkiem do formularza</a> ";}
       
         echo " </td> 
-        <td>$row_passengers[$db_passengers_telnumber]</td> 
-        <td><a target='_blank' href='../$row_passengers[$db_passengers_passport]'> pobierz</a> </td>     
-        <td><a target='_blank' href='../$row_passengers[$db_passengers_idcard1]'> pobierz</a> </td>
-        <td><a target='_blank' href='../$row_passengers[$db_passengers_idcard2]'> pobierz</a></td>
-        </tr>";  
+        <td>$row_passengers[$db_passengers_telnumber]</td> ";
+	if(!empty($row_passengers[$db_passengers_passport])){
+		echo "<td><a target='_blank' href='../$row_passengers[$db_passengers_passport]'> pobierz</a> </td> ";}  
+		else{echo "<td></td>";}
+	if (!empty($row_passengers[$db_passengers_idcard1])){
+		echo "<td><a target='_blank' href='../$row_passengers[$db_passengers_idcard1]'> pobierz</a> </td>";}
+		else{echo "<td></td>";}
+	if (!empty($row_passengers[$db_passengers_idcard2])){
+		echo "<td><a target='_blank' href='../$row_passengers[$db_passengers_idcard2]'> pobierz</a></td>";}
+		else{echo "<td></td>";}
+       echo " </tr>";  
         
  
   $i++;
@@ -180,9 +186,10 @@ $result_trip = $connection->query($sql_trip);
 $row_trip = $result_trip->fetch_assoc();
 
 
-echo "<br><br>INFORMACJE O LOCIE: <br><br>";
 
  ?> 
+ <br><br>INFORMACJE O LOCIE: <br><br>
+ 
  <table class="responstable" id='table'>
         <thead>                          
             <tr>
@@ -195,18 +202,27 @@ echo "<br><br>INFORMACJE O LOCIE: <br><br>";
         </thead>
         <tbody>
             
-</tbody>
+
 
 
  <?php
+ 
+ $delay=$row_trip[$db_trip_delay];
+ require('aliasesForFlight.php');
+ 
  echo "<tr>
-         <td>$row_trip[$db_trip_delay] </td>     
-        <td>$row_trip[$db_trip_sum] zł </td>
-        <td><a target='_blank' href='../$reservation'> pobierz</a></td>
-        <td><a target='_blank' href='../$boarding'> pobierz</a></td> 
-        </tr><tbody><table>"; 
+         <td>$delay </td>     
+        <td>$row_trip[$db_trip_sum] zł </td>";
+		if (!empty($reservation)){
+		echo "<td><a target='_blank' href='../$reservation'> pobierz</a></td>";}
+		else{echo "<td></td>";}
+		if (!empty($boarding)){
+		echo "<td><a target='_blank' href='../$boarding'> pobierz</a></td>";}
+		else{echo "<td></td>";}
 
-echo "<br><br>";
+echo "</tr></tbody></table><br><br>";
+
+
 echo "PRZEBIEG TRASY:";
 
 
@@ -256,9 +272,11 @@ echo "PRZEBIEG TRASY:";
     $result_airlines = $connection->query($sql_airlines);
     $row_airlines = $result_airlines->fetch_assoc();
     
+	
+	IF(!empty($row_flightinfo[$db_flight_info_applicationid])){
     $sql_application="SELECT * FROM $db_application_tab WHERE $db_application_id=".$row_flightinfo[$db_flight_info_applicationid];
     $result_application = $connection->query($sql_application);
-    $row_application = $result_application->fetch_assoc();
+    $row_application = $result_application->fetch_assoc();}
     
     
      echo "<tr>
@@ -271,6 +289,7 @@ echo "PRZEBIEG TRASY:";
 
       ?>
    <td> <?php 
+   if (isset($row_application)){
    
    $incident = $row_application[$db_application_incident];
    $cause = $row_application[$db_application_cause];
@@ -298,7 +317,7 @@ echo "PRZEBIEG TRASY:";
    
     if($resignation){
 	   echo 'rezygnacja z lotu: '. $resignation.'<br>';
-   }
+   }}
 
    ?>  </td>
        </tr>    
@@ -313,23 +332,9 @@ echo "PRZEBIEG TRASY:";
 ?>   
 </tbody> 
     </table>
-
-<?php
- echo "<br><br>";
-echo "DANE DO PRZELEWU<br><br>";
-
-
-$sql_compensation="SELECT * FROM $db_compensation_tab WHERE $db_compensation_id= $row_application[$db_application_compensationid]";
-$result_compensation= $connection->query($sql_compensation);
-$row_compensation = $result_compensation->fetch_assoc();
-
-$type= $row_compensation[$db_compensation_type];
-$payment=$row_compensation[$db_compensation_payment];
-
-require_once('aliasesForPayment.php');
-
-
- ?> 
+	
+<br>
+DANE DO PRZELEWU
  <table class="responstable" id='table'>
         <thead>                          
             <tr>
@@ -342,16 +347,27 @@ require_once('aliasesForPayment.php');
         </thead>
         <tbody>
             
-</tbody>
+
+<?php
+
+if (!empty( $row_application[$db_application_compensationid])){
+
+$sql_compensation="SELECT * FROM $db_compensation_tab WHERE $db_compensation_id= $row_application[$db_application_compensationid]";
+$result_compensation= $connection->query($sql_compensation);
+$row_compensation = $result_compensation->fetch_assoc();
+
+$type= $row_compensation[$db_compensation_type];
+$payment=$row_compensation[$db_compensation_payment];
+
+require_once('aliasesForPayment.php');
 
 
- <?php
  echo "<tr>
          <td>$type</td>     
         <td>$payment </td>
         <td>$row_compensation[$db_compensation_currency]</td>
         <td>$row_compensation[$db_compensation_account]</td> 
-        </tr><tbody><table>"; 
+</tr></tbody></table>"; }
 
 echo "<br><br>";
 ?>

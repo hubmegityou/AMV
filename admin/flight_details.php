@@ -98,10 +98,14 @@ If (!isset($_SESSION['id'])){
     $connection = db_connection();
     $arrid = $_GET['arrid'];
     $depid = $_GET['depid'];
+	$fname='';
+	$lname='';
 	$campaign= $_GET['campaign'];
 	if ($campaign=='undefined'){
 		$campaign='';
 	}
+	
+	
     
     $sql_trip= "SELECT $db_flight_info_flightid, $db_flight_info_tripid FROM $db_flight_info_tab WHERE $db_flight_info_departureid = $depid";
     $result_trip = $connection->query($sql_trip);
@@ -137,15 +141,17 @@ If (!isset($_SESSION['id'])){
 			$result_status = $connection->query($sql_status);
 			$row_status = $result_status->fetch_assoc();
 			$tripstatus= $row_status[$db_trip_status];
-        
+			
 
+        $lname='aa'; $fname='bb';
+		if (!empty($lname)&& !empty($fname)){
         echo '<tr onMouseover=this.bgColor="#D9E4E6" onMouseout=this.bgColor="white"'." onclick='tr2($tripid)'>";
         echo "<td>$date </td>".    
         "<td>$fname </td>".
         "<td>$lname</td>".
         "<td>$tripstatus</td>".    
         "</tr>";   
-        }
+        }}
     }}
 
   ?>                        
