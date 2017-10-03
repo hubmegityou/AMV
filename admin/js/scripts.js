@@ -68,7 +68,31 @@ function initializeJS() {
 
 }
 
+
+
+function removeDuplicateRows($table){
+    function getVisibleRowText($row){
+        return $row.find('td:visible').text().toLowerCase();
+    }
+    
+    $table.find('tr').each(function(index, row){
+        var $row = $(row);
+    
+        $row.nextAll('tr').each(function(index, next){
+            var $next = $(next);
+            console.log(getVisibleRowText($row), getVisibleRowText($next))
+            if(getVisibleRowText($next) == getVisibleRowText($row))
+                $next.remove();
+        })
+    });
+}
+
+
+
 jQuery(document).ready(function(){
+	
+
+removeDuplicateRows($('table'));
     
     
                                                                            
@@ -86,7 +110,6 @@ $('#search').keyup(function() {
 	});
           
   
-    
     
     initializeJS();
     select_onchange();
