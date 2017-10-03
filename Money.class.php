@@ -74,7 +74,7 @@ class Money {
                 $sub=600;
             }
         }
-        echo $echo;
+        return $sub;
     }
 }
 

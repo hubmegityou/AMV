@@ -21,9 +21,20 @@ $connection = db_connection();
 //if exists you can also check for compensation availability
 
 if(isset($_GET["type"]) && $_GET["type"] == "flights"){ 
-   echo(create_or_update_flight_infos()); //if we got list of flights then set them for trip 
+    purge_trip_flight_infos();
+    echo(create_or_update_flight_infos()); //if we got list of flights then set them for trip 
 }else{
     echo(create_or_update_application());   //if we got one flight then add an application to it 
+}
+
+function purge_trip_flight_infos(){
+    require "database/dbinfo.php";
+    global $connection;
+    $sql = "DELETE FROM $db_flight_info_tab WHERE $db_flight_info_tripid = ? ";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("i", $_SESSION["trip_id"]);
+    $stmt->execute();
+    $stmt->close();
 }
 
 function create_or_update_flight_infos(){
@@ -129,7 +140,8 @@ function create_or_update_application(){
         
         $application_object = new Application($application_id);
         $flight_info_object = new Flight_info($flight_info_id);
-        $amount = Money::compensation($flight_info_object->flight_id, $flight_info_object->departure_id, $flight_info_object->arrival_id, $application_object->id); 
+        $amount = intval(Money::compensation($flight_info_object->flight_id, $flight_info_object->departure_id, $flight_info_object->arrival_id, $application_object->id)); 
+        
         $application_object->update($db_application_compensation, $amount);
 
     }
@@ -191,13 +203,16 @@ function link_or_insert_flight($flight_info_id){
     if($flight_id){
         $flight_info_object->update($db_flight_info_flightid, $flight_id);
     }else{
-        insert_flight($flight_info_object, $data['id']);
+        insert_flight($flight_info_id, $data['id']);
     }
     
     
 }
-function insert_flight($flight_info_object, $airline_id){
+function insert_flight($flight_info_id, $airline_id){
     require "database/dbinfo.php";
+    
+    $flight_info_object = new Flight_info($flight_info_id);
+
     $flight_object = new Flight();
     $flight_object->update($db_flight_airlineid, $airline_id);  //link airlines
     $flight_object->update_assoc($_POST); // this should set flight number and date, bo we still need more info

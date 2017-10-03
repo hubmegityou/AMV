@@ -1,59 +1,123 @@
+jQuery.fn.extend({
+    airport: function() {
+        this.each(function(){
+            $(this).autocomplete({
+                source: "getData.php?type=airport",
+                /* close: function(event, ui) {
+                    if (!$("ul.ui-autocomplete").is(":visible")) {
+                        $("ul.ui-autocomplete").show();
+                        return false;
+                    }
+                },*/
+                select: function(event, ui) {
+                    event.preventDefault();
+                    $(this).val(ui.item['label']);
+                    $(this).attr('data-code', ui.item['value']);
+                    $(this).attr('data-name', ui.item['label'].split(',', 1)[0]);
+                    $(this).removeClass("error");
+                    $(this).addClass("correct");
+                    return;
+                },
+                change: function (event, ui) {
+                    if (!ui.item) {
+                        $(this).removeClass("correct");
+                        $(this).val("");
+                    } 
+                }
+            });
+        });
+    },
+    airline: function() {
+        this.each(function(){
+            $(this).autocomplete({
+                source: "getData.php?type=airline",
+                select: function(event, ui) {
+                    event.preventDefault();
+                    $(this).val(ui.item['label']);
+                    $(this).attr('data-code', ui.item['value']);
+                    $(".flights > [name=airline-code]").val(ui.item['value']);
+                    $(this).removeClass("error");
+                    $(this).addClass("correct");
+                },
+                change: function (event, ui) {
+                    if (!ui.item) {
+                        $(this).removeClass("correct");
+                        $(this).val("");
+                        // Handle the error
+                    } 
+                }
+            });
+        });
+    }
+});
+
 jQuery(document).ready(function(){   
     addHandlers();
     //$('#step1 > div').slice(-3).hide();
     //hide all unnecessary elements
     $("#buttons").nextAll().hide();
-    $('#Y').on('click', Ybutton);
-    $('#N').on('click', Nbutton);
+    $('#Y').click(Ybutton);
+    $("#N").click(function(event){validate($("[name=departure], [name=destination]"), event)});
+    $('#N').click(Nbutton);
     $('form > .answer > div > label > img').click(function(element){
         show_variant(element.target);
     });
-    $('form').find("img").not("img[name]").on('click', show_next);
+    $('form').find("img").not("img[name]").click(show_next);
     $(".btn_next").click(submit_forms);
+        
 
-    $("[name=departure]").validate();
-    
-//overkill, change it 
-    jQuery.fn.extend({
-        validate: function() {
+
+    function validate(objects, event){ // only 2 objects 
+        if(objects.first().attr("data-code") == objects.last().attr("data-code")){
+            objects.each(function(){
+                $(this).addClass("error");
+            });       
+            event.stopImmediatePropagation();
+            return false;
+        }
+        $.when(
             $.ajax({
                 url: "getData.php",
-                dataType: "html",
+                dataType: "json",
                 data: {
                     type: "region",
-                    term: this.attr("data-code")
+                    term: objects.first().attr("data-code")
                 },
-                cache: true,
-                success: function(data){
-                    console.log(data);
-                }
-            });
-        }
-      });
-
-    
+                cache: false,
+            }),
+            $.ajax({
+                url: "getData.php",
+                dataType: "json",
+                data: {
+                    type: "region",
+                    term: objects.last().attr("data-code")
+                },
+                cache: false,
+            })
+        )
+        .then(function(response1, response2) {
+            if(response1[0] != "EUR" && response2[0] != "EUR"){
+                gtfo();
+            } 
+        })
+        .fail(function(err) {
+            console.log('Something went wrong', err);
+        });
+    }
+    function gtfo(){
+        $(location).attr('href', '/nope.html');        
+    }
 
     function submit_forms(){
         $("form").each(function(){
             if($(this).filter("[name=all]").length > 0){
                 $.post("submit_form.php?type=flights", $(this).serialize(), function(data){console.log(data);});
+                return true;
             }
             if(!$(this).find("[name=departure-code]").val()){
                 return true;
             }
             $.post("submit_form.php", $(this).serialize(), function(data){console.log(data);});
-            
-            //$(this).ajaxSubmit({url: 'submit_form.php', type: 'post', success: function(data){console.log(data);}});
-            /*
-            $.ajax({
-                url: "submit_form.php",
-                dataType: "html",
-                cache: true,
-                success: function(data){
-                    console.log(data);
-                }
-            });
-            */
         });
     }
 
@@ -83,7 +147,6 @@ jQuery(document).ready(function(){
         
         $('#transfer').hide().delay(time);
         if (!((typeof dep_code !== typeof undefined && dep_code !== false) && (typeof dest_code !== typeof undefined && dest_code !== false))){
-            
             return;
         }
         $("form[name=all] > input").first().clone().val(dep_code+"-"+dest_code).appendTo("form[name=all]");
@@ -138,7 +201,9 @@ jQuery(document).ready(function(){
     }
     
     $("#transfer > .answer > div > label > img").click(function(){
-        if (!check_waypoints()){return;}
+        if (!check_waypoints()){
+            return;
+        }
         clean_waypoints();
         
         $('#trips').show();
@@ -228,7 +293,7 @@ jQuery(document).ready(function(){
             if(form_index > parseInt($(this).attr('data-index')) && index+1 < length && form_index < parseInt($(forms[index+1]).attr('data-index'))){
                 inserted = true;
                 newform.insertAfter(this);
-                return;
+                return false;
             }
         });
         if(!inserted){
@@ -240,35 +305,12 @@ jQuery(document).ready(function(){
             show_variant(element.target);
         });
         newform.find("img").not("img[name]").on('click', show_next);
-        newform.find("[name=airlines]").autocomplete({
-            source: "getData.php?type=airline",
-            select: function(event, ui) {
-                event.preventDefault();
-                $(this).val(ui.item['label']);
-                $(this).attr('data-code', ui.item['value']);
-                $(".flights > [name=airline-code]").val(ui.item['value']);
-                return;
-            },
-            change: function (event, ui) {
-                if (!ui.item) {
-                    $(this).val("");
-                    // Handle the error
-                } 
-            }
-        });
+        newform.find("[name=airlines]").airline();
         newform.show();
     }
 
     function clean_trips(){
         $('#trips > .answer').children().slice(1).remove();
-    }
-    /*
-    function addButtons(dpn, dpc, dsn, dsc, id){
-        $('#trips > .answer > btn').first().clone().show().appendTo('#trips > .answer').attr('value', dpn + '(' + dpc + ')' + ' ' + dsn + '(' + dsc + ')').attr('data-departure-name',dpn).attr('data-departure-code',dpc).attr('data-destination-name',dsn).attr('data-destination-code',dsc).attr('id', 'button'+id);
-    }
-    */
-    function addForms(){
-//        $('#trips > .answer > *').slice(1).
     }
     
     function check_waypoints(){
@@ -276,7 +318,9 @@ jQuery(document).ready(function(){
         $("#waypoints > input:visible").each(function(){
             if($(this).val() && $(this).attr('data-code')){
                 flag = true;
-                return false;
+                //return false;
+            }else{
+                flag = false;
             }
         });
         return flag;
@@ -294,52 +338,10 @@ jQuery(document).ready(function(){
     }
 
 
-    //$("#flightForm").on("keyup", "input", autocomplete);
     function addHandlers(){
-        $("[name=departure], [name=waypoint], [name=destination]").autocomplete({
-            source: "getData.php?type=airport",
-           /* close: function(event, ui) {
-                if (!$("ul.ui-autocomplete").is(":visible")) {
-                    $("ul.ui-autocomplete").show();
-                    return false;
-                }
-            },*/
-            select: function(event, ui) {
-                event.preventDefault();
-                $(this).val(ui.item['label']);
-                $(this).attr('data-code', ui.item['value']);
-                $(this).attr('data-name', ui.item['label'].split(',', 1)[0]);
-                $(this).addClass("correct");
-                return;
-            },
-            change: function (event, ui) {
-                if (!ui.item) {
-                    $(this).removeClass("correct");
-                    $(this).val("");
-                    // Handle the error
-                } 
-            }
-        });
-            
-            //source: function(request,response){search(request, response);}});
-        $("[name=airlines]").autocomplete({
-            source: "getData.php?type=airline",
-            select: function(event, ui) {
-                event.preventDefault();
-                $(this).val(ui.item['label']);
-                $(this).attr('data-code', ui.item['value']);
-                $(".flights > [name=airline-code]").val(ui.item['value']);
-                $(this).validate();
-                return;
-            },
-            change: function (event, ui) {
-                if (!ui.item) {
-                    $(this).removeClass("correct");
-                    $(this).val("");
-                    // Handle the error
-                } 
-            }
-        });
+
+        $("[name=departure], [name=waypoint], [name=destination]").airport();            
+        $("[name=airlines]").airline();
     };
 
     
@@ -347,23 +349,7 @@ jQuery(document).ready(function(){
    $("#add_waypoint").click(addWaypoint);
 
     function addWaypoint(){
-            $("#waypoints > input:hidden").first().clone().show().appendTo("#waypoints").autocomplete({
-            source: "getData.php?type=airport",
-            select: function(event, ui) {
-                event.preventDefault();
-                $(this).val(ui.item['label']);
-                $(this).attr('data-code', ui.item['value']);
-                $(this).attr('data-name', ui.item['label'].split(',', 1)[0]);
-                return;
-            },
-            change: function (event, ui) {
-                if (!ui.item) {
-                    $(this).removeClass("correct");
-                    $(this).val("");
-                    // Handle the error
-                } 
-            }
-        });       
+        $("#waypoints > input:hidden").first().clone().show().appendTo("#waypoints").airport();       
     };
 
 });

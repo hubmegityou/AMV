@@ -3,6 +3,7 @@
 //require_once 'APIData.php';
 require_once "database/dbinfo.php";
 require_once "database/connect.php";
+header('Content-Type: application/json');
     
 
 $connection = db_connection();
@@ -15,7 +16,6 @@ $stmt->execute();
 $stmt->close();
 
 
-header('Content-Type: application/json');
 //$APIData= new APIData();
 if (!isset($_GET['type'])){
     echo "Error";
