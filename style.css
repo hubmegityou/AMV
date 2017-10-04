@@ -31,7 +31,7 @@ a:hover
 	padding: 20px;
 	background-color: #F7CD44;
 	text-align: center;
-	position: relative;
+	/*position: relative;*/
 	top: 50px;
 }
 
@@ -55,14 +55,14 @@ a:hover
 /*background for line with circles*/
 .stepline
 {
-	display: flex;
+	
     align-items: center;
     justify-content: center;
 	background-color: #DBF4FF;
 	min-height: 100px;
 	position: relative;
 	z-index: -2;
-	/*border-top: 10px solid #DBF4FF;*/
+	border-top: 10px solid #DBF4FF;*/
 }
 
 /*place for uploading documents*/
