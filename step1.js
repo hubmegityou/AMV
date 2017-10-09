@@ -101,22 +101,22 @@ function next_submits(){
         }
         $.post("submit_form.php", $(this).serialize(), function(data){
             console.log(data);
-            if(data == "true"){
-                flag = true;
+            if(data == "false"){
+                alert("Lot " + $(this).find("[name=departure-code]").val() + " - " + $(this).find("[name=destination-code]").val() + " został odrzucony");
             }else{
-                alert("Lot " + $(this).find("[name=departure-code]") + " - " + $(this).find("[name=destination-code]") + " został odrzucony");
+                flag = true;
             }
         });
     });
     $.post("submit_form.php", $("form:last").serialize(), function(data){
         console.log(data);
-        if(data == "true"){
-            get_page(current_step + 1);
-        }else{
-            alert("Lot " + $(this).find("[name=departure-code]") + " - " + $(this).find("[name=destination-code]") + " został odrzucony");
+        if(data == "false"){
+            alert("Lot " + $("form:last").find("[name=departure-code]").val() + " - " + $("form:last").find("[name=destination-code]").val() + " został odrzucony");
             if(!flag){
                 gtfo();
             }
+        }else{
+            get_page(current_step + 1);
         }
     });
 }

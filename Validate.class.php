@@ -34,15 +34,15 @@ class Validate{
 
     public static function second_validation(){
         
-        if(!isset($_POST["overbooked"]) && isset($_POST["delayreason"]) && ($_POST["delayreason"] == "weather" || $_POST["delayreason"] == "strike")){
+        if($_POST["reason"] != "overbooked" && isset($_POST["delayreason"]) && ($_POST["delayreason"] == "weather" || $_POST["delayreason"] == "strike")){
             echo "false";
             return false;
         }
-        if(isset($_POST["overbooked"]) && isset($_POST["yes"]) && $_POST["overbookingresignation"] == "yes"){
+        if($_POST["reason"] == "overbooked" && isset($_POST["overbookingresignation"]) && $_POST["overbookingresignation"] == "yes"){
             echo "false";
             return false;
         }
-        if(isset($_POST["cancelled"]) && isset($_POST["cancellationtime"]) && $_POST["cancellationtime"] == "mt14"){
+        if($_POST["reason"] == "cancelled" && isset($_POST["cancellationtime"]) && $_POST["cancellationtime"] == "mt14"){
             echo "false";
             return false;
         }

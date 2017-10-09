@@ -94,7 +94,7 @@ function create_or_update_flight_info($flight, $i){
     }
    
 
-    
+    return true;
     
 }
 /* This function creates new flight_info row and links it with airports from airports table */
@@ -174,7 +174,7 @@ function create_or_update_application(){
 
     create_flight($flight_info_id);
     fill_compensation($application_id, $flight_info_id);
-
+    return true;
     }
 
     function fill_compensation($application_id, $flight_info_id){
