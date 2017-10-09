@@ -58,8 +58,8 @@
 			
          }
          fclose($file);
-		 // echo "<script type=\"text/javascript\">window.alert('udało się');
-                // window.location.href = 'import.php'</script>";
+		 echo "<script type=\"text/javascript\">window.alert('udało się');
+                window.location.href = 'import.php'</script>";
 
 		}
 	else {
