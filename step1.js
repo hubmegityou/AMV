@@ -154,6 +154,7 @@ function Nbutton(){
     if (!((typeof dep_code !== typeof undefined && dep_code !== false) && (typeof dest_code !== typeof undefined && dest_code !== false))){
         return;
     }
+    $("form[name=all] > input:not(:first)").remove();
     $("form[name=all] > input").first().clone().val(dep_code+"-"+dest_code).appendTo("form[name=all]");
     //fillRoute([dep_name, dep_code, dest_name, dest_code]);
     $("form[name=default] > div.question").children().html(dep_name + " ("+ dep_code+") - "+ dest_name + " ("+ dest_code+") </br>");        
@@ -276,6 +277,7 @@ function render_form(button){
         show_variant(element.target);
     });
     newform.find("img").not("img[name]").on('click', show_next);
+    newform.find(".btn_yes, .btn_no").click(show_next);
     newform.find("[name=airlines]").airline();
     newform.show();
 }
@@ -378,6 +380,7 @@ jQuery(document).ready(function(){
     $('form > .answer > div > label > img').click(function(element){
         show_variant(element.target);
     });
+    $("form").find("img").not("img[name]").on('click', show_next);
     $(".btn_yes, .btn_no").click(show_next);
     $(".btn_next").click(submit_forms);
     $("#transfer > .answer > div > label > img").click(function(){
