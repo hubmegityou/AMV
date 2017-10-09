@@ -12,6 +12,8 @@ require_once "Airport.class.php";
 require_once "GreatCircle.php";
 require_once "Money.class.php";
 require_once "Validate.class.php";
+require_once "Trip.class.php";
+
 $_SESSION["trip_id"] = 2; // just for testing !!!!!!!!!!!!!!!!!!!!
 //if(!isset($_SESSION['trip_id'])){wywal gdzies}
 $connection = db_connection();
@@ -19,11 +21,20 @@ $connection = db_connection();
 
 //check if flight exists, if so then link it to application, otherwise create it and link it to application
 //if exists you can also check for compensation availability
-
-if(isset($_GET["type"]) && $_GET["type"] == "flights"){ 
+if(!isset($_GET["type"])){
+    return false;
+}
+if($_GET["type"] == "flights"){ 
     echo(create_or_update_flight_infos()); //if we got list of flights then set them for trip 
-}else{
+}elseif($_GET["type"] == "single"){
     echo(create_or_update_application());   //if we got one flight then add an application to it 
+}elseif($_GET["type"] == "final"){
+    echo(update_trip_delay());
+}
+
+function update_trip_delay(){
+    $trip_object = new Trip($_SESSION["trip_id"]);
+    $trip_object->update_assoc($_POST);
 }
 
 function purge_trip_flight_infos(){

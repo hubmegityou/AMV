@@ -38,6 +38,7 @@ $value_to_number = array(
 );
 
 $name_to_tab_and_column = array(
+    "finaldelay" => array($db_trip_tab, $db_trip_delay),  
     "reason" => array($db_application_tab, $db_application_incident),
     "delayreason" => array($db_application_tab, $db_application_cause),
     "delaytime" => array($db_application_tab, $db_application_delay),

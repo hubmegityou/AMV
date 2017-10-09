@@ -68,14 +68,13 @@ function load_many(data){
         cache: false,
         success: function(finaldelay){
             if(finaldelay instanceof Object){
-                console.log(finaldelay);
                 load_many_two(data, finaldelay);
             }
         }
     });
 }
 function load_many_two(data, finaldelay){
-    $("#transfer > .answer:first").find("div > label > img").eq(finaldelay["final_delay"] - 1).click();
+    $("#transfer > form > .answer:first").find("div > label > img").eq(finaldelay["final_delay"] - 1).click();
     data.forEach(function(item, index){
         if(item["id"] != null){
             $("#trips > .answer:first").find("input:not(:hidden)").eq(index).click();

@@ -95,11 +95,11 @@ function gtfo(){
 }
 function next_submits(){
     var flag = false;
-    $("form:not([name=all], :last)").each(function(){
+    $("form:not([name=all], [name=final], :last)").each(function(){
         if(!$(this).find("[name=departure-code]").val()){
             return true;
         }
-        $.post("submit_form.php", $(this).serialize(), function(data){
+        $.post("submit_form.php?type=single", $(this).serialize(), function(data){
             console.log(data);
             if(data == "false"){
                 alert("Lot " + $(this).find("[name=departure-code]").val() + " - " + $(this).find("[name=destination-code]").val() + " został odrzucony");
@@ -108,7 +108,7 @@ function next_submits(){
             }
         });
     });
-    $.post("submit_form.php", $("form:last").serialize(), function(data){
+    $.post("submit_form.php?type=single", $("form:last").serialize(), function(data){
         console.log(data);
         if(data == "false"){
             alert("Lot " + $("form:last").find("[name=departure-code]").val() + " - " + $("form:last").find("[name=destination-code]").val() + " został odrzucony");
@@ -123,16 +123,17 @@ function next_submits(){
 
 function submit_forms(){
     check_entitlement();
+    $.post("submit_form.php?type=final", $("form[name=final]").serialize(), function(data){console.log(data)});
     $.post("submit_form.php?type=flights", $("form[name=all]").serialize(), function(data){console.log(data)}).success(next_submits);
 }
 
 var time = 300;
 
 function Ybutton(){
-    $("form:first").find("[name=departure-code]").val("");
-    $("form:first").find("[name=destination-code]").val("");
+    $("form[name=default]").find("[name=departure-code]").val("");
+    $("form[name=default]").find("[name=destination-code]").val("");
     $('#transfer').show(time);
-    $('form').hide();
+    $('form:not([name=final])').hide();
     $('form').next().hide();
     secondPart($(this));
     $(this).parent().siblings().slice(8,10).hide(time);
@@ -141,7 +142,7 @@ function Ybutton(){
 
 function Nbutton(){
     //fix it
-    $("form:not([name=default], [name=all])").remove();
+    $("form:not([name=default], [name=all], [name=final])").remove();
     $("#trips").hide();
     var dep_code = $("[name=departure]").attr("data-code");
     var dest_code = $("[name=destination]").attr("data-code");
@@ -244,7 +245,7 @@ function render_form(button){
     var dest_code = $(button).attr('data-dest-code');
     var form_index = parseInt($(button).attr('data-index'));
     var flag = false;
-    var forms = $("form:not([name=all])"); 
+    var forms = $("form:not([name=all], [name=final])"); 
     forms.each(function(){
         if($(this).find("[name=departure-code]").val() === dep_code && $(this).find("[name=destination-code]").val() === dest_code){
             $(this).remove();
@@ -311,7 +312,7 @@ function check_entitlement(){
 }
 
 function check_entitlement_one(){
-    $("forms:not([name=all])").first(function(){
+    $("form:not([name=all], [name=final])").first(function(){
         $.when(
             $.ajax({
                 url: "getData.php",
@@ -375,13 +376,13 @@ jQuery(document).ready(function(){
     $('#Y').click(Ybutton);
     $("#N").click(function(event){validate($("[name=departure], [name=destination]"), event)});
     $('#N').click(Nbutton);
-    $('form > .answer > div > label > img').click(function(element){
+    $('form:not([name=final]) > .answer > div > label > img').click(function(element){
         show_variant(element.target);
     });
-    $("form").find("img").not("img[name]").on('click', show_next);
+    $("form:not([name=final])").find("img").not("img[name]").on('click', show_next);
     $(".btn_yes, .btn_no").click(show_next);
     $(".btn_next").click(submit_forms);
-    $("#transfer > .answer > div > label > img").click(function(){
+    $("#transfer > form > .answer > div > label > img").click(function(){
         if (!check_waypoints()){
             return;
         }
