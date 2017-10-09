@@ -51,8 +51,6 @@
             $db_passengers_idcard1 = "IDcard1"; 
             $db_passengers_idcard2 = "IDcard2"; 
             
-            
-            
            
         $db_connect_tab = "connect" ;
             $db_connect_id = "id";
@@ -82,8 +80,6 @@
             $db_flight_info_nextflight = "next_flight_info_ID";
             $db_flight_info_flightid = "flight_ID";
             $db_flight_info_order = "order";
-            
-            
          
             
        //informacje o zgłoszeniu

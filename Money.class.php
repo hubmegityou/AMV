@@ -43,7 +43,7 @@ class Money {
         $result=$connection->query($sql);
         $row = $result->fetch_assoc();
         $delay=$row[$db_application_delay];
-        $row= $row[$db_application_incident];
+        $incident= $row[$db_application_incident];
 
 
 
@@ -60,7 +60,7 @@ class Money {
             
         }elseif ($x==2){
             //y= opóźnienie ponżej 3h czyli poniżej opcji 3 w locie opóźnionym
-            if ($db_application_delay<3 && $db_application_incident==1){
+            if ($delay<3 && $incident==1){
                 $sub=200;
             }else{
                 $sub=400;

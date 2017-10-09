@@ -269,8 +269,9 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 	border-color: #6960EE;
   }
 
+
 /* buttons "yes/no" relating to version number 3 of the form*/
-.btn_yes, .btn_no
+.btn_yes, .btn_no 
 {
 	color: white;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
@@ -286,17 +287,17 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 	margin-right: 55px;
 }
 
-.btn_yes
+.btn_yes 
 {
 	background-color: #79DCEF;
 }
 
-.btn_no
+.btn_no 
 {
 	background-color: #F77D99;
 }
 
-.btn_yes:hover, .btn_no:hover
+.btn_yes:hover, .btn_no:hover, input[type="radio"]:checked + label 
 {
 	-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
@@ -322,7 +323,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 	float: left;
 }
 
-.btn_yn:hover, .active_btn_yn
+.btn_yn:hover, .btn_yn.active
 {
 	background-color: #6960EE;
 	border-color: #6960EE;

@@ -54,7 +54,8 @@
             }
         }
         public function update($what, $value){
-            
+           // echo("Updating ".$what."\r\n");
+            //echo(" with val = ".$value."\r\n");
             global $connection;
             
             $sql = "UPDATE `".$this->table_name."` SET `$what` = ? WHERE `".$this->table_id."` = ?";

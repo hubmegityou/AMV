@@ -1,6 +1,6 @@
 <?php
 
-print_r($_POST);
+//print_r($_POST);
 //return;
 session_start();
 require_once "database/dbinfo.php";
@@ -11,7 +11,7 @@ require_once "Application.class.php";
 require_once "Airport.class.php";
 require_once "GreatCircle.php";
 require_once "Money.class.php";
-
+require_once "Validate.class.php";
 $_SESSION["trip_id"] = 2; // just for testing !!!!!!!!!!!!!!!!!!!!
 //if(!isset($_SESSION['trip_id'])){wywal gdzies}
 $connection = db_connection();
@@ -21,7 +21,6 @@ $connection = db_connection();
 //if exists you can also check for compensation availability
 
 if(isset($_GET["type"]) && $_GET["type"] == "flights"){ 
-    purge_trip_flight_infos();
     echo(create_or_update_flight_infos()); //if we got list of flights then set them for trip 
 }else{
     echo(create_or_update_application());   //if we got one flight then add an application to it 
@@ -39,7 +38,27 @@ function purge_trip_flight_infos(){
 
 function create_or_update_flight_infos(){
     //$sql = "SELECT EXISTS(SELECT application.* FROM application INNER JOIN flight_info ON application.id = flight_info.application_id INNER JOIN flight on flight.id = flight_info.flight_ID INNER JOIN trip on trip.id = flight_info.trip_id WHERE flight.departure_ID = ? and trip.id = ? LIMIT 1) AS exists";
-    $i = 0;
+    $flag = true;
+    array_shift($_POST["flights"]);
+    if(count($_POST["flights"]) > 1){
+        $_SESSION["multiple"] = true;
+        $_SESSION["flights_list"] = $_POST["flights"];
+        $i = 0;
+        foreach($_POST["flights"] as $flight_data){
+            $flight = explode('-', $flight_data); 
+            if($flight && !create_or_update_flight_info($flight, $i)){
+                $flag = false;
+            }
+            $i++;
+        }
+        
+    }else{
+        $_SESSION["multiple"] = false;
+        $flight = explode('-', $_POST["flights"][0]); 
+        $flag = create_or_update_flight_info($flight, 0);
+    }
+        
+    /*$i = 0;
     $flag = true;
     foreach($_POST["flights"] as $flight_data){
         $flight = explode('-', $flight_data); 
@@ -47,9 +66,13 @@ function create_or_update_flight_infos(){
             $flag = false;
         }
         $i++;
-    }
+    }*/
     return $flag;
 }
+
+
+
+
 
 /* This function selects appropriate flight_info row and then updates it's order or calls create function */ 
 function create_or_update_flight_info($flight, $i){
@@ -61,9 +84,7 @@ function create_or_update_flight_info($flight, $i){
     $stmt->execute();
     $dataSet = $stmt->get_result();
     if ($dataSet->num_rows > 0){
-        echo("there ?");
         $data = $dataSet->fetch_array(MYSQLI_ASSOC);
-        print_r($data);
         $stmt->close();
         $flight_info_object = new Flight_info($data["id"]);
         $flight_info_object->update($db_flight_info_order, $i);
@@ -107,6 +128,27 @@ function insert_flight_info($flight, $order){
 }
 /* This function selects and updates appropriate application and creates flight - if we have an application then we got a bunch of info about flight, such as date and flight number, so we can create it and link this flight to application. We cannot update the flight, as it is shared by many */
 function create_or_update_application(){
+    
+    if(!empty($_SESSION["multiple"]) && !$_SESSION["multiple"] && !Validate::one_flight()){
+
+        echo "false";
+        return false;
+    }
+    if($_SESSION["multiple"]){
+        $from = explode('-', $_SESSION["flights_list"][0]);
+        $to = explode('-', end($_SESSION["flights_list"]));
+        reset($_SESSION["flights_list"]);
+        $problem = $_POST["departure-code"];
+        $airline = $_POST["airline-code"];
+        
+        if(!Validate::many_flights($from[0], $to[1], $problem, $airline)){
+            echo "false";
+            return false;  
+        }
+    }
+    
+    //$_POST["date"] = date('Y-m-d', strtotime($_POST["date"]));
+    
     require "database/dbinfo.php";
     global $connection;
     $sql = "SELECT fi.$db_flight_info_id AS 'fi_id', fi.$db_flight_info_applicationid AS 'ap_id' FROM $db_flight_info_tab fi INNER JOIN $db_trip_tab t on t.$db_trip_id = fi.$db_flight_info_tripid  INNER JOIN $db_airports_tab aa ON fi.$db_flight_info_arrivalid = aa.$db_airports_id INNER JOIN $db_airports_tab ad ON fi.$db_flight_info_departureid = ad.$db_airports_id  WHERE ad.$db_airports_IATA  = ? AND aa.$db_airports_IATA  = ? AND t.$db_trip_id = ? LIMIT 1";
@@ -215,7 +257,8 @@ function insert_flight($flight_info_id, $airline_id){
 
     $flight_object = new Flight();
     $flight_object->update($db_flight_airlineid, $airline_id);  //link airlines
-    $flight_object->update_assoc($_POST); // this should set flight number and date, bo we still need more info
+    $flight_object->update($db_flight_number, $_POST['fnumber']); // this should set flight number and date, bo we still need more info
+    $flight_object->update($db_flight_date, $_POST["date"]);
     $flight_object->update($db_flight_departureid, $flight_info_object->departure_id); // link airports
     $flight_object->update($db_flight_arrivalid, $flight_info_object->arrival_id); // link airports
     
