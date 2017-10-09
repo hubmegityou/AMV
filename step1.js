@@ -184,8 +184,8 @@ function secondPart(e){
 }
 
 function show_variant(element){
-    $("form > .variants").nextAll().hide(time);
     var object = $(element);
+    object.parents("form").find(".variants").nextAll().hide(time);
     object.parents("form")[0].reset();
     object.parents(".variants").find(".active").removeClass("active");
     object.addClass("active");
@@ -231,7 +231,7 @@ function fill_flight_buttons(departure, destination, index){
     var dest_code = destination.attr("data-code");
     var dest_name = destination.attr("data-name");
     var name = String(index + 1)+". "+ dep_name + " (" + dep_code + ") - "+ dest_name + " (" + dest_code + ")";
-    var button = $("#trips > div > input:hidden").clone().appendTo("#trips > .answer").show().val(name).attr('data-dep-code', dep_code).attr('data-dest-code', dest_code).attr('data-index', index);
+    var button = $("#trips > div > input:first").clone().appendTo("#trips > .answer").show().val(name).attr('data-dep-code', dep_code).attr('data-dest-code', dest_code).attr('data-index', index);
     $("form[name=all] > input").first().clone().val(dep_code+"-"+dest_code).appendTo("form[name=all]");
     button.click(function(element){
         $(this).toggleClass('active_btn');
@@ -246,7 +246,7 @@ function render_form(button){
     var flag = false;
     var forms = $("form:not([name=all])"); 
     forms.each(function(){
-        if($(this).find("[name=departure-code]").val() == dep_code){
+        if($(this).find("[name=departure-code]").val() === dep_code && $(this).find("[name=destination-code]").val() === dest_code){
             $(this).remove();
             flag = true;
             return false;
@@ -292,8 +292,6 @@ function check_waypoints(){
         if($(this).val() && $(this).attr('data-code')){
             flag = true;
             //return false;
-        }else{
-            flag = false;
         }
     });
     return flag;
