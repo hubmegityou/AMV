@@ -22,11 +22,25 @@
 		$file = fopen($filename, "r");
          while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
          {
-            $sql = "INSERT into $db_flight_tab($db_flight_departureid,$db_flight_arrivalid,$db_flight_number, $db_flight_date, $db_flight_airlineid) values('$emapData[0]','$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]')";
+			 $sql_depid= "SELECT $db_airports_id FROM $db_airports_tab WHERE $db_airports_IATA= '$emapData[0]'";
+			 $result_depid = $connection->query($sql_depid);
+			 $depid = $result_depid->fetch_assoc();
+			 
+			 $sql_arrid= "SELECT $db_airports_id FROM $db_airports_tab WHERE $db_airports_IATA= '$emapData[1]'";
+			 $result_arrid = $connection->query($sql_arrid);
+			 $arrid = $result_arrid->fetch_assoc();
+			 
+			 $sql_alines="SELECT $db_airlines_id FROM $db_airlines_tab  WHERE $db_airlines_IATA= '$emapData[4]'";
+			 $result_alines = $connection->query($sql_alines);
+			 $alines = $result_alines->fetch_assoc();
+			 
+			 
+			 
+            $sql = "INSERT into $db_flight_tab($db_flight_departureid,$db_flight_arrivalid,$db_flight_number, $db_flight_date, $db_flight_airlineid) values('$depid[$db_airports_id]','$arrid[$db_airports_id]','$emapData[2]','$emapData[3]','$alines[$db_airlines_id]')";
 			$result = $connection->query($sql);
 			$last_id = $connection->insert_id;
 			
-			$sql_flight= "INSERT into $db_flight_info_tab ($db_flight_info_flightid, $db_flight_info_arrivalid, $db_flight_info_departureid) values ('$last_id', '$emapData[1]', '$emapData[0]')";
+			$sql_flight= "INSERT into $db_flight_info_tab ($db_flight_info_flightid, $db_flight_info_arrivalid, $db_flight_info_departureid) values ('$last_id', '$arrid[$db_airports_id]', '$depid[$db_airports_id]')";
 			$result = $connection->query($sql_flight);
 			$last_flight_id = $connection->insert_id;
 			;
@@ -44,8 +58,8 @@
 			
          }
          fclose($file);
-		 echo "<script type=\"text/javascript\">window.alert('udało się');
-                window.location.href = 'import.php'</script>";
+		 // echo "<script type=\"text/javascript\">window.alert('udało się');
+                // window.location.href = 'import.php'</script>";
 
 		}
 	else {

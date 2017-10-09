@@ -77,7 +77,7 @@ If (!isset($_SESSION['id'])){
 					
 					
 					pliki z lotami :<br>  
-					dla tabeli w formacie ->   ID lotniska wylotu,ID lotniska przylotu,numer lotu,data lotu,ID linii lotniczych<br><br>
+					dla tabeli w formacie ->   IATA lotniska wylotu,IATA lotniska przylotu,numer lotu,data lotu,IATA linii lotniczych<br> plik bez nagłówków<br>
 					
 					
 					<form enctype="multipart/form-data" method="post" action="import_csv.php">
