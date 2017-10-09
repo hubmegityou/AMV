@@ -128,10 +128,7 @@ function insert_flight_info($flight, $order){
 }
 /* This function selects and updates appropriate application and creates flight - if we have an application then we got a bunch of info about flight, such as date and flight number, so we can create it and link this flight to application. We cannot update the flight, as it is shared by many */
 function create_or_update_application(){
-    
-    if(!empty($_SESSION["multiple"]) && !$_SESSION["multiple"] && !Validate::one_flight()){
-
-        echo "false";
+    if(empty($_SESSION["multiple"]) && !Validate::one_flight()){
         return false;
     }
     if($_SESSION["multiple"]){
@@ -142,7 +139,6 @@ function create_or_update_application(){
         $airline = $_POST["airline-code"];
         
         if(!Validate::many_flights($from[0], $to[1], $problem, $airline)){
-            echo "false";
             return false;  
         }
     }
