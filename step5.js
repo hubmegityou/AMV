@@ -30,7 +30,7 @@ submitForm();
  function submitForm(){
 	 
 $(".btn_next").click(function(){
-	$.post( "submitForm5.php", {
+	$.post( "step5.php", {
 		 type: $(".active_comp").attr("id"), 
 		 payment: $("input[type='radio'][name='radio']:checked").attr("id"),
 		 currency: $( "#select" ).val(),

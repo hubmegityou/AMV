@@ -1,6 +1,7 @@
 
 jQuery(document).ready(function(){
 	getNames(); 
+	submitForm();
 })
 
 
@@ -23,10 +24,12 @@ $.ajax({
 			 while (names[j]) {
 			for (i=1; i<4; i++){	
 			if (j==1){
-				$( "#a"+i).prepend(names[j]);
+				$( "#a"+i).prepend(names[j]['name']);
+				$("#"+i).find('input').attr('name', names[j]['id']);
+				
 			}else{
-				$( "#a"+i).append(names[j]);
-				$("#"+i).clone().appendTo( "#a"+i);
+				$( "#a"+i).append(names[j]['name']);
+				$("#"+i).clone().find('input').attr('name', names[j]['id']).appendTo( "#a"+i);
 			}}
 			 j++;
 			 }
@@ -34,3 +37,44 @@ $.ajax({
 })
 	
 }
+
+function submitForm(){
+	
+$("input").change(function(){
+	
+	
+	var file = $(this).prop('files')[0];
+	var data = new FormData(file);
+	var type= $(this).attr('id');
+	var name= $(this).attr('name');
+	data.append('file', file);
+	data.append("type", type);
+	data.append("pass_id", name);
+      
+       $.ajax( // wywołanie ajaxa
+      { 
+         type: "POST",
+         enctype: 'multipart/form-data',
+         processData: false,  // Important!
+         contentType: false,
+         url: "step3.php",
+          data:data,
+         cache: false,
+         success: function(){}        
+      })
+	
+	
+	
+		
+		
+    });    
+	
+	
+}
+
+
+
+
+
+
+
