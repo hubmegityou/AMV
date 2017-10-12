@@ -29,7 +29,8 @@ $.ajax({
 				
 			}else{
 				$( "#a"+i).append(names[j]['name']);
-				$("#"+i).clone().find('input').attr('name', names[j]['id']).appendTo( "#a"+i);
+				$("#"+i).clone().appendTo( "#a"+i);
+				$("#"+i).find('input').attr('name', names[j]['id']);
 			}}
 			 j++;
 			 }
