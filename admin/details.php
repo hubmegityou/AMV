@@ -256,8 +256,7 @@ echo "PRZEBIEG TRASY:";
    
     $sql_flight= "SELECT * FROM $db_flight_tab WHERE $db_flight_id=".$row_flightinfo[$db_flight_info_flightid];
     $result_flight = $connection->query($sql_flight);
-    ($row_flight = $result_flight->fetch_assoc());  
- 
+    $row_flight = $result_flight->fetch_assoc();  
     
     $sql_departure= "SELECT * FROM $db_airports_tab WHERE $db_airports_id=".$row_flight[$db_flight_departureid] ;
     $result_departure = $connection->query($sql_departure);

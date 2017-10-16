@@ -122,10 +122,10 @@ If (!isset($_SESSION['id'])){
 		$row_arrival_check = $result_arrival_check->fetch_assoc();
         if($row_arrival_check[$db_flight_info_arrivalid] == $arrid){ 
             $tripid = $row_trip[$db_flight_info_tripid];
-            $sql_person = "SELECT $db_connect_passenger_id FROM $db_connect_tab WHERE $db_connect_trip_id = $tripid";
+            $sql_person = "SELECT $db_connect_passenger_id FROM $db_connect_tab WHERE $db_connect_trip_id = $tripid LIMIT 1";
             $result_person = $connection->query($sql_person);
             while ($row_person = $result_person->fetch_assoc()){
-                $sql_passengers="SELECT $db_passengers_firstname, $db_passengers_lastname FROM $db_passengers_tab WHERE $db_passengers_email IS NOT NULL && $db_passengers_id= $row_person[$db_connect_passenger_id]";
+                $sql_passengers="SELECT $db_passengers_firstname, $db_passengers_lastname FROM $db_passengers_tab WHERE $db_passengers_id= $row_person[$db_connect_passenger_id]";
 				$result_passengers = $connection->query($sql_passengers);
                 if ($row_passengers = $result_passengers->fetch_assoc()){
                     $fname= $row_passengers[$db_passengers_firstname];
