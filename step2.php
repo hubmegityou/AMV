@@ -1,48 +1,38 @@
-<?php
-session_start();
-
-require_once "database/dbinfo.php";
-require_once "database/connect.php";
-
-
-$connection = db_connection();
-
-$id =$_POST['pass_id'];
-$firstname= $_POST['fname'];
-$lastname= $_POST['lname'];
-$address= $_POST['address'];
-$zipcode= $_POST['code'];
-$city= $_POST['city'];
-$country= $_POST['country'];
-$email= $_POST['email'];
-$number=$_POST['tnumber'];
-
-
-If (!empty($id)){
-
-$sql_update="UPDATE $db_passengers_tab SET $db_passengers_firstname='$firstname', $db_passengers_lastname='$lastname', $db_passengers_address='$address', $db_passengers_zipcode='$zipcode',
-	  $db_passengers_city='$city', $db_passengers_country='$country', $db_passengers_email='$email', $db_passengers_telnumber='$number' WHERE $db_passengers_id= $id";
-$stmt = $connection->prepare($sql_update);    
-$stmt->execute();
-
-}else{
-
-$sql="INSERT INTO $db_passengers_tab ($db_passengers_firstname,$db_passengers_lastname, $db_passengers_address, $db_passengers_zipcode, $db_passengers_city, $db_passengers_country ) 
-		VAlUES ('$firstname', '$lastname', '$address', '$zipcode', '$city', '$country')";
-
-$stmt = $connection->prepare($sql);    
-$stmt->execute();
-$pass_id = $connection->insert_id;;
-$trip_id = $_SESSION['trip_id'];
-
-
-$sql_insert="INSERT INTO $db_connect_tab ($db_connect_passenger_id, $db_connect_trip_id) VALUES ('$pass_id', '$trip_id')";
-$stmt = $connection->prepare($sql_insert);    
-$stmt->execute();
-
-echo $pass_id;
-
-}
-
-
-?>
+<div id="step2">
+		
+		<div class="flights">
+			<h1>Dane pasażera</h1>
+			<form id = "passenger">
+				Imię
+				<input type="text" name="first_name" required>
+				Nazwisko
+				<input type="text" name="last_name" required>
+				Adres
+				<input type="text" name="address" required>
+				Kod pocztowy
+				<input type="text" name="code" required>
+				Miejscowość
+				<input type="text" name="city" required>
+				Kraj
+				<input type="text" name="country" required>
+			</form>
+			<a href = "#" id = "add_passenger">+ Dodaj pasażera</a>
+		</div>
+		
+		<div class="question">
+			Dane kontaktowe
+		</div>
+		<div class="flights">
+			<form id = "contact">
+				Adres e-mail
+				<input type="email" name="first_name" required>
+				Telefon
+				<input type="tel" name="first_name">
+			</form>
+		</div>
+		<div class="flights">
+			<button class="btn_next" type="button">Dalej &rarr;</button>
+			<button class="btn_prev" type="button">&larr; Wróć</button>
+		</div>
+	</div><!-- end of step 2 -->
+	

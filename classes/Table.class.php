@@ -1,7 +1,7 @@
 <?php
-    require_once "database/dbinfo.php";
-    require_once "database/connect.php";
-    
+    require_once __DIR__."/../database/dbinfo.php";
+    require_once __DIR__."/../database/connect.php";
+    $connection = db_connection();    
     
     class Table {
         public $id;
@@ -39,7 +39,7 @@
         }
         /*This is so bad, refactor it someday */
         public function update_assoc($table){
-            require "definitions.php";
+            require __DIR__."/../definitions.php";
 
             foreach($table as $key => $value){
                 foreach($name_to_tab_and_column as $keyname => $tab_and_column){

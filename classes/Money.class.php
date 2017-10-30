@@ -1,7 +1,7 @@
 <?php
 
-require_once "database/dbinfo.php";
-require_once "database/connect.php";
+require_once __DIR__."/../database/dbinfo.php";
+require_once __DIR__."/../database/connect.php";
 $connection = db_connection();
 
 
@@ -10,7 +10,7 @@ $connection = db_connection();
 class Money {
 
     public static function compensation($flight_id, $departure_id, $arrival_id, $application_id){
-        require "database/dbinfo.php";
+        require __DIR__."/../database/dbinfo.php";
         global $connection;
         
         $sql="SELECT $db_flight_distance FROM $db_flight_tab WHERE $db_flight_id = $flight_id";

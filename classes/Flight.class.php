@@ -11,7 +11,7 @@
         public $compensation_availability;
         
         function __construct($id = null){
-            require "database/dbinfo.php";
+            require __DIR__."/../database/dbinfo.php";
             
             $this->table_name = $db_flight_tab;
             $this->table_id = $db_flight_id;
@@ -30,7 +30,7 @@
             
         }
         public static function find($flight_number, $airline_id, $date){
-            require "database/dbinfo.php";
+            require __DIR__."/../database/dbinfo.php";
             //require "database/connect.php";
             global $connection;
 

@@ -1,80 +1,42 @@
-<?php
-
-require_once "database/dbinfo.php";
-require_once "database/connect.php";
-
-session_start();
-
-$trip=$_SESSION['trip_id'];
-
-
-//// pass_id-> passenger id
-////type->id   r-> rezerwacja, k-> karta pokładowa, p-> paszport, dp-> dowód osobity przód, dt-> dowód osobity tył
-
-
-
-$type = $_POST['type'];
-$pass_id= $_POST['pass_id'];
-
-$name=explode('.',$_FILES["file"]['name']);
-$filename=$type.'.'.$name[1];
-
-$path="uploads/$trip/$pass_id/".$filename;
-
-if (!is_dir( "uploads/$trip/$pass_id")){
-    mkdir ("uploads/$trip/$pass_id", 0777);}
-	
-	if (is_uploaded_file($_FILES["file"]['tmp_name'])) {
-    
-		move_uploaded_file($_FILES["file"]['tmp_name'],
-        $path);
-	}
-	
 
 	
-switch($type){
-	case "r":	
-				$table= $db_connect_tab;
-				$file= $db_connect_reservation;
-				$field=$db_connect_trip_id;
-				$value=$trip;
-				break;
-				
-	case "k":	
-				$table= $db_connect_tab;
-				$file= $db_connect_boarding;
-				$field=$db_connect_trip_id;
-				$value=$db_connect_trip_id;
-				break;
-				
-	case "p":	
-				$table= $db_passengers_tab;
-				$file= $db_passengers_passport;
-				$field= $db_passengers_id;
-				$value= $pass_id;
-				break;
-				
-	case "dp":	
-				$table= $db_passengers_tab;
-				$file= $db_passengers_idcard1;
-				$field= $db_passengers_id;
-				$value= $pass_id;
-				break;
-				
-	case "dt":  
-				$table= $db_passengers_tab;
-				$file= $db_passengers_idcard2;
-
-				$field= $db_passengers_id;
-				$value= $pass_id;
-				break;
-}
-	
-$connection = db_connection();
-	
-$sql= "UPDATE $table SET $file= '$path' WHERE $field=$value";
-$stmt = $connection->prepare($sql);    
-$stmt->execute();
-
-
-?>
+	<div id="step3">
+            <div class="flights">
+                <h1>Dokumenty</h1>
+                <h2>Przesłane dokumenty muszą być czytelne<br> i z widocznymi krawędziami</h2>
+            </div>
+            <div class="question">
+                Rezerwacja / Karta pokładowa
+            </div>
+            <div class="flights" id='a1'>
+                <div class="documents" id='1'><!-- each passenger in another div-->
+					 rezerwacja
+                    <input type="file" id='r' accept="image/*" capture="camera"/>
+					karta pokładowa
+                    <input type="file" id='k' accept="image/*" capture="camera" />                    
+                </div>
+            </div>
+            <div class="question">
+                Paszport
+            </div>
+            <div class="flights" id='a2'>
+                <div class="documents" id='2'><!-- each passenger in another div-->
+                    <input type="file" id='p' accept="image/*" capture="camera" />                    
+                </div>
+            </div>
+            <div class="question">
+                Dowód osobisty
+            </div>
+            <div class="flights" id='a3'>
+                <div class="documents" id='3'><!-- each passenger in another div-->
+					 przód 
+                    <input type="file" id='dp' accept="image/*" capture="camera" />
+					tył
+                    <input type="file" id='dt' accept="image/*" capture="camera" />                    
+                </div>
+            </div>
+            <div class="flights">
+                <button class="btn_next" type="button">Dalej &rarr;</button>
+                <button class="btn_prev" type="button">&larr; Wróć</button>
+            </div>
+        </div>

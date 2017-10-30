@@ -9,7 +9,7 @@
         public $arrival_id;
         
         function __construct($id = null){
-            require "database/dbinfo.php";
+            require __DIR__."/../database/dbinfo.php";
             $this->table_name = $db_flight_info_tab;
             $this->table_id = $db_flight_info_id;
             parent::__construct($id);

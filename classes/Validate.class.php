@@ -56,7 +56,7 @@ class Validate{
 
     
     public static function get_airport_region($code){
-        require "database/dbinfo.php";
+        require __DIR__."/../database/dbinfo.php";
         global $connection;
 
         $sql = "SELECT $db_airports_region AS 'region' FROM $db_airports_tab WHERE $db_airports_IATA LIKE ? LIMIT 1 ";
@@ -74,7 +74,7 @@ class Validate{
     }
 
     public static function get_airline_region($code){
-        require "database/dbinfo.php";
+        require __DIR__."/../database/dbinfo.php";
         global $connection;
 
         $sql = "SELECT $db_airlines_region AS 'region' FROM $db_airlines_tab WHERE $db_airlines_IATA LIKE ? LIMIT 1 ";

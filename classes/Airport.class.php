@@ -6,7 +6,7 @@
         public $long;
         public $region;
         function __construct($id = null){
-            require "database/dbinfo.php";
+            require __DIR__."/../database/dbinfo.php";
             $this->table_name = $db_airports_tab;
             $this->table_id = $db_airports_id;
             

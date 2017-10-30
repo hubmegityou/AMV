@@ -1,7 +1,7 @@
 var current_step = 0;
 function get_page(page){
     $.ajax({
-            url: "step" + String(page) + ".html",
+            url: "step" + String(page) + ".php",
             dataType: "html",
             cache: true,
             success: function(data){
@@ -13,7 +13,7 @@ function get_page(page){
             complete: function(){
                 // get scripts
                 $.getScript("step" + String(page) +".js");
-                $.getScript("step" + String(page) +"_load.js");
+                //$.getScript("step" + String(page) +"_load.js");
                 //and set variable to current page
                 current_step = page;
                 

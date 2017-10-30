@@ -4,7 +4,7 @@
     class Application extends Table {
 
         function __construct($id = null){
-            require "database/dbinfo.php";
+            require __DIR__."/../database/dbinfo.php";
             $this->table_name = $db_application_tab;
             $this->table_id = $db_application_id;
             

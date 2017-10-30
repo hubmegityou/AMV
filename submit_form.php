@@ -5,14 +5,14 @@
 session_start();
 require_once "database/dbinfo.php";
 require_once "database/connect.php";
-require_once "Flight_info.class.php";
-require_once "Flight.class.php";
-require_once "Application.class.php";
-require_once "Airport.class.php";
+require_once "classes/Flight_info.class.php";
+require_once "classes/Flight.class.php";
+require_once "classes/Application.class.php";
+require_once "classes/Airport.class.php";
 require_once "GreatCircle.php";
-require_once "Money.class.php";
-require_once "Validate.class.php";
-require_once "Trip.class.php";
+require_once "classes/Money.class.php";
+require_once "classes/Validate.class.php";
+require_once "classes/Trip.class.php";
 
 $_SESSION["trip_id"] = 2; // just for testing !!!!!!!!!!!!!!!!!!!!
 //if(!isset($_SESSION['trip_id'])){wywal gdzies}

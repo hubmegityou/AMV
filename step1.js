@@ -362,6 +362,10 @@ function addHandlers(){
     
     $("[name=departure], [name=waypoint], [name=destination]").airport();            
     $("[name=airlines]").airline();
+    $("input[name=flight]").click(function(element){
+        $(this).toggleClass('active_btn');
+        render_form(element.target);
+    });
 };
 
 function addWaypoint(){
@@ -372,7 +376,7 @@ jQuery(document).ready(function(){
     addHandlers();
     //$('#step1 > div').slice(-3).hide();
     //hide all unnecessary elements
-    $("#buttons").nextAll().hide();
+    //$("#buttons").nextAll().hide();
     $('#Y').click(Ybutton);
     $("#N").click(function(event){validate($("[name=departure], [name=destination]"), event)});
     $('#N').click(Nbutton);
