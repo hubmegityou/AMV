@@ -1,0 +1,481 @@
+/*****Colours*****/
+/*
+#DCE4E9 - background
+#6960EE - blue (topbar, "a" tag, clicked button background, all hover borders)
+#EDF5FA - different blue (question background)
+#DBF4FF - another blue (stepline background)
+#797F93 - grey (answers font, buttons borders)
+#F7CD44 - yellow/orange (who cares, just ad background colour)
+*/
+
+/*adding new airport or passenger*/
+a
+{
+	color: #6960EE;
+}
+
+a:hover
+{
+    cursor: pointer;
+}
+
+/*advertisement*/
+#ad
+{
+	font-size: 20px;
+	border-radius: 15px;
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	padding: 20px;
+	background-color: #F7CD44;
+	text-align: center;
+	/*position: relative;*/
+	top: 50px;
+}
+
+#ad > b
+{
+	font-size: 30px;
+}
+
+/*details about the trip*/
+.flightinfo
+{
+	position:relative;
+	background-color: white;
+	padding: 20px;
+	width: 80%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	color: #797F93;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 15px;
+}
+
+/*background for line with circles*/
+.stepline
+{
+	
+    align-items: center;
+    justify-content: center;
+	background-color: #DBF4FF;
+	min-height: 100px;
+	position: relative;
+	z-index: -2;
+	border-top: 10px solid #DBF4FF;
+	border-bottom: 15px solid #DBF4FF;
+}
+
+.circle-img{
+	position:relative;
+	display: block;
+	left: -40px;
+	bottom: -30px;
+	
+}
+
+
+
+
+
+/*place for uploading documents*/
+.documents
+{
+	font-size: 16px;
+	text-align: center;
+}
+
+input[type=text],
+input[type=date],
+input[type=email],
+input[type=tel],
+.custom-file-upload
+{
+	width: 100%;
+	font-size: 18px;
+	padding: 20px;
+	position: relative;
+	left: -20px;
+	border: 1px solid #797F93; 
+	border-radius: 10px;
+	/*margin-right: 100%;*/
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*  file input  */
+.custom-file-upload
+{
+	cursor: pointer;
+	display:block;
+	color: #797F93;
+
+}
+/* file input after upload*/
+.uploaded{
+	border: 3px solid #6960EE;
+	
+}
+
+
+input.correct{
+	border-color: #5cb85c;
+}
+
+input.error{
+	border-color: red;
+}
+
+input[type=checkbox]
+{
+	float: left;
+	margin: 15px;
+}
+
+input[type=radio]
+{
+	float: left;
+	margin: 12px;
+}
+
+/*checkbox style*/
+
+/*
+.checkboxFive
+{
+	margin: 15px;
+}
+
+.checkboxFive label
+{
+	cursor: pointer;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	top: 10px;
+  	left: 0;
+	background: #eee;
+	border:1px solid #ddd;
+}
+
+.checkboxFive label:after
+{
+	opacity: 0.2;
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 5px;
+	background: transparent;
+	top: 6px;
+	left: 7px;
+	border: 3px solid #333;
+	border-top: none;
+	border-right: none;
+	transform: rotate(-45deg);
+}
+
+.checkboxFive label:hover::after
+{
+	opacity: 0.5;
+}
+
+.checkboxFive input[type=checkbox]:checked + label:after
+{
+	opacity: 1;
+}
+*/
+
+/*text beside checkboxes, acceptance of the rules*/
+.text
+{
+	padding-left: 42px;
+	padding-top: 12px;
+	text-align: justify;
+}
+
+/*required field*/
+.text > span
+{
+	font-size: 12px;
+	color: #797F93;
+	width: 100%;
+}
+
+/*checkboxes field*/
+.check, .topcheck
+{
+	margin: 10px;
+        width: 100%;
+}
+
+.check
+{
+	font-weight: normal;
+}
+
+.topcheck
+{
+	font-weight: bold;
+	position: relative;
+	left: -20px;
+	width: 100%;
+}
+
+/*question field*/
+.question
+{
+	background-color: #EDF5FA;
+	font-weight: bold;
+	padding: 20px;
+	text-align: center;
+	font-size: 20px;
+}
+
+/*answer field*/
+.answer
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: white;
+	padding: 40px;
+	color: #797F93;
+	font-size: 20px;
+}
+
+/*part of answer, a place for images*/
+.part
+{
+	height: auto;
+	float: left;
+	padding: 5%;
+	width: 40%;
+	text-align: center;
+	flex-grow: 0;
+}
+
+/*place for the last image*/
+.end
+{
+	text-align: center;
+	border-radius: 15px;
+	width: 40%;
+	flex-grow: 0;
+}
+/*
+img
+{
+	
+	margin-left: auto;
+	margin-right: auto;
+	border: 5px solid #FFF;
+	border-radius: 25px;  
+	max-width: 100%;
+    height: auto;
+}
+
+img:hover, img.active
+{
+	border-color: #6960EE;
+	cursor: pointer;
+}
+*/
+label > input{ /* HIDE RADIO */
+	visibility: hidden; /* Makes input not-clickable */
+	position: absolute; /* Remove input from document flow */
+  }
+label > input + img{ /* IMAGE STYLES */
+	cursor:pointer;
+	margin-left: auto;
+	margin-right: auto;
+	border: 5px solid #FFF;
+	border-radius: 25px;  
+	max-width: 100%;
+    height: auto;
+  }
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+	border-color: #6960EE;
+  }
+
+
+/* buttons "yes/no" relating to version number 3 of the form*/
+.btn_yes, .btn_no 
+{
+	color: white;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	-webkit-text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	-moz-text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	text-align: center;
+	float: left;
+	width: 146px;
+	height: 110px;
+	border: 2px solid white;
+	border-radius: 10px;
+	margin-left: 55px;
+	margin-right: 55px;
+}
+
+.btn_yes 
+{
+	background-color: #79DCEF;
+}
+
+.btn_no 
+{
+	background-color: #F77D99;
+}
+
+.btn_yes:hover, .btn_no:hover, input[type="radio"]:checked + label 
+{
+	-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	cursor: pointer;
+	border: 2px solid black;
+        font-size: 105%;
+}
+
+/*buttons "yes/no" beside transfer question*/
+.btn_yn
+{
+	width: 40%;
+	background-color: white;
+	font-size: 20px;
+	font-weight: bold;
+	color: #797F93;
+	margin-left: 5%;
+	margin-right: 5%;
+	border: 2px solid #797F93;
+	border-radius: 30px;
+	padding: 15px;
+	float: left;
+}
+
+.btn_yn:hover, .btn_yn.active
+{
+	background-color: #6960EE;
+	border-color: #6960EE;
+	color: white;
+	cursor: pointer;
+}
+
+.btn_next
+{
+	width: 90%;
+	background-color: #6960EE;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	margin-top: 50px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 10px;
+	border: 2px solid #6960EE;
+	border-radius: 30px;
+	padding: 15px;
+}
+
+.btn_prev
+{
+	width: 90%;
+	background-color: #FFF;
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 10px;
+	border: 2px solid #797F93;
+	border-radius: 30px;
+	padding: 15px;
+}
+
+.btn_next:hover, .btn_prev:hover
+{
+	-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+
+/* select the flight with which the problem occurred- buttons*/
+.btn
+{
+        width: 90%;
+	background-color: white;
+	font-size: 20px;
+	font-weight: bold;
+	color: #797F93;
+	margin-left: 5%;
+	margin-right: 5%;
+        margin-bottom: 3%;
+	border: 2px solid #797F93;
+	border-radius: 30px;
+	padding: 15px;    
+}
+
+.btn:hover, .active_btn
+{
+	background-color: #6960EE;
+	border-color: #6960EE;
+	color: white;
+	cursor: pointer;
+}
+
+
+
+/*choose the kind of payment - buttons layout*/
+.btn_comp
+{
+	margin-bottom: 20px;
+	background-color: white;
+	border: 3px solid #797F93;
+	color: #797F93;
+	border-radius: 5px;
+	width: 100%;
+	padding: 30px;
+}
+
+.btn_comp > h1, .btn_comp > h2
+{
+	color: black;
+}
+
+.btn_comp:hover, .active_comp
+{
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	cursor: pointer;
+	border: 3px solid #6960EE;
+}
+
+.btn_comp:hover h1
+{
+	color: #6960EE;
+}
+
+/*chose the kind of money transfer - field for radio buttons*/
+.payment1, .payment2
+{
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 80%;
+}
+
+.payment1
+{
+	color: #797F93;
+}
+
+.payment2
+{
+	font-size: 12px;
+}
+

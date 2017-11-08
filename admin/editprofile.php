@@ -85,14 +85,15 @@ require_once "../database/connect.php";
     if ($connection != false){
         $sql = "SELECT $db_users_fname, $db_users_lname, $db_users_login, $db_users_email FROM $db_users_tab WHERE $db_users_id=".$_SESSION['id'];
         if ($result = $connection->query($sql))
-        $row = $result->fetch_assoc();
-        echo "<div><p class='left'>Imię: <br><input type='text' value='$row[$db_users_fname]' name='fname'  required/></p></div>";
-        echo "<div><p class='left'>Login: <br><input type='text' value='$row[$db_users_login]' name='login'  required/></p></div>";
-        echo "<div><p class='left'>Nazwisko: <br><input type='text' value='$row[$db_users_lname]' name='lname'  required/></p></div>";
-        echo "<div><p class='left'>Nowe hasło: <br><input type='password' name='pass1' ></p></div>";
-        echo "<div><p class='left'>Adres email: <br><input type='email' value='$row[$db_users_email]' name='email' required/></p></div>";
-        echo "<div><p class='left'>Powtórz hasło: <br><input type='password' name='pass2' ></p></div>";
-        }
+        $row = $result->fetch_assoc();?>
+	
+        <div><p class='left'>Imię: <br><input type='text' value='<?php $row[$db_users_fname] ?>' name='fname'  required/></p></div>
+        <div><p class='left'>Login: <br><input type='text' value='<?php $row[$db_users_login]?>' name='login'  required/></p></div>
+        <div><p class='left'>Nazwisko: <br><input type='text' value='<?php $row[$db_users_lname]?>' name='lname'  required/></p></div>
+        <div><p class='left'>Nowe hasło: <br><input type='password' name='pass1' ></p></div>
+        <div><p class='left'>Adres email: <br><input type='email' value='<?php $row[$db_users_email]?>' name='email' required/></p></div>
+        <div><p class='left'>Powtórz hasło: <br><input type='password' name='pass2' ></p></div>
+       <?php }
 ?>
     <div style="clear:both"></div>
     <br><br>
